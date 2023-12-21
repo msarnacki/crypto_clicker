@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Clicker Game</title>
+  <style>
+    button {
+      font-size: 20px;
+      padding: 10px 20px;
+      margin: 10px;
+    }
+  </style>
+</head>
+<body>
+
+<button id="clickButton" onclick="clickButton()">Click me (Cost: 1)</button>
+<p>Points: <span id="points">0</span></p>
+<p>Auto Clickers: <span id="autoClickers">0</span> (Cost: 10)</p>
+<button id="buyAutoClicker" onclick="buyAutoClicker()">Buy Auto Clicker</button>
+
+<script>
+  var points = 0;
+  var autoClickers = 0;
+  var autoClickerCost = 10;
+
+  function clickButton() {
+    points++;
+    updateView();
+  }
+
+  function buyAutoClicker() {
+    if (points >= autoClickerCost) {
+      points -= autoClickerCost;
+      autoClickers++;
+      autoClickerCost *= 2; // Increase the cost for the next auto clicker
+      updateView();
+      // Start auto clicking
+      setInterval(function() {
+        points += autoClickers;
+        updateView();
+      }, 1000); // Auto click every second
+    } else {
+      alert("Not enough points to buy Auto Clicker!");
+    }
+  }
+
+  function updateView() {
+    document.getElementById('points').innerText = points;
+    document.getElementById('autoClickers').innerText = autoClickers;
+    document.getElementById('clickButton').innerText = "Click me (Cost: 1)";
+    document.getElementById('buyAutoClicker').innerText = "Buy Auto Clicker (Cost: " + autoClickerCost + ")";
+  }
+</script>
+
+</body>
+</html>
