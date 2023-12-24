@@ -1,31 +1,28 @@
-var money = 0;
-var building1 = 0;
-
-function buyBuilding1() {
-    $("#lBuilding1").html(building1);
+function buyBuilding() {
+    $("#lBuilding1").html(Person.ownedBuildings[1]);
 }
 
 function bClick() {
-    $("#lMoney").html(money);
+    $("#lMoney").html(Person.money);
 }
 
 function updateMoney() {
-    money = money + building1;
-    $("#lMoney").html(money);
+    Person.money = Person.money + Person.ownedBuildings[1]*lBuildings[1].base_income;
+    $("#lMoney").html(Person.money);
 }
 
 function updateAll() {
     updateMoney();
 }
 
-$("#buyBuilding1").click(function () {
-    building1+=1;
-    buyBuilding1();
+$("#buyBuilding").click(function () {
+    Person.ownedBuildings[1]+=1;
+    buyBuilding();
 }); 
 
 
 $("#clickButton").click(function () {
-    money+=1;
+    Person.money+=1;
     bClick();
 });
 
