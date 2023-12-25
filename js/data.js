@@ -15,10 +15,10 @@ class Building{
 }
 
 var lBuildings = [
-    new Building(level = 1, cost = 1, factor = 1.05, base_income = 1),
-    new Building(level = 2, cost = 100, factor = 1.04, base_income = 7),
-    new Building(level = 3, cost = 5000, factor = 1.03, base_income = 120),
-    new Building(level = 4, cost = 100000, factor = 1.02, base_income = 1000)
+    new Building(level = 0, cost = 1, factor = 1.05, base_income = 1),
+    new Building(level = 1, cost = 100, factor = 1.04, base_income = 7),
+    new Building(level = 2, cost = 5000, factor = 1.03, base_income = 120),
+    new Building(level = 3, cost = 100000, factor = 1.02, base_income = 1000)
 ];
 
 //Player object

@@ -17,8 +17,17 @@
     <button id="clickButton">button</button>
     <div>Money: <label id="lMoney">0</label></div>
     <br><br>
-    <button id="buyBuilding">Buy 1 building</button>
-    <div>Builidng1: <label id="lBuilding1">0</label></div>
+    <button id="buyBuilding" onclick="buyBuilding(0,1)">Buy 1 building level 0</button>
+    <button id="buyBuilding" onclick="buyBuilding(0,10)">Buy 10 building level 0</button>
+    <button id="buyBuilding" onclick="buyBuilding(0,100)">Buy 100 building level 0</button>
+    <div>Building level 0 owned: <label id="lBuilding0">0</label></div>
+    <div>Building level 0 income: <label id="lBuildingIncome0">0</label></div>    
+    <br><br>
+    <button id="buyBuilding" onclick="buyBuilding(1,1)">Buy 1 building</button>
+    <div>Building1: <label id="lBuilding1">0</label></div>
+    <br><br>
+    <button id="buyBuilding" onclick="buyBuilding(2,1)">Buy 1 building</button>
+    <div>Building2: <label id="lBuilding2">0</label></div>
   </body>
   <script src="js/data.js"></script>
   <script src="js/script.js"></script>
