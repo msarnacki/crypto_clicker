@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <title>Clicker Game</title>
+
+    <link rel="stylesheet" type="text/css" href="css/styles.css" />
+
+  </head>
+  <body>
+    <button id="clickButton">button</button>
+    
+    <h3>Main panel</h3>
+    <table>
+      <tr>
+        <td>Money: <label id="lMoney">0</label> $</td>
+      </tr>
+      <tr>
+        <td>Income/sec: <label id="lIncome">0</label> $</td>
+      </tr>
+    </table>
+
+    <br>
+
+    <table>
+      <tr>
+        <td>BTC: <label id="lCrypto0">0</label></td>
+        <td>BTC/USD: <label id="lCryptoRate0">0</label></td>
+        <td>BTC Value: <label id="lCryptoValue0">0</label></td>
+      </tr>
+      <tr>
+        <td>ETH: <label id="lCrypto1">0</label></td>
+        <td>ETH/USD: <label id="lCryptoRate1">0</label></td>
+        <td>ETH Value: <label id="lCryptoValue1">0</label></td>
+      </tr>
+    </table>
+
+    <br><br>
+    <h3>Level 0 </h3>
+    <div>Miner level 0 owned: <label id="lMiner0">0</label></div>
+    <div>Miner level 0 income: <label id="lMinerIncome0">0</label></div>    
+    
+    <table>
+      <tr>
+        <td><button id="buyMiner" onclick="buyMiner(0,1)">Buy 1</button></td>
+        <td><button id="buyMiner" onclick="buyMiner(0,10)">Buy 10</button></td>
+        <td><button id="buyMiner" onclick="buyMiner(0,100)">Buy 100</button></td>
+      </tr>
+      <tr>
+        <td>cost of 1: <label id="1MinerCost0">10</label></td>
+        <td>cost of 10: <label id="10MinerCost0"></label></td>
+        <td>cost of 100: <label id="100MinerCost0"></label></td>
+      </tr>
+    </table>
+
+    <br><br>
+
+    <h3>Level 1 </h3>
+    <div>Miner level 1 owned: <label id="lMiner1">0</label></div>
+    <div>Miner level 1 income: <label id="lMinerIncome1">0</label></div>   
+
+    <table>
+      <tr>
+        <td><button id="buyMiner" onclick="buyMiner(1,1)">Buy 1</button></td>
+        <td><button id="buyMiner" onclick="buyMiner(1,10)">Buy 10</button></td>
+        <td><button id="buyMiner" onclick="buyMiner(1,100)">Buy 100</button></td>
+      </tr>
+      <tr>
+        <td>cost of 1: <label id="1MinerCost1">150</label></td>
+        <td>cost of 10: <label id="10MinerCost1"></label></td>
+        <td>cost of 100: <label id="100MinerCost1"></label></td>
+      </tr>
+    </table>
+
+
+  </body>
+  <script src="js/data.js"></script>
+  <script src="js/script.js"></script>
+  <script src="js/miners.js"></script>
+  <script src="js/currencies.js"></script>
+</html>

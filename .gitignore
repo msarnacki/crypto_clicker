@@ -6,3 +6,5 @@
 __pycache__/
 venv/
 *.bkp
+test.html
+styles/styles_test.css

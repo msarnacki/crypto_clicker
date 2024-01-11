@@ -2,59 +2,65 @@ function bClick() {
     $("#lMoney").html(Person.money);
 }
 
-function calcIntervalIncrease(aOwnedBuildings) {
+function calcIntervalIncrease(aOwnedMiners) {
     var increase = 0;
-    for (let index = 0; index < aOwnedBuildings.length; index++) {
-        increase = increase + aOwnedBuildings[index] * lBuildings[index].base_income;
+    for (let index = 0; index < aOwnedMiners.length; index++) {
+        increase = increase + aOwnedMiners[index] * lMiners[index].base_income * lCryptoCurrs[0].denominationUnit;
     }
     return increase;
 }
 
-function calcCost(aOwnedBuildings, building_level, num) {
+function calcCost(aOwnedMiners, miner_level, num) {
     var cost = 0;
-    var q = lBuildings[building_level].factor;
-    var a1 = lBuildings[building_level].cost;
+    var q = lMiners[miner_level].factor;
+    var a1 = lMiners[miner_level].cost;
     if(num == 1) 
     {
         // cost =  S1
-        cost = a1*(q**aOwnedBuildings[building_level]);
+        cost = a1*(q**aOwnedMiners[miner_level]);
     }
     else 
     {
         // cost = S owned+num - S owned
-        cost = a1 * (1 - (q**(aOwnedBuildings[building_level]+num))/(1 - q)) - a1 * (1 - (q**(aOwnedBuildings[building_level]))/(1-q))
+        cost = a1 * (1 - (q**(aOwnedMiners[miner_level]+num))/(1 - q)) - a1 * (1 - (q**(aOwnedMiners[miner_level]))/(1-q))
     }
     
     return Math.ceil(cost);
 }
 
 function updateMoney() {
-    Person.money = Person.money + calcIntervalIncrease(Person.ownedBuildings);
+    Person.money = Person.money + calcIntervalIncrease(Person.ownedMiners);
     $("#lMoney").html(Person.money);
+}
+
+function updateCrypto() {
+    Person.ownedCrypto[0] = Person.ownedCrypto[0] + calcIntervalIncrease(Person.ownedMiners);
+    $("#lCrypto0").html(Person.ownedCrypto[0]);
 }
 
 function updateAll() {
     updateMoney();
+    updateCrypto();
 }
 
-function buyBuilding(building_level, num) {
-    if(Person.money >= calcCost(Person.ownedBuildings, building_level, num))
+function buyMiner(miner_level, num) {
+    if(Person.money >= calcCost(Person.ownedMiners, miner_level, num))
     {
-        Person.money -= calcCost(Person.ownedBuildings, building_level, num);
-        Person.ownedBuildings[building_level]+=num;
-        var id_owned = "#lBuilding".concat('', building_level.toString())
-        var id_income = "#lBuildingIncome".concat('', building_level.toString())
-        var id_cost1 = "#1BuildingCost".concat('', building_level.toString())
-        var id_cost10 = "#10BuildingCost".concat('', building_level.toString())
-        var id_cost100 = "#100BuildingCost".concat('', building_level.toString())
-        $(id_owned).html(Person.ownedBuildings[building_level]);
-        $(id_income).html(Person.ownedBuildings[building_level] * lBuildings[building_level].base_income);
-        $(id_cost1).html(calcCost(Person.ownedBuildings,building_level, 1));
-        $(id_cost10).html(calcCost(Person.ownedBuildings,building_level, 10));
-        $(id_cost100).html(calcCost(Person.ownedBuildings,building_level, 100));
+        Person.money -= calcCost(Person.ownedMiners, miner_level, num);
+        Person.ownedMiners[miner_level]+=num;
+        var id_owned = "#lMiner".concat('', miner_level.toString())
+        var id_income = "#lMinerIncome".concat('', miner_level.toString())
+        var id_cost1 = "#1MinerCost".concat('', miner_level.toString())
+        var id_cost10 = "#10MinerCost".concat('', miner_level.toString())
+        var id_cost100 = "#100MinerCost".concat('', miner_level.toString())
+        $(id_owned).html(Person.ownedMiners[miner_level]);
+        $(id_income).html(Person.ownedMiners[miner_level] * lMiners[miner_level].base_income);
+        $(id_cost1).html(calcCost(Person.ownedMiners,miner_level, 1));
+        $(id_cost10).html(calcCost(Person.ownedMiners,miner_level, 10));
+        $(id_cost100).html(calcCost(Person.ownedMiners,miner_level, 100));
     
         $("#lMoney").html(Person.money);
-        $("#lIncome").html(calcIntervalIncrease(Person.ownedBuildings));
+        $("#lIncome").html(calcIntervalIncrease(Person.ownedMiners));
     }
 }
 
