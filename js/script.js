@@ -2,10 +2,23 @@ function bClick() {
     $("#lMoney").html(Person.money);
 }
 
-function calcIntervalIncrease(aOwnedMiners) {
+function showNumber(num, style = "BTC") {
+
+    if (Number.isInteger(num) == true) {
+        const lenNum = Math.ceil(Math.log10(num + 1));
+        console.log(lenNum);
+    }
+    else{
+        const lenDenomUnit = toString(lCryptoCurrs[0].denominationUnit + 1).length - 2;
+        console.log(lenDenomUnit);
+    }
+    
+}
+
+function calcIntervalIncreaseCrypto(aOwnedMiners) {
     var increase = 0;
     for (let index = 0; index < aOwnedMiners.length; index++) {
-        increase = increase + aOwnedMiners[index] * lMiners[index].base_income * lCryptoCurrs[0].denominationUnit;
+        increase = increase + aOwnedMiners[index] * lMiners[index].base_income; //Math.round(aOwnedMiners[index]) * lCryptoCurrs[0].denominationUnit// * lCryptoCurrs[0].denominationUnit;
     }
     return increase;
 }
@@ -29,18 +42,20 @@ function calcCost(aOwnedMiners, miner_level, num) {
 }
 
 function updateMoney() {
-    Person.money = Person.money + calcIntervalIncrease(Person.ownedMiners);
+    Person.money = Person.money; // + calcIntervalIncreaseMoney(Person.ownedMiners)
     $("#lMoney").html(Person.money);
 }
 
 function updateCrypto() {
-    Person.ownedCrypto[0] = Person.ownedCrypto[0] + calcIntervalIncrease(Person.ownedMiners);
+    Person.ownedCrypto[0] = Person.ownedCrypto[0] + calcIntervalIncreaseCrypto(Person.ownedMiners);
     $("#lCrypto0").html(Person.ownedCrypto[0]);
 }
 
 function updateAll() {
     updateMoney();
     updateCrypto();
+    showNumber(125);
+    showNumber(0.0000000001)
 }
 
 function buyMiner(miner_level, num) {
@@ -60,7 +75,9 @@ function buyMiner(miner_level, num) {
         $(id_cost100).html(calcCost(Person.ownedMiners,miner_level, 100));
     
         $("#lMoney").html(Person.money);
-        $("#lIncome").html(calcIntervalIncrease(Person.ownedMiners));
+        //$("#lIncomeMoney").html(calcIntervalIncreaseCrypto(Person.ownedMiners));
+        $("#lCryptoIncome0").html(calcIntervalIncreaseCrypto(Person.ownedMiners));
+        
     }
 }
 
