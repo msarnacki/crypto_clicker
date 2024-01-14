@@ -12,3 +12,5 @@ var Person = new Player(
     ownedMiners = [0, 0, 0, 0],
     ownedCrypto = [0, 0]
 );
+
+var numView = "BTC"

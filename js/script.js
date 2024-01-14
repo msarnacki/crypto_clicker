@@ -3,16 +3,13 @@ function bClick() {
 }
 
 function showNumber(num, style = "BTC") {
-
-    if (Number.isInteger(num) == true) {
-        const lenNum = Math.ceil(Math.log10(num + 1));
-        console.log(lenNum);
+    var numberFormatted = ''
+    if (style == "BTC"){
+         numberFormatted = (num / 10**lCryptoCurrs[0].denominationUnit).toFixed(lCryptoCurrs[0].denominationUnit)
+    }else if (style == "Satoshi"){
+        numberFormatted = num
     }
-    else{
-        const lenDenomUnit = toString(lCryptoCurrs[0].denominationUnit + 1).length - 2;
-        console.log(lenDenomUnit);
-    }
-    
+    return `${numberFormatted} ${style}`
 }
 
 function calcIntervalIncreaseCrypto(aOwnedMiners) {
@@ -48,14 +45,12 @@ function updateMoney() {
 
 function updateCrypto() {
     Person.ownedCrypto[0] = Person.ownedCrypto[0] + calcIntervalIncreaseCrypto(Person.ownedMiners);
-    $("#lCrypto0").html(Person.ownedCrypto[0]);
+    $("#lCrypto0").html(showNumber(Person.ownedCrypto[0],numView));
 }
 
 function updateAll() {
     updateMoney();
     updateCrypto();
-    showNumber(125);
-    showNumber(0.0000000001)
 }
 
 function buyMiner(miner_level, num) {
@@ -76,7 +71,7 @@ function buyMiner(miner_level, num) {
     
         $("#lMoney").html(Person.money);
         //$("#lIncomeMoney").html(calcIntervalIncreaseCrypto(Person.ownedMiners));
-        $("#lCryptoIncome0").html(calcIntervalIncreaseCrypto(Person.ownedMiners));
+        $("#lCryptoIncome0").html(showNumber(calcIntervalIncreaseCrypto(Person.ownedMiners),numView));
         
     }
 }
@@ -85,6 +80,20 @@ $("#clickButton").click(function () {
     Person.money+=1;
     bClick();
 });
+
+function switchViewButton() {
+    if (numView == "BTC") {
+        numView = "Satoshi";
+    }else{
+        numView = "BTC";
+    }
+    
+    $("#numView").html(numView);
+    //immidiately update all lines with showNumber
+    $("#lCrypto0").html(showNumber(Person.ownedCrypto[0],numView));
+    $("#lCryptoIncome0").html(showNumber(calcIntervalIncreaseCrypto(Person.ownedMiners),numView));
+        
+}
 
 //$(document).ready(function () {
 //});
