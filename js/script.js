@@ -95,8 +95,11 @@ function switchViewButton() {
         
 }
 
-//$(document).ready(function () {
-//});
+$(document).ready(function () {
+    //set style of numbers on load of page
+    $("#lCrypto0").html(showNumber(Person.ownedCrypto[0],numView));
+    $("#lCryptoIncome0").html(showNumber(calcIntervalIncreaseCrypto(Person.ownedMiners),numView));
+});
 
 const interval = setInterval(function() {
     updateAll();
