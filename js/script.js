@@ -104,3 +104,34 @@ $(document).ready(function () {
 const interval = setInterval(function() {
     updateAll();
   }, 1000);   
+
+
+//pregressbar
+const progressbar = document.querySelector(".progress");
+
+const changeProgress = (progress) => {
+    progressbar.style.width = `${progress}%`;
+    if(progress >= 100){
+        progressbar.style.width = 0
+    }
+};
+
+function updateProgress(t) {
+    setTimeout(() => changeProgress(t*10), t*1000);
+    setTimeout(function() {$("#work1Time").html(t);}, t*1000);    
+}
+
+function work(time, earnings) {
+    document.getElementById("work1Button").disabled = true;
+    
+    for (var t = 1; t <= time; t++) {
+        updateProgress(t);
+    }
+    setTimeout(function(){document.getElementById("work1Button").disabled = false;}, time*1000);
+    setTimeout(function(){
+        Person.money = Person.money + earnings;
+        updateMoney();},time*1000)
+}
+
+//pregressbar
+
