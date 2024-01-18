@@ -97,6 +97,10 @@ function switchViewButton() {
 
 $(document).ready(function () {
     //set style of numbers on load of page
+
+    if(localStorage.getItem("playerStored") != null) load();
+    
+
     $("#lCrypto0").html(showNumber(Person.ownedCrypto[0],numView));
     $("#lCryptoIncome0").html(showNumber(calcIntervalIncreaseCrypto(Person.ownedMiners),numView));
 });
@@ -135,3 +139,60 @@ function work(time, earnings) {
 
 //pregressbar
 
+//save every x sec
+setInterval(save, 10000);
+
+//functions that handle saving
+function init(){
+	player = deepObjCopy(startPlayer);
+};
+
+function save() {
+	localStorage.setItem("playerStored", JSON.stringify(Person));
+	
+	var d = new Date();
+	$("#lastSave").html(d.toLocaleTimeString());
+	
+	ga('send', 'event', 'save', 'click', 'save'); //analytics
+}
+
+function load() {
+	$.extend(true, Person, JSON.parse(localStorage.getItem("playerStored")));
+}
+
+function wipe() {
+	var confirmation = confirm("Are you sure you want to permanently erase your savefile?");
+	if(confirmation === true){
+		init();
+		localStorage.setItem("playerStored", JSON.stringify(Person));
+		calcGlobalMult();
+		$("#achievementContainer").html("");
+		
+		updateAll();
+		$("#currentNumToBuy").html(Person.numToBuy);
+	}
+}
+
+function exportSave() {
+	var exportText = btoa(JSON.stringify(Person));
+	
+	$("#exportSaveContents").toggle();
+	$("#exportSaveText").val(exportText);
+	$("#exportSaveText").select();
+}
+
+function importSave(){
+	var importText = prompt("Paste the text you were given by the export save dialog here.\n" +
+								"Warning: this will erase your current save!");
+	if(importText){
+		init();
+		$.extend(true, Person, JSON.parse(atob(importText)));
+		versionControl(true);
+		fixJSON();
+		save();
+		calcGlobalMult();
+		$("#currentNumToBuy").html(Person.numToBuy);
+		
+		updateAll();
+	}
+}
