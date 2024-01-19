@@ -97,9 +97,7 @@ function switchViewButton() {
 
 $(document).ready(function () {
     //set style of numbers on load of page
-
     if(localStorage.getItem("playerStored") != null) load();
-    
 
     $("#lCrypto0").html(showNumber(Person.ownedCrypto[0],numView));
     $("#lCryptoIncome0").html(showNumber(calcIntervalIncreaseCrypto(Person.ownedMiners),numView));
@@ -143,10 +141,6 @@ function work(time, earnings) {
 setInterval(save, 10000);
 
 //functions that handle saving
-function init(){
-	player = deepObjCopy(startPlayer);
-};
-
 function save() {
 	localStorage.setItem("playerStored", JSON.stringify(Person));
 	
@@ -161,16 +155,12 @@ function load() {
 }
 
 function wipe() {
-	var confirmation = confirm("Are you sure you want to permanently erase your savefile?");
-	if(confirmation === true){
-		init();
+	//var confirmation = confirm("Are you sure you want to permanently erase your savefile?");
+	//if(confirmation === true){
 		localStorage.setItem("playerStored", JSON.stringify(Person));
-		calcGlobalMult();
-		$("#achievementContainer").html("");
-		
+		Person = new Player();
 		updateAll();
-		$("#currentNumToBuy").html(Person.numToBuy);
-	}
+	//}
 }
 
 function exportSave() {
