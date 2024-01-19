@@ -103,11 +103,6 @@ $(document).ready(function () {
     $("#lCryptoIncome0").html(showNumber(calcIntervalIncreaseCrypto(Person.ownedMiners),numView));
 });
 
-const interval = setInterval(function() {
-    updateAll();
-  }, 1000);   
-
-
 //pregressbar
 const progressbar = document.querySelector(".progress");
 
@@ -139,6 +134,8 @@ function work(time, earnings) {
 
 //save every x sec
 setInterval(save, 10000);
+//refresh tick
+setInterval(function() {updateAll();}, 1000);
 
 //functions that handle saving
 function save() {
@@ -146,8 +143,6 @@ function save() {
 	
 	var d = new Date();
 	$("#lastSave").html(d.toLocaleTimeString());
-	
-	ga('send', 'event', 'save', 'click', 'save'); //analytics
 }
 
 function load() {
@@ -155,14 +150,15 @@ function load() {
 }
 
 function wipe() {
-	//var confirmation = confirm("Are you sure you want to permanently erase your savefile?");
-	//if(confirmation === true){
-		localStorage.setItem("playerStored", JSON.stringify(Person));
-		Person = new Player();
-		updateAll();
-	//}
+   //TODO Add confirmation popup
+    Person = new Player();
+    save();
+    updateAll();
 }
 
+
+//TODO in future 
+/*
 function exportSave() {
 	var exportText = btoa(JSON.stringify(Person));
 	
@@ -185,4 +181,4 @@ function importSave(){
 		
 		updateAll();
 	}
-}
+}*/

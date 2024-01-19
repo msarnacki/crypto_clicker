@@ -4,15 +4,41 @@ button {
   margin: 10px;
 }
 
+#wholePage{
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
 #switchViewButton {
   font-size: 15px;
   text-wrap: wrap;
   width: 100px;
 }
 
+#leftPane {
+  background-color:aqua;
+  margin: 10px;
+  width: 30%;
+}
+
+#midPane {
+  background-color: #ff4754;
+  margin: 10px;
+  width: 55%;
+}
+
+#rightPane {
+  background-color:burlywood;
+  margin: 10px;
+  width: 10%;
+}
+
+
 /* Table section */
 html {
   font-family: sans-serif;
+  background-color: #878683;
 }
 
 table {
@@ -68,3 +94,4 @@ caption {
   transition: width 0.4s ease;
 }
 /* progress bar*/
+
