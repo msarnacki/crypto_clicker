@@ -46,6 +46,7 @@ function updateMoney() {
 function updateCrypto() {
     Person.ownedCrypto[0] = Person.ownedCrypto[0] + calcIntervalIncreaseCrypto(Person.ownedMiners);
     $("#lCrypto0").html(showNumber(Person.ownedCrypto[0],Person.numView));
+    $("#lCryptoValue0").html(Person.ownedCrypto[0]*lCryptoCurrs[0].usdRate/10**lCryptoCurrs[0].denominationUnit);
 }
 
 function updateAll() {
@@ -101,7 +102,9 @@ function updateAllLabels() {
     $("#lMoney").html(Person.money);
     $("#lCrypto0").html(showNumber(Person.ownedCrypto[0],Person.numView));
     $("#lCryptoIncome0").html(showNumber(calcIntervalIncreaseCrypto(Person.ownedMiners),Person.numView));
-
+    $("#lCryptoRate0").html(lCryptoCurrs[0].usdRate);
+    $("#lCryptoValue0").html(Person.ownedCrypto[0]*lCryptoCurrs[0].usdRate/10**lCryptoCurrs[0].denominationUnit);
+    
     $("#lMiner0").html(Person.ownedMiners[0]);
     $("#lMinerIncome0").html(Person.ownedMiners[0] * lMiners[0].base_income);
     $("#1MinerCost0").html(calcCost(Person.ownedMiners,0, 1));
@@ -122,7 +125,27 @@ $(document).ready(function () {
     }
 
     updateAllLabels();
+    save();
 });
+
+//Exchenge
+function convertToUSD() {
+    cryptoToConvert = document.getElementById("inputConvertToUSD").value; //BTC
+    if(cryptoToConvert <= Person.ownedCrypto[0]/10**lCryptoCurrs[0].denominationUnit){
+        Person.ownedCrypto[0] -= cryptoToConvert*10**lCryptoCurrs[0].denominationUnit;
+        Person.money += cryptoToConvert*lCryptoCurrs[0].usdRate;
+    }
+    updateAllLabels();
+}
+
+function convertToBTC() {
+    usdToConvert = document.getElementById("inputConvertToBTC").value;
+    if(usdToConvert <= Person.money){
+        Person.ownedCrypto[0] += usdToConvert/lCryptoCurrs[0].usdRate*10**lCryptoCurrs[0].denominationUnit;
+        Person.money -= usdToConvert;
+    }
+    updateAllLabels();
+}
 
 //pregressbar
 const progressbar = document.querySelector(".progress");
