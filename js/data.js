@@ -1,8 +1,9 @@
 class Player{
-    constructor(money = 0, ownedMiners = [0,0,0,0], ownedCrypto = [0,0]){
+    constructor(money = 0, ownedMiners = [0,0,0,0], ownedCrypto = [0,0], numView="BTC"){
         this.money = money;
         this.ownedMiners = ownedMiners;
         this.ownedCrypto = ownedCrypto;
+        this.numView = numView;
     }
 }
 
@@ -13,5 +14,3 @@ var Person = new Player();
     //ownedMiners = [0, 0, 0, 0],
     //ownedCrypto = [0, 0]
 //);
-
-var numView = "BTC"

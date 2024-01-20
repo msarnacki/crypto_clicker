@@ -5,7 +5,7 @@ function bClick() {
 function showNumber(num, style = "BTC") {
     var numberFormatted = ''
     if (style == "BTC"){
-         numberFormatted = (num / 10**lCryptoCurrs[0].denominationUnit).toFixed(lCryptoCurrs[0].denominationUnit)
+        numberFormatted = (num / 10**lCryptoCurrs[0].denominationUnit).toFixed(lCryptoCurrs[0].denominationUnit)
     }else if (style == "Satoshi"){
         numberFormatted = num
     }
@@ -45,7 +45,7 @@ function updateMoney() {
 
 function updateCrypto() {
     Person.ownedCrypto[0] = Person.ownedCrypto[0] + calcIntervalIncreaseCrypto(Person.ownedMiners);
-    $("#lCrypto0").html(showNumber(Person.ownedCrypto[0],numView));
+    $("#lCrypto0").html(showNumber(Person.ownedCrypto[0],Person.numView));
 }
 
 function updateAll() {
@@ -71,7 +71,7 @@ function buyMiner(miner_level, num) {
     
         $("#lMoney").html(Person.money);
         //$("#lIncomeMoney").html(calcIntervalIncreaseCrypto(Person.ownedMiners));
-        $("#lCryptoIncome0").html(showNumber(calcIntervalIncreaseCrypto(Person.ownedMiners),numView));
+        $("#lCryptoIncome0").html(showNumber(calcIntervalIncreaseCrypto(Person.ownedMiners),Person.numView));
         
     }
 }
@@ -82,25 +82,46 @@ $("#clickButton").click(function () {
 });
 
 function switchViewButton() {
-    if (numView == "BTC") {
-        numView = "Satoshi";
+    if (Person.numView == "BTC") {
+        Person.numView = "Satoshi";
     }else{
-        numView = "BTC";
+        Person.numView = "BTC";
     }
     
-    $("#numView").html(numView);
+    $("#numView").html(Person.numView);
     //immidiately update all lines with showNumber
-    $("#lCrypto0").html(showNumber(Person.ownedCrypto[0],numView));
-    $("#lCryptoIncome0").html(showNumber(calcIntervalIncreaseCrypto(Person.ownedMiners),numView));
+    $("#lCrypto0").html(showNumber(Person.ownedCrypto[0],Person.numView));
+    $("#lCryptoIncome0").html(showNumber(calcIntervalIncreaseCrypto(Person.ownedMiners),Person.numView));
         
+}
+
+function updateAllLabels() {
+    $("#numView").html(Person.numView);
+
+    $("#lMoney").html(Person.money);
+    $("#lCrypto0").html(showNumber(Person.ownedCrypto[0],Person.numView));
+    $("#lCryptoIncome0").html(showNumber(calcIntervalIncreaseCrypto(Person.ownedMiners),Person.numView));
+
+    $("#lMiner0").html(Person.ownedMiners[0]);
+    $("#lMinerIncome0").html(Person.ownedMiners[0] * lMiners[0].base_income);
+    $("#1MinerCost0").html(calcCost(Person.ownedMiners,0, 1));
+    $("#10MinerCost0").html(calcCost(Person.ownedMiners,0, 10));
+    $("#100MinerCost0").html(calcCost(Person.ownedMiners,0, 100));
+
+    $("#lMiner1").html(Person.ownedMiners[1]);
+    $("#lMinerIncome1").html(Person.ownedMiners[1] * lMiners[1].base_income);
+    $("#1MinerCost1").html(calcCost(Person.ownedMiners,1, 1));
+    $("#10MinerCost1").html(calcCost(Person.ownedMiners,1, 10));
+    $("#100MinerCost1").html(calcCost(Person.ownedMiners,1, 100));
 }
 
 $(document).ready(function () {
     //set style of numbers on load of page
-    if(localStorage.getItem("playerStored") != null) load();
+    if(localStorage.getItem("playerStored") != null) {
+        load();
+    }
 
-    $("#lCrypto0").html(showNumber(Person.ownedCrypto[0],numView));
-    $("#lCryptoIncome0").html(showNumber(calcIntervalIncreaseCrypto(Person.ownedMiners),numView));
+    updateAllLabels();
 });
 
 //pregressbar
@@ -142,7 +163,7 @@ function save() {
 	localStorage.setItem("playerStored", JSON.stringify(Person));
 	
 	var d = new Date();
-	$("#lastSave").html(d.toLocaleTimeString());
+	$("#lastSave").html("Last save: ".concat(d.toLocaleTimeString()));
 }
 
 function load() {
