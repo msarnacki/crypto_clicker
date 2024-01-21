@@ -1,5 +1,5 @@
 function bClick() {
-    $("#lMoney").html(Person.money);
+    $("#lMoney").html(Person.money.toFixed(2));
 }
 
 function showNumber(num, style = "BTC") {
@@ -40,13 +40,13 @@ function calcCost(aOwnedMiners, miner_level, num) {
 
 function updateMoney() {
     Person.money = Person.money; // + calcIntervalIncreaseMoney(Person.ownedMiners)
-    $("#lMoney").html(Person.money);
+    $("#lMoney").html(Person.money.toFixed(2));
 }
 
 function updateCrypto() {
     Person.ownedCrypto[0] = Person.ownedCrypto[0] + calcIntervalIncreaseCrypto(Person.ownedMiners);
     $("#lCrypto0").html(showNumber(Person.ownedCrypto[0],Person.numView));
-    $("#lCryptoValue0").html(Person.ownedCrypto[0]*lCryptoCurrs[0].usdRate/10**lCryptoCurrs[0].denominationUnit);
+    $("#lCryptoValue0").html((Person.ownedCrypto[0]*lCryptoCurrs[0].usdRate/10**lCryptoCurrs[0].denominationUnit).toFixed(2));
 }
 
 function updateAll() {
@@ -70,7 +70,7 @@ function buyMiner(miner_level, num) {
         $(id_cost10).html(calcCost(Person.ownedMiners,miner_level, 10));
         $(id_cost100).html(calcCost(Person.ownedMiners,miner_level, 100));
     
-        $("#lMoney").html(Person.money);
+        $("#lMoney").html(Person.money.toFixed(2));
         //$("#lIncomeMoney").html(calcIntervalIncreaseCrypto(Person.ownedMiners));
         $("#lCryptoIncome0").html(showNumber(calcIntervalIncreaseCrypto(Person.ownedMiners),Person.numView));
         
@@ -99,11 +99,11 @@ function switchViewButton() {
 function updateAllLabels() {
     $("#numView").html(Person.numView);
 
-    $("#lMoney").html(Person.money);
+    $("#lMoney").html(Person.money.toFixed(2));
     $("#lCrypto0").html(showNumber(Person.ownedCrypto[0],Person.numView));
     $("#lCryptoIncome0").html(showNumber(calcIntervalIncreaseCrypto(Person.ownedMiners),Person.numView));
-    $("#lCryptoRate0").html(lCryptoCurrs[0].usdRate);
-    $("#lCryptoValue0").html(Person.ownedCrypto[0]*lCryptoCurrs[0].usdRate/10**lCryptoCurrs[0].denominationUnit);
+    $("#lCryptoRate0").html(lCryptoCurrs[0].usdRate.toFixed(2));
+    $("#lCryptoValue0").html((Person.ownedCrypto[0]*lCryptoCurrs[0].usdRate/10**lCryptoCurrs[0].denominationUnit).toFixed(2));
     
     $("#lMiner0").html(Person.ownedMiners[0]);
     $("#lMinerIncome0").html(Person.ownedMiners[0] * lMiners[0].base_income);
@@ -132,8 +132,8 @@ $(document).ready(function () {
 function convertToUSD() {
     cryptoToConvert = document.getElementById("inputConvertToUSD").value; //BTC
     if(cryptoToConvert <= Person.ownedCrypto[0]/10**lCryptoCurrs[0].denominationUnit){
-        Person.ownedCrypto[0] -= cryptoToConvert*10**lCryptoCurrs[0].denominationUnit;
-        Person.money += cryptoToConvert*lCryptoCurrs[0].usdRate;
+        Person.ownedCrypto[0] -= Number((cryptoToConvert*10**lCryptoCurrs[0].denominationUnit).toFixed(0));
+        Person.money += Number((cryptoToConvert*lCryptoCurrs[0].usdRate).toFixed(2));
     }
     updateAllLabels();
 }
@@ -141,7 +141,7 @@ function convertToUSD() {
 function convertToBTC() {
     usdToConvert = document.getElementById("inputConvertToBTC").value;
     if(usdToConvert <= Person.money){
-        Person.ownedCrypto[0] += usdToConvert/lCryptoCurrs[0].usdRate*10**lCryptoCurrs[0].denominationUnit;
+        Person.ownedCrypto[0] += Number((usdToConvert/lCryptoCurrs[0].usdRate*10**lCryptoCurrs[0].denominationUnit).toFixed(0));
         Person.money -= usdToConvert;
     }
     updateAllLabels();
@@ -213,7 +213,7 @@ function exportSave() {
 
 function importSave(){
 	var importText = prompt("Paste the text you were given by the export save dialog here.\n" +
-								"Warning: this will erase your current save!");
+	"Warning: this will erase your current save!");
 	if(importText){
 		init();
 		$.extend(true, Person, JSON.parse(atob(importText)));
