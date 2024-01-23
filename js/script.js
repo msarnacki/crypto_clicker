@@ -124,6 +124,17 @@ $(document).ready(function () {
         load();
     }
 
+    //Income when off
+    var lastSaveBeforeOff = new Date(Person.lastSaveBeforeOff);
+    var dLoad = new Date();
+	$("#lastSaveBeforeOff").html("Last save before off: ".concat(lastSaveBeforeOff.toLocaleTimeString()));
+	$("#LoadTime").html("Load Time: ".concat(dLoad.toLocaleTimeString()));
+    var timeOff = Number(((dLoad - lastSaveBeforeOff)/1000).toFixed(0));
+    var earnedWhenOff = Number((timeOff*calcIntervalIncreaseCrypto(Person.ownedMiners)).toFixed(0));
+    $("#Diff_LoadTime-lastSaveBeforeOff").html("Diff: ".concat(timeOff).concat("s"));
+    $("#EarnedWhenOff").html("Earned when off: ".concat(String(earnedWhenOff)));
+    Person.ownedCrypto[0] += earnedWhenOff;
+
     updateAllLabels();
     save();
 });
@@ -177,16 +188,17 @@ function work(time, earnings) {
 //pregressbar
 
 //save every x sec
-setInterval(save, 10000);
+setInterval(save, 5000);
 //refresh tick
 setInterval(function() {updateAll();}, 1000);
 
 //functions that handle saving
 function save() {
+	var d = new Date();
+    Person.lastSaveBeforeOff = d;
 	localStorage.setItem("playerStored", JSON.stringify(Person));
 	
-	var d = new Date();
-	$("#lastSave").html("Last save: ".concat(d.toLocaleTimeString()));
+	$("#lastSave").html("Last save: ".concat(Person.lastSaveBeforeOff.toLocaleTimeString()));
 }
 
 function load() {
