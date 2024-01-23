@@ -127,8 +127,8 @@ $(document).ready(function () {
     //Income when off
     var lastSaveBeforeOff = new Date(Person.lastSaveBeforeOff);
     var dLoad = new Date();
-	$("#lastSaveBeforeOff").html("Last save before off: ".concat(lastSaveBeforeOff.toLocaleTimeString()));
-	$("#LoadTime").html("Load Time: ".concat(dLoad.toLocaleTimeString()));
+	$("#lastSaveBeforeOff").html("Last save before off: ".concat(lastSaveBeforeOff.toLocaleString()));
+	$("#LoadTime").html("Load Time: ".concat(dLoad.toLocaleString()));
     var timeOff = Number(((dLoad - lastSaveBeforeOff)/1000).toFixed(0));
     var earnedWhenOff = Number((timeOff*calcIntervalIncreaseCrypto(Person.ownedMiners)).toFixed(0));
     $("#Diff_LoadTime-lastSaveBeforeOff").html("Diff: ".concat(timeOff).concat("s"));
