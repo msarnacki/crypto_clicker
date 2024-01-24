@@ -42,6 +42,7 @@ function wipe() {
     Person = new Player();
     save();
     updateAll();
+    updateAllLabels();
 }
 
 //TODO in future 
