@@ -50,6 +50,7 @@ function updateCrypto() {
 }
 
 function updateAll() {
+    checkAchievements();
     updateMoney();
     updateCrypto();
 }
@@ -77,6 +78,7 @@ function buyMiner(miner_level, num) {
     }
 }
 
+//TODO add cost
 function buyMultiplier() {
     Person.mainMultiplier = Person.mainMultiplier * 2;
     updateAllLabels();
@@ -123,6 +125,8 @@ function updateAllLabels() {
     $("#100MinerCost1").html(calcCost(Person.ownedMiners,1, 100));
 
     $("#lMainMultiplier").html(Person.mainMultiplier);
+    
+    $("#lOwnedAchievements").html(Person.ownedAchievements.toString());
 }
 
 //Exchenge
