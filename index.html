@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <title>Clicker Game</title>
-
+    <link rel="shortcut icon" href="#"> <!--for some favicon.ico error-->
     <link rel="stylesheet" type="text/css" href="css/styles.css" />
 
   </head>
@@ -109,13 +109,24 @@
         </table>
 
 
-        <button id="buyMultiplier" onclick="buyMultiplier()">Buy multiplier x2</button>
+        <button id="buyUpgrade1" onclick="buyUpgrade(1)">Buy 1st upgrade</button>
         <label id="lMainMultiplier">1</label>
       </div> <!-- mid pane end -->
 
       <div id="rightPane"> <!-- right pane start -->
 
-        <div>Achievements: <label id="lOwnedAchievements"></label></div>
+        <div>Achievements owned: <label id="lOwnedAchievements"></label></div>
+        <div>Achievements table: 
+          <div id="divAchievementsTable">
+            <table id="achievementsTable"> <!--hidden-->
+              <tr>
+                <td>#</td>
+                <td>Name</td>
+                <td>Description</td>
+              </tr>
+            </table>
+          </div>
+        </div>
 
         <br><br><br><br><br>
 

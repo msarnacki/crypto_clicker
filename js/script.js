@@ -78,12 +78,6 @@ function buyMiner(miner_level, num) {
     }
 }
 
-//TODO add cost
-function buyMultiplier() {
-    Person.mainMultiplier = Person.mainMultiplier * 2;
-    updateAllLabels();
-}
-
 $("#clickButton").click(function () {
     Person.money+=1;
     bClick();
@@ -127,6 +121,8 @@ function updateAllLabels() {
     $("#lMainMultiplier").html(Person.mainMultiplier);
     
     $("#lOwnedAchievements").html(Person.ownedAchievements.toString());
+
+    achievementsTableUpdate();
 }
 
 //Exchenge

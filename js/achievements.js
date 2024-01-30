@@ -12,11 +12,16 @@ var lAchievments = [
     new Achievement(number = 2, name = "First miner", description = "Started your mining career", condition = "AchievementCondition2()")
 ];
 
-function checkAchievements() { 
+//runs every tick
+function checkAchievements() {
+    // array 1, ... , numOfAchievments 
     AchievementsNumbers = Array.from({length: lAchievments.length}, (_, i) => i + 1)
     lAchievments.forEach(Achievement => {
+        //if Achievement.number is not in Person.ownedAchievements
         if (!(Person.ownedAchievements.includes(Achievement.number))) {
+            //if Achievement condition met
             if (eval(Achievement.condition)){
+                // add number to ownedAchievements and sort array
                 Person.ownedAchievements.push(Achievement.number);
                 Person.ownedAchievements.sort();
             }
@@ -24,6 +29,8 @@ function checkAchievements() {
     });
     
     $("#lOwnedAchievements").html(Person.ownedAchievements.toString());
+    
+    achievementsTableUpdate();
 }
 
 function AchievementCondition1() {
@@ -38,4 +45,52 @@ function AchievementCondition2() {
         sumOwned += numMiner;
     });
     return  sumOwned > 0 ? true : false
+}
+
+
+function achievementsTableUpdate() {
+    var table = document.getElementById("achievementsTable");
+    table.style.width = '100px';
+    table.style.border = '1px solid black';
+    
+    var rowNum = table.rows.length;
+    var colNum = table.rows[0].cells.length;
+
+    var ownedNum = Person.ownedAchievements.length;
+    
+    // if owned not showed in table
+    if (ownedNum > rowNum-1){
+        achievementsTableClear();
+        for (let i = 0; i<ownedNum; i++){
+            var colInfo = [lAchievments[Person.ownedAchievements[i]-1].number, lAchievments[Person.ownedAchievements[i]-1].name, lAchievments[Person.ownedAchievements[i]-1].description];
+            var tr = table.insertRow();
+            for (let j = 0; j < colNum; j++) {
+                var td = tr.insertCell();
+                td.appendChild(document.createTextNode(colInfo[j]));
+                td.style.border = '1px solid black';
+            }
+        }
+    } 
+    // if showed too many (when wipeing)
+    if(ownedNum < rowNum-1){
+        achievementsTableClear();
+        achievementsTableUpdate();
+    }
+    rowNum = table.rows.length;
+
+    //show if rowNum > 1
+    if(rowNum > 1){
+        table.style.display = "block";
+    }else{
+        table.style.display = "none";
+    }
+}
+
+function achievementsTableClear() {
+    var table = document.getElementById("achievementsTable");
+    if(table.rows.length > 1){
+        for(let i = 0; i<table.rows.length; i++){
+            table.deleteRow(1);
+        }
+    }
 }
