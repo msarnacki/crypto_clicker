@@ -64,11 +64,13 @@
 
         <br><br><br>
         <h3>Crypto exchenge</h3>
-        BTC to convert: <input type="number" min="0" value="0" id="inputConvertToUSD" />
-        <button id="bConvertToUSD" onclick="convertToUSD()">Convert to USD</button>
+        <label id="BTCnumViewToConvert">BTC to convert: </label><input type="number" min="0" value="0" id="inputConvertToUSD" />
+        <button id="bConvertToUSD" onclick="convertToUSD(document.getElementById('inputConvertToUSD').value)">Convert to USD</button>
+        <button id="bConvertToUSD" onclick="convertToUSD(-1)">Max</button>
         <br><br>
-        USD to convert: <input type="number" min="0" value="0" id="inputConvertToBTC"/>
-        <button id="bConvertToBTC" onclick="convertToBTC()">Convert to BTC</button>
+        <label id="USDnumViewToConvert">USD to convert: </label><input type="number" min="0" value="0" id="inputConvertToBTC"/>
+        <button id="bConvertToBTC" onclick="convertToBTC(document.getElementById('inputConvertToBTC').value)">Convert to BTC</button>
+        <button id="bConvertToBTC" onclick="convertToBTC(-1)">Max</button>
       </div> <!-- left pane end -->
       
       <div id="midPane"> <!-- mid pane start -->
