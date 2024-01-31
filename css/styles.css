@@ -34,6 +34,28 @@ button {
   width: 20%;
 }
 
+#inputConvertToUSD {
+  width: 10%;
+}
+
+#inputConvertToBTC {
+  width: 10%;
+}
+
+
+#bConvertToUSD {
+  width: 20%;
+  height: 30px;
+  font-size: 10px;
+  padding: 0px;;
+}
+
+#bConvertToBTC {
+  width: 20%;
+  height: 30px;
+  font-size: 10px;
+  padding: 0px;;
+}
 
 /* Table section */
 html {

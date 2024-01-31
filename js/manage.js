@@ -39,6 +39,8 @@ function load() {
 
 function wipe() {
    //TODO Add confirmation popup
+	document.getElementById("inputConvertToBTC").value = 0;
+	document.getElementById("inputConvertToUSD").value = 0;
     Person = new Player();
     save();
     updateAll();

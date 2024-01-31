@@ -126,8 +126,12 @@ function updateAllLabels() {
 }
 
 //Exchenge
-function convertToUSD() {
-    cryptoToConvert = document.getElementById("inputConvertToUSD").value; //BTC
+function convertToUSD(toConvert) {
+    if (toConvert == -1){
+        cryptoToConvert = Person.ownedCrypto[0]/10**lCryptoCurrs[0].denominationUnit;
+    }else{
+        cryptoToConvert = document.getElementById("inputConvertToUSD").value; //BTC 
+    }
     if(cryptoToConvert <= Person.ownedCrypto[0]/10**lCryptoCurrs[0].denominationUnit){
         Person.ownedCrypto[0] -= Number((cryptoToConvert*10**lCryptoCurrs[0].denominationUnit).toFixed(0));
         Person.money += Number((cryptoToConvert*lCryptoCurrs[0].usdRate).toFixed(2));
@@ -135,8 +139,12 @@ function convertToUSD() {
     updateAllLabels();
 }
 
-function convertToBTC() {
-    usdToConvert = document.getElementById("inputConvertToBTC").value;
+function convertToBTC(toConvert) {
+    if (toConvert == -1){
+        usdToConvert = Person.money;
+    }else{
+        usdToConvert = document.getElementById("inputConvertToBTC").value; //BTC 
+    }
     if(usdToConvert <= Person.money){
         Person.ownedCrypto[0] += Number((usdToConvert/lCryptoCurrs[0].usdRate*10**lCryptoCurrs[0].denominationUnit).toFixed(0));
         Person.money -= usdToConvert;
