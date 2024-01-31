@@ -91,6 +91,7 @@ function switchViewButton() {
     }
     
     $("#numView").html(Person.numView);
+    $("#BTCnumViewToConvert").html(Person.numView.concat(" to convert: "));
     //immidiately update all lines with showNumber
     $("#lCrypto0").html(showNumber(Person.ownedCrypto[0],Person.numView));
     $("#lCryptoIncome0").html(showNumber(calcIntervalIncreaseCrypto(Person.ownedMiners),Person.numView));
@@ -99,6 +100,7 @@ function switchViewButton() {
 
 function updateAllLabels() {
     $("#numView").html(Person.numView);
+    $("#BTCnumViewToConvert").html(Person.numView.concat(" to convert: "));
 
     $("#lMoney").html(Person.money.toFixed(2));
     $("#lCrypto0").html(showNumber(Person.ownedCrypto[0],Person.numView));
@@ -128,13 +130,17 @@ function updateAllLabels() {
 //Exchenge
 function convertToUSD(toConvert) {
     if (toConvert == -1){
-        cryptoToConvert = Person.ownedCrypto[0]/10**lCryptoCurrs[0].denominationUnit;
+        cryptoToConvert = Person.ownedCrypto[0];
     }else{
-        cryptoToConvert = document.getElementById("inputConvertToUSD").value; //BTC 
+        if (Person.numView == "Satoshi") {
+            cryptoToConvert = Number(document.getElementById("inputConvertToUSD").value);
+        }else{
+            cryptoToConvert = Number(document.getElementById("inputConvertToUSD").value)*10**lCryptoCurrs[0].denominationUnit;
+        }
     }
-    if(cryptoToConvert <= Person.ownedCrypto[0]/10**lCryptoCurrs[0].denominationUnit){
-        Person.ownedCrypto[0] -= Number((cryptoToConvert*10**lCryptoCurrs[0].denominationUnit).toFixed(0));
-        Person.money += Number((cryptoToConvert*lCryptoCurrs[0].usdRate).toFixed(2));
+    if(cryptoToConvert <= Person.ownedCrypto[0]){
+        Person.ownedCrypto[0] -= Number(cryptoToConvert.toFixed(0));
+        Person.money += Number((cryptoToConvert*lCryptoCurrs[0].usdRate/10**lCryptoCurrs[0].denominationUnit).toFixed(2));
     }
     updateAllLabels();
 }
