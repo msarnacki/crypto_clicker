@@ -34,6 +34,13 @@ button {
   width: 20%;
 }
 
+#buyUpgrade1{
+  display: none;
+}
+#buyUpgrade2{
+  display: none;
+}
+
 #inputConvertToUSD {
   width: 10%;
 }

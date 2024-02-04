@@ -15,7 +15,7 @@ var lAchievments = [
 //runs every tick
 function checkAchievements() {
     // array 1, ... , numOfAchievments 
-    AchievementsNumbers = Array.from({length: lAchievments.length}, (_, i) => i + 1)
+    //AchievementsNumbers = Array.from({length: lAchievments.length}, (_, i) => i + 1)
     lAchievments.forEach(Achievement => {
         //if Achievement.number is not in Person.ownedAchievements
         if (!(Person.ownedAchievements.includes(Achievement.number))) {

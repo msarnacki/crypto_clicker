@@ -111,8 +111,17 @@
         </table>
 
 
-        <button id="buyUpgrade1" onclick="buyUpgrade(1)">Buy 1st upgrade</button>
+        <br><br><br>
+        <div>Upgrades visible: <label id="lVisibleUpgrades"></label></div>
+        <!--<div>Upgrades buyable: <label id="lBuyableUpgrades"></label></div> -->
+        <div>Upgrades owned: <label id="lOwnedUpgrades"></label></div>
+      
+        <br>
+
         <label id="lMainMultiplier">1</label>
+        <button id="buyUpgrade1" onclick="buyUpgrade(1)" disabled>1st upgrade</button>
+        <button id="buyUpgrade2" onclick="buyUpgrade(2)" disabled>2nd upgrade</button>
+        
       </div> <!-- mid pane end -->
 
       <div id="rightPane"> <!-- right pane start -->

@@ -51,6 +51,7 @@ function updateCrypto() {
 
 function updateAll() {
     checkAchievements();
+    checkUpgrades();
     updateMoney();
     updateCrypto();
 }
@@ -179,9 +180,11 @@ function work(time, earnings) {
     for (var t = 1; t <= time; t++) {
         updateProgress(t);
     }
+    
     setTimeout(function(){document.getElementById("work1Button").disabled = false;}, time*1000);
     setTimeout(function(){
         Person.money = Person.money + earnings;
         updateMoney();},time*1000)
+
 }
 //pregressbar
