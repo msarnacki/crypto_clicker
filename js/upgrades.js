@@ -22,7 +22,7 @@ function checkUpgrades() {
     lUpgrades.forEach(Upgrade => {
         var updateUpgradeButton = "buyUpgrade".concat('', Upgrade.number.toString());
         document.getElementById(updateUpgradeButton).disabled = true;
-        //document.getElementById(updateUpgradeButton).style.display = "none";
+        
         if (!(Person.visibleUpgrades.includes(Upgrade.number))){
             if (eval(Upgrade.isVisible)){
                 Person.visibleUpgrades.push(Upgrade.number);
@@ -35,6 +35,7 @@ function checkUpgrades() {
     //var lBuyableUpgrades = [];
     Person.visibleUpgrades.forEach(Upgrade => {
         var updateUpgradeButton = "buyUpgrade".concat('', Upgrade.toString());
+        document.getElementById(updateUpgradeButton).style.display = "block";
         if ((Person.money >= lUpgrades[Upgrade-1].cost) && !(Person.ownedUpgrades.includes(Upgrade))){
             //lBuyableUpgrades.push(Upgrade);
             document.getElementById(updateUpgradeButton).disabled = false;

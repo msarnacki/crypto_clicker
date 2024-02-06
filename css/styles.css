@@ -34,30 +34,15 @@ button {
   width: 20%;
 }
 
-#buyUpgrade1{
-  display: none;
-}
-#buyUpgrade2{
+.bBuyUpgrade{
   display: none;
 }
 
-#inputConvertToUSD {
+.iConvert {
   width: 10%;
 }
 
-#inputConvertToBTC {
-  width: 10%;
-}
-
-
-#bConvertToUSD {
-  width: 20%;
-  height: 30px;
-  font-size: 10px;
-  padding: 0px;;
-}
-
-#bConvertToBTC {
+.bConvert {
   width: 20%;
   height: 30px;
   font-size: 10px;

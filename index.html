@@ -64,13 +64,13 @@
 
         <br><br><br>
         <h3>Crypto exchenge</h3>
-        <label id="BTCnumViewToConvert">BTC to convert: </label><input type="number" min="0" value="0" id="inputConvertToUSD" />
-        <button id="bConvertToUSD" onclick="convertToUSD(document.getElementById('inputConvertToUSD').value)">Convert to USD</button>
-        <button id="bConvertToUSD" onclick="convertToUSD(-1)">Max</button>
+        <label id="BTCnumViewToConvert">BTC to convert: </label><input type="number" min="0" value="0" class="iConvert" id="inputConvertToUSD" />
+        <button class="bConvert" id="bConvertToUSD" onclick="convertToUSD(document.getElementById('inputConvertToUSD').value)">Convert to USD</button>
+        <button class="bConvert" id="bConvertToUSD" onclick="convertToUSD(-1)">Max</button>
         <br><br>
-        <label id="USDnumViewToConvert">USD to convert: </label><input type="number" min="0" value="0" id="inputConvertToBTC"/>
-        <button id="bConvertToBTC" onclick="convertToBTC(document.getElementById('inputConvertToBTC').value)">Convert to BTC</button>
-        <button id="bConvertToBTC" onclick="convertToBTC(-1)">Max</button>
+        <label id="USDnumViewToConvert">USD to convert: </label><input type="number" min="0" value="0" class="iConvert" id="inputConvertToBTC"/>
+        <button class="bConvert" id="bConvertToBTC" onclick="convertToBTC(document.getElementById('inputConvertToBTC').value)">Convert to BTC</button>
+        <button class="bConvert" id="bConvertToBTC" onclick="convertToBTC(-1)">Max</button>
       </div> <!-- left pane end -->
       
       <div id="midPane"> <!-- mid pane start -->
@@ -119,8 +119,8 @@
         <br>
 
         <label id="lMainMultiplier">1</label>
-        <button id="buyUpgrade1" onclick="buyUpgrade(1)" disabled>1st upgrade</button>
-        <button id="buyUpgrade2" onclick="buyUpgrade(2)" disabled>2nd upgrade</button>
+        <button class="bBuyUpgrade" id="buyUpgrade1" onclick="buyUpgrade(1)" disabled>1st upgrade</button>
+        <button class="bBuyUpgrade" id="buyUpgrade2" onclick="buyUpgrade(2)" disabled>2nd upgrade</button>
         
       </div> <!-- mid pane end -->
 
