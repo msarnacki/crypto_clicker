@@ -26,7 +26,6 @@ function checkUpgrades() {
         if (!(Person.ownedUpgrades.includes(Upgrade.number))){
             //if not visible
             if (!(Person.visibleUpgrades.includes(Upgrade.number))){
-                console.log(Upgrade.number);
                 //check if should be visible
                 if (eval(Upgrade.isVisible)){
                     //if visible

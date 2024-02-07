@@ -20,9 +20,11 @@ $(document).ready(function () {
 });
 
 //save every x sec
-setInterval(save, 5000);
+setInterval(save, 10000);
 //refresh tick
-setInterval(function() {updateAll();}, 1000);
+setInterval(updateAll, 1000);
+//update BTC price
+setInterval(getPriceBTC, 60000);
 
 //functions that handle saving
 function save() {
@@ -35,6 +37,7 @@ function save() {
 
 function load() {
 	$.extend(true, Person, JSON.parse(localStorage.getItem("playerStored")));
+	getPriceBTC();
 }
 
 function wipe() {
@@ -44,9 +47,11 @@ function wipe() {
 	document.getElementById("inputConvertToUSD").value = 0;
 
     Person = new Player();
-    save();
+    getPriceBTC();
+	save();
     updateAll();
     updateAllLabels();
+	
 }
 
 //TODO in future 
