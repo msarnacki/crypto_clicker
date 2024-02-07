@@ -50,6 +50,7 @@ function updateCrypto() {
 }
 
 function updateAll() {
+    priceRandomWalk();
     checkAchievements();
     checkUpgrades();
     updateMoney();

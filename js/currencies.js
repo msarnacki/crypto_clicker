@@ -31,3 +31,13 @@ function getPriceBTC() {
         $("#lastUpdatedBTC").html(date.toLocaleTimeString());
     });
 }
+
+function random(min, max) {
+    return Math.random() * (max - min) + min;
+}
+
+function priceRandomWalk() {
+    lCryptoCurrs[0].usdRate += random(-8,8);
+    $("#lCryptoRate0").html(lCryptoCurrs[0].usdRate.toFixed(2));
+}
+
