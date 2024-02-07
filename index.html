@@ -61,8 +61,11 @@
             <td><label id="lCryptoValue1">0</label></td>
           </tr>
         </table>
+        
+        <br>
+        <canvas id="priceChart" style="background-color:wheat;height:200px;width:100%;max-width:500px"></canvas>
 
-        <br><br><br>
+        <br><br>
         <h3>Crypto exchenge</h3>
         <label id="BTCnumViewToConvert">BTC to convert: </label><input type="number" min="0" value="0" class="iConvert" id="inputConvertToUSD" />
         <button class="bConvert" id="bConvertToUSD" onclick="convertToUSD(document.getElementById('inputConvertToUSD').value)">Convert to USD</button>
@@ -110,7 +113,6 @@
           </tr>
         </table>
 
-
         <br><br><br>
         <div>Upgrades visible: <label id="lVisibleUpgrades"></label></div>
         <!--<div>Upgrades buyable: <label id="lBuyableUpgrades"></label></div> -->
@@ -151,6 +153,8 @@
       
     </div> <!-- whole page end -->
   </body>
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
   <script src="js/data.js"></script>
   <script src="js/script.js"></script>
   <script src="js/miners.js"></script>

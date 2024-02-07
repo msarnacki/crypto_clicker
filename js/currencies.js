@@ -22,8 +22,8 @@ function getPriceBTC() {
         "headers": {}
     }
     $.ajax(livePrice).done(function (response) {
-        console.log(response.bitcoin.usd);
-        console.log(response.bitcoin.last_updated_at);
+        //console.log(response.bitcoin.usd);
+        //console.log(response.bitcoin.last_updated_at);
         lCryptoCurrs[0].usdRate = Number(response.bitcoin.usd);
         $("#lCryptoRate0").html(lCryptoCurrs[0].usdRate.toFixed(2));
         
@@ -41,3 +41,40 @@ function priceRandomWalk() {
     $("#lCryptoRate0").html(lCryptoCurrs[0].usdRate.toFixed(2));
 }
 
+
+const xValues = ["t-9","t-8","t-7","t-6","t-5","t-4","t-3","t-2","t-1","t"];
+var price = [];
+    
+var priceChart = new Chart("priceChart", {
+    type: "line",
+    data: {
+        labels: xValues,
+        datasets: [{
+        data: price,
+        borderColor: "red",
+        fill: false
+        }]
+    },
+    options: {
+        legend: {display: false},
+        responsive: true,
+        plugins: {
+            title: {
+                display: true,
+                text: 'BTC Price Chart'
+            }
+        }
+    }
+});
+
+function updatePriceChart() {
+    if (!(price.length==xValues.length)){
+        xValues.forEach(element => {
+            price.push(lCryptoCurrs[0].usdRate);
+        });
+    }
+    price.shift();
+    price.push(lCryptoCurrs[0].usdRate);
+    priceChart.data.datasets.data = price;
+    priceChart.update();
+}
