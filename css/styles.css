@@ -4,10 +4,19 @@ button {
   margin: 10px;
 }
 
+#image {
+  position: absolute;
+  display: none;
+  width: 400px;
+  height: 100px;
+  pointer-events: none;
+}
+
 #wholePage{
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
+  overflow: hidden;
 }
 
 #switchViewButton {

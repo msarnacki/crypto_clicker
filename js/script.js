@@ -51,7 +51,6 @@ function updateCrypto() {
 
 function updateAll() {
     priceRandomWalk();
-    updatePriceChart()
     checkAchievements();
     checkUpgrades();
     updateMoney();

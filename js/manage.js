@@ -26,6 +26,9 @@ setInterval(updateAll, 1000);
 //update BTC price
 setInterval(getPriceBTC, 60000);
 
+//update Price Chart
+setInterval(updatePriceChart, 5000);
+
 //functions that handle saving
 function save() {
 	var d = new Date();

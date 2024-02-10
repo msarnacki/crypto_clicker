@@ -37,7 +37,7 @@ function random(min, max) {
 }
 
 function priceRandomWalk() {
-    lCryptoCurrs[0].usdRate += random(-8,8);
+    lCryptoCurrs[0].usdRate += Number(random(-8,8).toFixed(2));
     $("#lCryptoRate0").html(lCryptoCurrs[0].usdRate.toFixed(2));
 }
 
@@ -50,9 +50,9 @@ var priceChart = new Chart("priceChart", {
     data: {
         labels: xValues,
         datasets: [{
-        data: price,
-        borderColor: "red",
-        fill: false
+            data: price,
+            borderColor: "red",
+            fill: false
         }]
     },
     options: {
@@ -77,4 +77,61 @@ function updatePriceChart() {
     price.push(lCryptoCurrs[0].usdRate);
     priceChart.data.datasets.data = price;
     priceChart.update();
+}
+
+
+function createIncomeStructureChart() {
+    var incomeStructureChartLabels = ["Miner0", "Miner1","Miner2", "Miner3"];
+    var incomeStructureChartValues = [];
+    incomeStructureChartValues = [];
+    if (!(incomeStructureChartValues.length==incomeStructureChartLabels.length)){
+        lMiners.forEach(Miner => {
+            //Person.ownedMiners[miner_level] * lMiners[miner_level].base_income *Person.mainMultiplier
+            incomeStructureChartValues.push(Person.ownedMiners[Miner.level] * lMiners[Miner.level].base_income *Person.mainMultiplier);
+        });
+    }
+    console.log(incomeStructureChartValues);
+    var incomeStructureChart = new Chart("incomeStructureChart", {
+        type: "pie",
+        data: {
+            labels: incomeStructureChartLabels,
+            datasets: [{
+                data: incomeStructureChartValues,
+                backgroundColor: [
+                    'rgb(255, 99, 132)',
+                    'rgb(54, 162, 235)',
+                    'rgb(255, 205, 86)',
+                    'rgb(54, 255, 86)'
+                    ],
+                hoverOffset: 4
+            }]
+        },
+        options: {
+            responsive: true
+        }
+    });
+}
+
+let attached = false;
+let imageContainer = document.querySelector("#image");
+
+const followMouse = (event) => {
+    imageContainer.style.left = event.x + "px";
+    var y = event.y + Math.ceil(window.scrollY);
+    imageContainer.style.top =  y + "px";
+}
+
+function showImage() {
+    createIncomeStructureChart();
+    if (!attached) {
+        attached = true;
+        imageContainer.style.display = "block";
+        document.addEventListener("pointermove", followMouse);
+    }
+}
+
+function hideImage() {
+    attached = false;
+    imageContainer.style.display = "";
+    document.removeEventListener("pointermove", followMouse);
 }
