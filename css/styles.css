@@ -1,7 +1,15 @@
+html {
+  font-family: sans-serif;
+  background-color: #878683;
+  background-image: url('../img/Bitcoin_wide.jpg');
+  background-size: cover;
+}
+
 button {
   font-size: 20px;
   padding: 10px 20px;
   margin: 10px;
+  opacity: 100%;
 }
 
 #image {
@@ -17,6 +25,7 @@ button {
   justify-content: center;
   flex-wrap: wrap;
   overflow: hidden;
+  opacity: 90%;
 }
 
 #switchViewButton {
@@ -26,7 +35,8 @@ button {
 }
 
 #leftPane {
-  background-color:aqua;
+  
+  background-color:sandybrown;
   margin: 10px;
   width: 30%;
 }
@@ -59,10 +69,7 @@ button {
 }
 
 /* Table section */
-html {
-  font-family: sans-serif;
-  background-color: #878683;
-}
+
 
 table {
   border-collapse: collapse;

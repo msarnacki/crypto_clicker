@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <title>Clicker Game - Charts</title>
+    <link rel="shortcut icon" href="#"> <!--for some favicon.ico error-->
+    <link rel="stylesheet" type="text/css" href="css/styles.css" />
+
+  </head>
+  <body>
+    <a href="/index.html">See Main Page</a>
+
+    <br>
+    <br>
+    <br>
+    <canvas id="priceChart" style="background-color:wheat;height:200px;width:100%;max-width:500px"></canvas>
+    <br>
+    
+    <div onpointerenter="showImage()" onpointerleave="hideImage()" style="background-color:deepskyblue;">Show income structure</div>
+    <div id="image">
+      <canvas id="incomeStructureChart" style="background-color:wheat;height:100%;width:100%;"></canvas>
+    </div>
+
+  </body>
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/script.js"></script>
+  <script src="js/miners.js"></script>
+  <script src="js/currencies.js"></script>
+  <script src="js/manage.js"></script>
+  <script src="js/achievements.js"></script>
+  <script src="js/upgrades.js"></script>
+</html>
