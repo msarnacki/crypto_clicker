@@ -1,17 +1,15 @@
 class Upgrade{
-    constructor(number = 0, name = "Empty", description = "[]", cost = 0, action = "", isVisible = ""){
+    constructor(number = 0, name = "Empty", description = "[]", cost = 0){
         this.number = number;
         this.name = name;
         this.description = description;
         this.cost = cost;
-        this.action = action;
-        this.isVisible = isVisible;
     }
 }
 
 var lUpgrades = [
-    new Upgrade(number = 1, name = "First multiplier", description = "Earn 2x", cost = 2, action = "UpgradeAction1()", isVisible = "IsVisible1()"),
-    new Upgrade(number = 2, name = "Second multiplier", description = "Earn 3x", cost = 51, action = "UpgradeAction2()", isVisible = "IsVisible2()")
+    new Upgrade(number = 1, name = "First multiplier", description = "Earn 2x", cost = 2),
+    new Upgrade(number = 2, name = "Second multiplier", description = "Earn 3x", cost = 51)
 ];
 
 //runs every tick
@@ -27,7 +25,8 @@ function checkUpgrades() {
             //if not visible
             if (!(Person.visibleUpgrades.includes(Upgrade.number))){
                 //check if should be visible
-                if (eval(Upgrade.isVisible)){
+                if (IsVisible(Upgrade.number)){
+                //if (eval(Upgrade.isVisible)){
                     //if visible
                     Person.visibleUpgrades.push(Upgrade.number);
                     Person.visibleUpgrades.sort();
@@ -55,31 +54,34 @@ function checkUpgrades() {
     //ugradesTableUpdate();
 }
 
-function UpgradeAction1() {
-
+function UpgradeAction(upgradeNumber) {
+    switch (upgradeNumber) {
+        case 1:
+            break;
+        case 2:
+            break;
+        default:
+            break;
+    }
 }
 
-function IsVisible1() {
-    return  Person.money >= 1 ? true : false
-}
-
-function UpgradeAction2() {
-
-}
-
-function IsVisible2() {
-    return  Person.money >= 10 ? true : false
-}
-
-function ugradesTableUpdate() {
-
+function IsVisible(upgradeNumber) {
+    switch (upgradeNumber) {
+        case 1:
+            return  Person.money >= 1 ? true : false
+        case 2:
+            return  Person.money >= 10 ? true : false
+        default:
+            return false;
+    }
 }
 
 //TODO add cost
-function buyUpgrade(upgradeLevel) {
-    var updateUpgradeButton = "buyUpgrade".concat('', upgradeLevel.toString());
+function buyUpgrade(upgradeNumber) {
+    var updateUpgradeButton = "buyUpgrade".concat('', upgradeNumber.toString());
     document.getElementById(updateUpgradeButton).style.display = "none";
-    Person.ownedUpgrades.push(upgradeLevel);
+    Person.ownedUpgrades.push(upgradeNumber);
+    UpgradeAction(upgradeNumber);
     //Person.mainMultiplier = Person.mainMultiplier * 2;
     checkUpgrades();
     updateAllLabels();
