@@ -29,8 +29,8 @@ function checkAchievements() {
     });
     
     $("#lOwnedAchievements").html(Person.ownedAchievements.toString());
-    
-    achievementsTableUpdate();
+    achievementsImagesUpdate();
+    //achievementsTableUpdate();
 }
 
 function AchievementCondition1() {
@@ -48,7 +48,71 @@ function AchievementCondition2() {
 }
 
 
-function achievementsTableUpdate() {
+
+function createAchievementBox(AchievementNumber) {
+    //const div = document.getElementById("divAchievementsBox".concat(AchievementNumber));
+    //div.style.backgroundImage = `url('../img/${Achievement.number}Achievement.jpg')`;
+    if (Person.ownedAchievements.includes(AchievementNumber)){
+        var insideText = `${AchievementNumber}: ${lAchievments[AchievementNumber-1].name} - ${lAchievments[AchievementNumber-1].description}`;
+    }
+    else{
+        var insideText = `${AchievementNumber}: ??? - ?????`;
+    }
+    document.getElementById("AchievementBox").innerHTML = insideText;
+}
+
+let attachedAchievementBox = false;
+let AchievementBoxContainer = document.querySelector("#AchievementBox");
+
+const followMouseAchievement = (event) => {
+    AchievementBoxContainer.style.left = event.x + "px";
+    var y = event.y + Math.ceil(window.scrollY);
+    AchievementBoxContainer.style.top =  y + "px";
+}
+
+function showAchievementsBox(AchievementNumber) {
+    createAchievementBox(AchievementNumber);
+    if (!attachedAchievementBox) {
+        attachedAchievementBox = true;
+        AchievementBoxContainer.style.display = "block";
+        document.addEventListener("pointermove", followMouseAchievement);
+    }
+}
+
+function hideAchievementsBox() {
+    attachedAchievementBox = false;
+    AchievementBoxContainer.style.display = "";
+    document.removeEventListener("pointermove", followMouseAchievement);
+}
+
+function generateAchievementsBoxTable() {
+    const container = document.getElementById("divAchievementsBoxTable");
+
+    lAchievments.forEach(Achievement => {
+        const div = document.createElement('div');
+        div.setAttribute("class", "divAchievementsBox");
+        div.setAttribute("id", "divAchievementsBox".concat(Achievement.number));
+        div.setAttribute("onpointerenter", `showAchievementsBox(${Achievement.number})`);
+        div.setAttribute("onpointerleave", `hideAchievementsBox()`);
+        //div.innerHTML = `${Achievement.number}`;
+        div.style.backgroundImage = `url('../img/0Achievement.jpg')`;
+        //div.style.backgroundImage = `url('../img/${Achievement.number}Achievement.jpg')`;
+        div.style.backgroundSize = "contain";
+        container.appendChild(div);
+    });
+}
+
+generateAchievementsBoxTable();
+
+
+function achievementsImagesUpdate() {
+    var ownedNum = Person.ownedAchievements.length;
+    for (let i = 0; i<ownedNum; i++){
+        const div = document.getElementById("divAchievementsBox".concat(i+1));
+        div.style.backgroundImage = `url('../img/${i+1}Achievement.jpg')`;
+    }
+}
+/* function achievementsTableUpdate() {
     var table = document.getElementById("achievementsTable");
     table.style.width = '100px';
     table.style.border = '1px solid black';
@@ -93,4 +157,4 @@ function achievementsTableClear() {
             table.deleteRow(1);
         }
     }
-}
+} */

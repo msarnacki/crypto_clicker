@@ -126,7 +126,8 @@ function updateAllLabels() {
     
     $("#lOwnedAchievements").html(Person.ownedAchievements.toString());
 
-    achievementsTableUpdate();
+    //achievementsTableUpdate();
+    achievementsImagesUpdate();
     checkUpgrades();
 }
 

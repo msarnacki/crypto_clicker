@@ -3,8 +3,8 @@ class Player{
                 ownedMiners = [0,0,0,0], 
                 ownedCrypto = [0,0], 
                 numView="BTC", 
-                lastSaveBeforeOff = 
-                Date(), mainMultiplier = 1, 
+                lastSaveBeforeOff = Date(), 
+                mainMultiplier = 1, 
                 ownedAchievements = [], 
                 visibleUpgrades = [], 
                 ownedUpgrades = []){
