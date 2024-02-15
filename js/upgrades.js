@@ -9,7 +9,8 @@ class Upgrade{
 
 var lUpgrades = [
     new Upgrade(number = 1, name = "First multiplier", description = "Earn 2x", cost = 2),
-    new Upgrade(number = 2, name = "Second multiplier", description = "Earn 3x", cost = 51)
+    new Upgrade(number = 2, name = "Second multiplier", description = "Earn 3x", cost = 51),
+    new Upgrade(number = 3, name = "Third multiplier", description = "Earn 4x", cost = 61)
 ];
 
 //runs every tick
@@ -20,6 +21,11 @@ function checkUpgrades() {
         var updateUpgradeButton = "buyUpgrade".concat('', Upgrade.number.toString());
         document.getElementById(updateUpgradeButton).disabled = true;
         document.getElementById(updateUpgradeButton).style.display = "none";
+
+        var updateUpgradeBox = "divUpgradesBox".concat('', Upgrade.number.toString());
+        document.getElementById(updateUpgradeBox).disabled = true;
+        document.getElementById(updateUpgradeBox).style.display = "none";
+
         //if not owned
         if (!(Person.ownedUpgrades.includes(Upgrade.number))){
             //if not visible
@@ -36,16 +42,19 @@ function checkUpgrades() {
             if (Person.visibleUpgrades.includes(Upgrade.number) && !(Person.ownedUpgrades.includes(Upgrade.number))){
                 //display
                 document.getElementById(updateUpgradeButton).style.display = "block";
+                document.getElementById(updateUpgradeBox).style.display = "block";
+
                 // if buyable
                 if (Person.money >= lUpgrades[Upgrade.number-1].cost){
                     document.getElementById(updateUpgradeButton).disabled = false;
+                    document.getElementById(updateUpgradeBox).disabled = false;
                 }
                 else{
                     document.getElementById(updateUpgradeButton).disabled = true;
+                    document.getElementById(updateUpgradeBox).disabled = true;
                 }
             } 
         }
-        
     });
     
     $("#lVisibleUpgrades").html(Person.visibleUpgrades.toString());
@@ -60,6 +69,8 @@ function UpgradeAction(upgradeNumber) {
             break;
         case 2:
             break;
+        case 3:
+            break;
         default:
             break;
     }
@@ -71,10 +82,69 @@ function IsVisible(upgradeNumber) {
             return  Person.money >= 1 ? true : false
         case 2:
             return  Person.money >= 10 ? true : false
+        case 3:
+            return  Person.money >= 15 ? true : false
         default:
             return false;
     }
 }
+
+function createUpgradeBox(UpgradeNumber) {
+    //const div = document.getElementById("divAchievementsBox".concat(AchievementNumber));
+    //div.style.backgroundImage = `url('../img/${Achievement.number}Achievement.jpg')`;
+    if (Person.visibleUpgrades.includes(UpgradeNumber)){
+        var insideText = `${UpgradeNumber}: ${lUpgrades[UpgradeNumber-1].name} - ${lUpgrades[UpgradeNumber-1].description}`;
+    }
+    else{
+        var insideText = `${UpgradeNumber}: ??? - ?????`;
+    }
+    document.getElementById("UpgradeBox").innerHTML = insideText;
+}
+
+let attachedUpgradeBox = false;
+let UpgradeBoxContainer = document.querySelector("#UpgradeBox");
+
+const followMouseUpgrade = (event) => {
+    UpgradeBoxContainer.style.left = event.x + "px";
+    var y = event.y + Math.ceil(window.scrollY);
+    UpgradeBoxContainer.style.top =  y + "px";
+}
+
+function showUpgradesBox(UpgradeNumber) {
+    createUpgradeBox(UpgradeNumber);
+    if (!attachedUpgradeBox) {
+        attachedUpgradeBox = true;
+        UpgradeBoxContainer.style.display = "block";
+        document.addEventListener("pointermove", followMouseUpgrade);
+    }
+}
+
+function hideUpgradesBox() {
+    attachedUpgradeBox = false;
+    UpgradeBoxContainer.style.display = "";
+    document.removeEventListener("pointermove", followMouseUpgrade);
+}
+
+function generateUpgradesBoxTable() {
+    const container = document.getElementById("divUpgradesBoxTable");
+
+    lUpgrades.forEach(Upgrade => {
+        const div = document.createElement('div');
+        div.setAttribute("class", "divUpgradesBox");
+        div.setAttribute("id", "divUpgradesBox".concat(Upgrade.number));
+        div.setAttribute("onpointerenter", `showUpgradesBox(${Upgrade.number})`);
+        div.setAttribute("onpointerleave", `hideUpgradesBox()`);
+        div.setAttribute("onClick", `buyUpgrade(${Upgrade.number})`);
+        //div.innerHTML = `${Upgrade.number}`;
+        div.style.backgroundImage = `url('../img/Upgrade${Upgrade.number}.jpg')`;
+        div.style.backgroundSize = "contain";
+        div.disabled = true;
+        container.appendChild(div);
+    });
+}
+
+generateUpgradesBoxTable();
+
 
 //TODO add cost
 function buyUpgrade(upgradeNumber) {
@@ -85,4 +155,4 @@ function buyUpgrade(upgradeNumber) {
     //Person.mainMultiplier = Person.mainMultiplier * 2;
     checkUpgrades();
     updateAllLabels();
-}
+} 

@@ -103,7 +103,7 @@ function generateAchievementsBoxTable() {
         div.setAttribute("onpointerenter", `showAchievementsBox(${Achievement.number})`);
         div.setAttribute("onpointerleave", `hideAchievementsBox()`);
         //div.innerHTML = `${Achievement.number}`;
-        div.style.backgroundImage = `url('../img/0Achievement.jpg')`;
+        div.style.backgroundImage = `url('../img/Achievement0.jpg')`;
         //div.style.backgroundImage = `url('../img/${Achievement.number}Achievement.jpg')`;
         div.style.backgroundSize = "contain";
         container.appendChild(div);
@@ -118,13 +118,13 @@ function achievementsImagesUpdate() {
     if (ownedNum==0){
         lAchievments.forEach(Achievement => {
             const div = document.getElementById("divAchievementsBox".concat(Achievement.number));
-            div.style.backgroundImage = `url('../img/0Achievement.jpg')`;
+            div.style.backgroundImage = `url('../img/Achievement0.jpg')`;
         });
     }
     else{
         for (let i = 0; i<ownedNum; i++){
             const div = document.getElementById("divAchievementsBox".concat(i+1));
-            div.style.backgroundImage = `url('../img/${i+1}Achievement.jpg')`;
+            div.style.backgroundImage = `url('../img/Achievement${i+1}.jpg')`;
         }
     }
 }
