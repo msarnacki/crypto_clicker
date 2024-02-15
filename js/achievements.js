@@ -9,7 +9,8 @@ class Achievement{
 
 var lAchievments = [
     new Achievement(number = 1, name = "Journey start", description = "Found your 1st dollar bill", condition = "AchievementCondition1()"),
-    new Achievement(number = 2, name = "First miner", description = "Started your mining career", condition = "AchievementCondition2()")
+    new Achievement(number = 2, name = "First miner", description = "Started your mining career", condition = "AchievementCondition2()"),
+    new Achievement(number = 3, name = "TEST3", description = "TEST_DECRIPTION3", condition = "AchievementCondition3()"),
 ];
 
 //runs every tick
@@ -47,6 +48,13 @@ function AchievementCondition2() {
     return  sumOwned > 0 ? true : false
 }
 
+function AchievementCondition3() {
+    var sumOwned = 0;
+    Person.ownedMiners.forEach(numMiner => {
+        sumOwned += numMiner;
+    });
+    return  sumOwned > 3 ? true : false
+}
 
 
 function createAchievementBox(AchievementNumber) {
@@ -107,11 +115,20 @@ generateAchievementsBoxTable();
 
 function achievementsImagesUpdate() {
     var ownedNum = Person.ownedAchievements.length;
-    for (let i = 0; i<ownedNum; i++){
-        const div = document.getElementById("divAchievementsBox".concat(i+1));
-        div.style.backgroundImage = `url('../img/${i+1}Achievement.jpg')`;
+    if (ownedNum==0){
+        lAchievments.forEach(Achievement => {
+            const div = document.getElementById("divAchievementsBox".concat(Achievement.number));
+            div.style.backgroundImage = `url('../img/0Achievement.jpg')`;
+        });
+    }
+    else{
+        for (let i = 0; i<ownedNum; i++){
+            const div = document.getElementById("divAchievementsBox".concat(i+1));
+            div.style.backgroundImage = `url('../img/${i+1}Achievement.jpg')`;
+        }
     }
 }
+
 /* function achievementsTableUpdate() {
     var table = document.getElementById("achievementsTable");
     table.style.width = '100px';

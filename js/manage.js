@@ -54,7 +54,6 @@ function wipe() {
 	save();
     updateAll();
     updateAllLabels();
-	
 }
 
 //TODO in future 
