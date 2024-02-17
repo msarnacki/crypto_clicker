@@ -22,7 +22,7 @@ function checkUpgrades() {
         document.getElementById(updateUpgradeButton).disabled = true;
         document.getElementById(updateUpgradeButton).style.display = "none";
 
-        var updateUpgradeBox = "divUpgradesBox".concat('', Upgrade.number.toString());
+        var updateUpgradeBox = "bUpgradesBox".concat('', Upgrade.number.toString());
         document.getElementById(updateUpgradeBox).disabled = true;
         document.getElementById(updateUpgradeBox).style.display = "none";
 
@@ -66,10 +66,13 @@ function checkUpgrades() {
 function UpgradeAction(upgradeNumber) {
     switch (upgradeNumber) {
         case 1:
+            Person.mainMultiplier = Person.mainMultiplier * 2;
             break;
         case 2:
+            Person.mainMultiplier = Person.mainMultiplier * 2;
             break;
-        case 3:
+        case 3:        
+            Person.mainMultiplier = Person.mainMultiplier * 2;
             break;
         default:
             break;
@@ -129,9 +132,9 @@ function generateUpgradesBoxTable() {
     const container = document.getElementById("divUpgradesBoxTable");
 
     lUpgrades.forEach(Upgrade => {
-        const div = document.createElement('div');
-        div.setAttribute("class", "divUpgradesBox");
-        div.setAttribute("id", "divUpgradesBox".concat(Upgrade.number));
+        const div = document.createElement('button');
+        div.setAttribute("class", "bUpgradesBox");
+        div.setAttribute("id", "bUpgradesBox".concat(Upgrade.number));
         div.setAttribute("onpointerenter", `showUpgradesBox(${Upgrade.number})`);
         div.setAttribute("onpointerleave", `hideUpgradesBox()`);
         div.setAttribute("onClick", `buyUpgrade(${Upgrade.number})`);
