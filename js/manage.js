@@ -27,7 +27,7 @@ setInterval(updateAll, 1000);
 setInterval(getPriceBTC, 60000);
 
 //update Price Chart
-setInterval(updatePriceChart, 5000);
+//setInterval(updatePriceChart, 5000);
 
 //functions that handle saving
 function save() {

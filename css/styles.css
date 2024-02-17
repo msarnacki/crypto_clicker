@@ -93,14 +93,13 @@ button {
 .bUpgradesBox{
   display: none;
   background-color: black;
-  border-style: solid;
-  border-width: 2px;
-  border-color: black;
+  border-style: solid transparent;
+  border-width: 3px;
+  border-image: linear-gradient(to bottom right, #b827fc 0%, #2c90fc 25%, #b8fd33 50%, #fec837 75%, #fd1892 100%);
+  border-image-slice: 1;
   color: #ff4754;
   width: 50px;
   height: 50px;
-  text-align: center;
-  font-size: 40px;
   margin: 3px;
 }
 
@@ -121,8 +120,6 @@ button {
 }
 
 /* Table section */
-
-
 table {
   border-collapse: collapse;
   border: 2px solid rgb(200,200,200);

@@ -18,10 +18,6 @@ function checkUpgrades() {
     // array 1, ... , numOfUpgrades 
     //UpgradesNumbers = Array.from({length: lUpgrades.length}, (_, i) => i + 1)
     lUpgrades.forEach(Upgrade => {
-        var updateUpgradeButton = "buyUpgrade".concat('', Upgrade.number.toString());
-        document.getElementById(updateUpgradeButton).disabled = true;
-        document.getElementById(updateUpgradeButton).style.display = "none";
-
         var updateUpgradeBox = "bUpgradesBox".concat('', Upgrade.number.toString());
         document.getElementById(updateUpgradeBox).disabled = true;
         document.getElementById(updateUpgradeBox).style.display = "none";
@@ -41,17 +37,16 @@ function checkUpgrades() {
             // if not owned and visible
             if (Person.visibleUpgrades.includes(Upgrade.number) && !(Person.ownedUpgrades.includes(Upgrade.number))){
                 //display
-                document.getElementById(updateUpgradeButton).style.display = "block";
                 document.getElementById(updateUpgradeBox).style.display = "block";
 
                 // if buyable
                 if (Person.money >= lUpgrades[Upgrade.number-1].cost){
-                    document.getElementById(updateUpgradeButton).disabled = false;
                     document.getElementById(updateUpgradeBox).disabled = false;
+                    document.getElementById(updateUpgradeBox).style.filter = "grayscale(0)"; 
                 }
                 else{
-                    document.getElementById(updateUpgradeButton).disabled = true;
                     document.getElementById(updateUpgradeBox).disabled = true;
+                    document.getElementById(updateUpgradeBox).style.filter = "grayscale(100)";
                 }
             } 
         }
@@ -151,11 +146,11 @@ generateUpgradesBoxTable();
 
 //TODO add cost
 function buyUpgrade(upgradeNumber) {
-    var updateUpgradeButton = "buyUpgrade".concat('', upgradeNumber.toString());
+    var updateUpgradeButton = "bUpgradesBox".concat('', upgradeNumber.toString());
     document.getElementById(updateUpgradeButton).style.display = "none";
     Person.ownedUpgrades.push(upgradeNumber);
     UpgradeAction(upgradeNumber);
-    //Person.mainMultiplier = Person.mainMultiplier * 2;
+    console.log(upgradeNumber);
     checkUpgrades();
     updateAllLabels();
 } 
