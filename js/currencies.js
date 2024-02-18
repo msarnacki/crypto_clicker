@@ -47,6 +47,13 @@ function getConvertValueFromSlider() {
     }    
 }
 
+function resetCryptoExchengeState() {
+    document.getElementById("inputConvertCurrencies").value = 0;
+	document.getElementById("Slider").value = 0;
+	document.getElementById("lSlider").innerHTML = 0;
+	switchToBuy();
+}
+
 function random(min, max) {
     return Math.random() * (max - min) + min;
 }

@@ -74,10 +74,10 @@
         </div>
         
         <div class="input-icon">
-          <input type="number" min="0" value="0" class="iConvert" id="inputConvertCurrencies"/>
+          <input type="number" min="0" placeholder="0.00" class="iConvert" id="inputConvertCurrencies"/>
           <i id="icoBtcDollar" aria-hidden="true">$</i> <!--class="fa fa-btc"-->
           
-          You will get: <label id="youWillGet"></label><label id="youWillGetCurrency" class="fa fa-btc"></label>
+          You will get: <label id="youWillGet">0.00000000</label><label id="youWillGetCurrency" class="fa fa-btc"></label>
         </div>
         <button class="bConvert" id="bConvert" onclick="convertCurrencies(document.getElementById('inputConvertCurrencies').value)">Buy</button>
         

@@ -46,13 +46,13 @@ function load() {
 function wipe() {
    //TODO Add confirmation popup
     //window.stop();
-	document.getElementById("inputConvertCurrencies").value = 0;
 
     Person = new Player();
     getPriceBTC();
 	save();
     updateAll();
     updateAllLabels();
+	resetCryptoExchengeState();
 }
 
 //TODO in future 
