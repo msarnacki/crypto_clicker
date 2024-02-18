@@ -139,8 +139,14 @@ function switchToBuy() {
         document.getElementById("bConvert").innerHTML = "Buy";
         document.getElementById("bBuy").style.background = "linear-gradient(90deg, rgba(20,167,62,1) 50%, rgba(102,247,113,1) 100%)";
         document.getElementById("bSell").style.background = "";
+        document.getElementById("icoBtcDollar").setAttribute("class", "");
+        document.getElementById("icoBtcDollar").innerHTML = "$";
+        document.getElementById("youWillGetCurrency").innerHTML = "";
+        document.getElementById("youWillGetCurrency").setAttribute("class", "fa fa-btc");
     }
     getConvertValueFromSlider();
+    var usdToConvert = document.getElementById("inputConvertCurrencies").value;
+    document.getElementById("youWillGet").innerHTML = (usdToConvert/lCryptoCurrs[0].usdRate).toFixed(lCryptoCurrs[0].denominationUnit);
 }
 
 function switchToSell() {
@@ -149,8 +155,14 @@ function switchToSell() {
         document.getElementById("bConvert").innerHTML = "Sell";
         document.getElementById("bBuy").style.background = "#878683";
         document.getElementById("bSell").style.background = "linear-gradient(270deg, rgb(224, 0, 0) 50%, rgb(241, 116, 0) 100%)";
+        document.getElementById("icoBtcDollar").setAttribute("class", "fa fa-btc");
+        document.getElementById("icoBtcDollar").innerHTML = "";
+        document.getElementById("youWillGetCurrency").innerHTML = "$";
+        document.getElementById("youWillGetCurrency").setAttribute("class", "");
     }
     getConvertValueFromSlider();
+    var cryptoToConvert = document.getElementById("inputConvertCurrencies").value;
+    document.getElementById("youWillGet").innerHTML =  Number((cryptoToConvert*lCryptoCurrs[0].usdRate).toFixed(2));
 }
 
 //Exchenge
