@@ -133,17 +133,26 @@ function updateAllLabels() {
 
 var bBuyBTC = true;
 
-function switchBuySell() {
-    if(bBuyBTC){
-        bBuyBTC = false;
-        document.getElementById("bBuyOrSell").style.backgroundColor = "red";
-    }
-    else{
+function switchToBuy() {
+    if(!bBuyBTC){
         bBuyBTC = true;
-        document.getElementById("bBuyOrSell").style.backgroundColor = "greenyellow";
+        document.getElementById("bConvert").innerHTML = "Buy";
+        document.getElementById("bBuy").style.background = "linear-gradient(90deg, rgba(20,167,62,1) 50%, rgba(102,247,113,1) 100%)";
+        document.getElementById("bSell").style.background = "";
     }
     getConvertValueFromSlider();
 }
+
+function switchToSell() {
+    if(bBuyBTC){
+        bBuyBTC = false;
+        document.getElementById("bConvert").innerHTML = "Sell";
+        document.getElementById("bBuy").style.background = "#878683";
+        document.getElementById("bSell").style.background = "linear-gradient(270deg, rgb(224, 0, 0) 50%, rgb(241, 116, 0) 100%)";
+    }
+    getConvertValueFromSlider();
+}
+
 //Exchenge
 function convertCurrencies(toConvert) {
     if(bBuyBTC) {

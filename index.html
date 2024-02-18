@@ -63,11 +63,18 @@
         </table>
         
         <br><br>
+        
+        
+        
         <h3>Crypto exchenge</h3>
 
-        <button class="bBuyOrSell" id="bBuyOrSell" onclick="switchBuySell()" style="background-color: greenyellow">Buy/Sell</button>
+        <div id="buySellButtons">
+          <button id="bBuy" onclick="switchToBuy()">Buy BTC</button>
+          <button id="bSell" onclick="switchToSell()">Sell BTC</button>
+        </div>
+
         <input type="number" min="0" value="0" class="iConvert" id="inputConvertCurrencies"/>
-        <button class="bConvert" id="bConvert" onclick="convertCurrencies(document.getElementById('inputConvertCurrencies').value)">Buy BTC</button>
+        <button class="bConvert" id="bConvert" onclick="convertCurrencies(document.getElementById('inputConvertCurrencies').value)">Buy</button>
         
         <div>
           <input oninput="getConvertValueFromSlider()" type="range" id="Slider" min="0" max="100" value="0" step="1" />
