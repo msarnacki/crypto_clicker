@@ -91,7 +91,7 @@ function createUpgradeBox(UpgradeNumber) {
     //const div = document.getElementById("divAchievementsBox".concat(AchievementNumber));
     //div.style.backgroundImage = `url('../img/${Achievement.number}Achievement.jpg')`;
     if (Person.visibleUpgrades.includes(UpgradeNumber)){
-        var insideText = `${UpgradeNumber}: ${lUpgrades[UpgradeNumber-1].name} - ${lUpgrades[UpgradeNumber-1].description}`;
+        var insideText = `${UpgradeNumber}: ${lUpgrades[UpgradeNumber-1].name} - ${lUpgrades[UpgradeNumber-1].description} \n Cost = ${lUpgrades[UpgradeNumber-1].cost}$`;
     }
     else{
         var insideText = `${UpgradeNumber}: ??? - ?????`;
