@@ -32,6 +32,17 @@ function getPriceBTC() {
     });
 }
 
+function getConvertValueFromSlider() {
+    if (bBuyBTC) {
+        document.getElementById("lSlider").innerHTML = document.getElementById("Slider").value;
+        document.getElementById("inputConvertCurrencies").value = (Person.money * document.getElementById("Slider").value/100).toFixed(2);
+    }
+    else{
+        document.getElementById("lSlider").innerHTML = document.getElementById("Slider").value;
+        document.getElementById("inputConvertCurrencies").value = (document.getElementById("Slider").value/100 * Person.ownedCrypto[0]/ 10**lCryptoCurrs[0].denominationUnit).toFixed(lCryptoCurrs[0].denominationUnit);
+    }    
+}
+
 function random(min, max) {
     return Math.random() * (max - min) + min;
 }

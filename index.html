@@ -64,13 +64,16 @@
         
         <br><br>
         <h3>Crypto exchenge</h3>
-        <label id="BTCnumViewToConvert">BTC to convert: </label><input type="number" min="0" value="0" class="iConvert" id="inputConvertToUSD" />
-        <button class="bConvert" id="bConvertToUSD" onclick="convertToUSD(document.getElementById('inputConvertToUSD').value)">Convert to USD</button>
-        <button class="bConvert" id="bConvertToUSD" onclick="convertToUSD(-1)">Max</button>
-        <br><br>
-        <label id="USDnumViewToConvert">USD to convert: </label><input type="number" min="0" value="0" class="iConvert" id="inputConvertToBTC"/>
-        <button class="bConvert" id="bConvertToBTC" onclick="convertToBTC(document.getElementById('inputConvertToBTC').value)">Convert to BTC</button>
-        <button class="bConvert" id="bConvertToBTC" onclick="convertToBTC(-1)">Max</button>
+
+        <button class="bBuyOrSell" id="bBuyOrSell" onclick="switchBuySell()" style="background-color: greenyellow">Buy/Sell</button>
+        <input type="number" min="0" value="0" class="iConvert" id="inputConvertCurrencies"/>
+        <button class="bConvert" id="bConvert" onclick="convertCurrencies(document.getElementById('inputConvertCurrencies').value)">Buy BTC</button>
+        
+        <div>
+          <input oninput="getConvertValueFromSlider()" type="range" id="Slider" min="0" max="100" value="0" step="1" />
+          <label id="lSlider">0</label>%
+        </div>
+        <br><br><br>
       </div> <!-- left pane end -->
       
       <div id="midPane"> <!-- mid pane start -->
@@ -114,25 +117,21 @@
           </tr>
         </table>
 
-        <br><br><br>
-        <div>Upgrades visible: <label id="lVisibleUpgrades"></label></div>
-        <!--<div>Upgrades buyable: <label id="lBuyableUpgrades"></label></div> -->
-        <div>Upgrades owned: <label id="lOwnedUpgrades"></label></div>
-      
-
-        <div id="divUpgradesBoxTable">
-        
-        </div>
-        <div id="UpgradeBox" style="background-color:wheat;height:100px;width:200px;text-align:center;">
-        </div>
-
-        <br>
-
-        <label id="lMainMultiplier">1</label>
-
       </div> <!-- mid pane end -->
 
       <div id="rightPane"> <!-- right pane start -->
+
+        <div>Upgrades visible: <label id="lVisibleUpgrades"></label></div>
+        <div>Upgrades owned: <label id="lOwnedUpgrades"></label></div>
+      
+        <div id="divUpgradesBoxTable"></div>
+        <div id="UpgradeBox" style="background-color:wheat;height:100px;width:200px;text-align:center;"></div>
+
+        <br>
+
+        Main multiplier: <label id="lMainMultiplier">1</label>
+
+        <br><br>
 
         <div>Achievements owned: <label id="lOwnedAchievements"></label></div>
         <!--<div>Achievements table: 

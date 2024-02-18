@@ -131,33 +131,59 @@ function updateAllLabels() {
     checkUpgrades();
 }
 
+var bBuyBTC = true;
+
+function switchBuySell() {
+    if(bBuyBTC){
+        bBuyBTC = false;
+        document.getElementById("bBuyOrSell").style.backgroundColor = "red";
+    }
+    else{
+        bBuyBTC = true;
+        document.getElementById("bBuyOrSell").style.backgroundColor = "greenyellow";
+    }
+    getConvertValueFromSlider();
+}
 //Exchenge
+function convertCurrencies(toConvert) {
+    if(bBuyBTC) {
+        //usd to btc
+        convertToBTC(toConvert);
+    }
+    else{
+        //btc to usd
+        convertToUSD(toConvert);
+    }
+}
+
 function convertToUSD(toConvert) {
     if (toConvert == -1){
         cryptoToConvert = Person.ownedCrypto[0];
     }else{
         if (Person.numView == "Satoshi") {
-            cryptoToConvert = Number(document.getElementById("inputConvertToUSD").value);
+            cryptoToConvert = Number(document.getElementById("inputConvertCurrencies").value);
         }else{
-            cryptoToConvert = Number(document.getElementById("inputConvertToUSD").value)*10**lCryptoCurrs[0].denominationUnit;
+            cryptoToConvert = Number(document.getElementById("inputConvertCurrencies").value)*10**lCryptoCurrs[0].denominationUnit;
         }
     }
     if(cryptoToConvert <= Person.ownedCrypto[0]){
         Person.ownedCrypto[0] -= Number(cryptoToConvert.toFixed(0));
         Person.money += Number((cryptoToConvert*lCryptoCurrs[0].usdRate/10**lCryptoCurrs[0].denominationUnit).toFixed(2));
+        
+        //after bought update value in input box
+        getConvertValueFromSlider();
     }
     updateAllLabels();
 }
 
 function convertToBTC(toConvert) {
-    if (toConvert == -1){
-        usdToConvert = Person.money;
-    }else{
-        usdToConvert = document.getElementById("inputConvertToBTC").value; //BTC 
-    }
+    usdToConvert = document.getElementById("inputConvertCurrencies").value; //BTC 
+
     if(usdToConvert <= Person.money){
         Person.ownedCrypto[0] += Number((usdToConvert/lCryptoCurrs[0].usdRate*10**lCryptoCurrs[0].denominationUnit).toFixed(0));
         Person.money -= usdToConvert;
+        //after bought update value in input box
+        getConvertValueFromSlider();
     }
     updateAllLabels();
 }
