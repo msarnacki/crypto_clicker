@@ -148,9 +148,12 @@ generateUpgradesBoxTable();
 function buyUpgrade(upgradeNumber) {
     var updateUpgradeButton = "bUpgradesBox".concat('', upgradeNumber.toString());
     document.getElementById(updateUpgradeButton).style.display = "none";
-    Person.ownedUpgrades.push(upgradeNumber);
-    UpgradeAction(upgradeNumber);
-    console.log(upgradeNumber);
-    checkUpgrades();
-    updateAllLabels();
+    
+    if (Person.money >= lUpgrades[upgradeNumber-1].cost) {
+        Person.money -= lUpgrades[upgradeNumber-1].cost;
+        Person.ownedUpgrades.push(upgradeNumber);
+        UpgradeAction(upgradeNumber);
+        checkUpgrades();
+        updateAllLabels();
+    }
 } 
