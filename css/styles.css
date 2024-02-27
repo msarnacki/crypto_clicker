@@ -15,14 +15,12 @@ button {
 }
 
 #clickToEarn{
-  background-color: #000;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
 #workToEarn{
-  background-color:#b8fd33;
   justify-content: center;
   align-items: center;
 }
@@ -192,9 +190,6 @@ caption {
 /* Table section */
 
 /* progress bar*/
-#workTime{
-  color: #000;
-}
 
 #workProgressDiv{
   display: flex;
@@ -204,9 +199,9 @@ caption {
 #progress-container {
   height: 0.8rem;
   width: 70%;
+  border: 1px solid #ff4754;
+  background-color: #000;
   border-radius: 0.4rem;
-
-  background: #000;
 }
 
 #progress-container #workProgressBar {
