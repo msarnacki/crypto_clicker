@@ -1,6 +1,6 @@
 <mxfile host="65bd71144e">
     <diagram id="6a731a19-8d31-9384-78a2-239565b7b9f0" name="Map">
-        <mxGraphModel dx="462" dy="702" grid="0" gridSize="20" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="4681" pageHeight="3300" background="none" math="0" shadow="0">
+        <mxGraphModel dx="512" dy="1068" grid="0" gridSize="20" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="4681" pageHeight="3300" background="none" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
@@ -20,7 +20,7 @@
                     <mxGeometry x="2738" y="1837" width="120" height="120" as="geometry"/>
                 </mxCell>
                 <mxCell id="1355" value="Achievements" style="ellipse;whiteSpace=wrap;html=1;shadow=0;fontFamily=Helvetica;fontSize=12;fontColor=#000000;align=center;strokeWidth=3;fillColor=#F08705;strokeColor=none;fontStyle=1" parent="1" vertex="1">
-                    <mxGeometry x="2238" y="1936" width="152" height="152" as="geometry"/>
+                    <mxGeometry x="2298" y="1942.5" width="152" height="152" as="geometry"/>
                 </mxCell>
                 <mxCell id="1356" value="Graphics &amp;amp; audio" style="ellipse;whiteSpace=wrap;html=1;shadow=0;fontFamily=Helvetica;fontSize=12;fontColor=#000000;align=center;strokeWidth=3;fillColor=#E85642;strokeColor=none;fontStyle=1" parent="1" vertex="1">
                     <mxGeometry x="1882" y="1826" width="120" height="120" as="geometry"/>
@@ -191,13 +191,13 @@
                     </mxGeometry>
                 </mxCell>
                 <mxCell id="1472" value="Różne ścieżki osiągnięć - w czasie jednej gry nie da się osiągnąć wszystkich (drzewko)" style="rounded=1;fillColor=#f5af58;strokeColor=none;strokeWidth=3;shadow=0;html=1;fontColor=#000000;fontStyle=1;whiteSpace=wrap;fontSize=12;" parent="1" vertex="1">
-                    <mxGeometry x="2456" y="2139" width="185" height="66" as="geometry"/>
+                    <mxGeometry x="2502" y="2087" width="185" height="66" as="geometry"/>
                 </mxCell>
                 <mxCell id="1473" value="Odblokowywanie upgrade'ów i fabuły przez osiągnięcia" style="rounded=1;fillColor=#f5af58;strokeColor=none;strokeWidth=3;shadow=0;html=1;fontColor=#000000;fontStyle=1;whiteSpace=wrap;fontSize=12;" parent="1" vertex="1">
-                    <mxGeometry x="2002" y="2139" width="167" height="64" as="geometry"/>
+                    <mxGeometry x="2283" y="2174" width="167" height="64" as="geometry"/>
                 </mxCell>
                 <mxCell id="1474" value="Różne rodzaje osiągnięć" style="rounded=1;fillColor=#f5af58;strokeColor=none;strokeWidth=3;shadow=0;html=1;fontColor=#000000;fontStyle=1;whiteSpace=wrap;fontSize=12;" parent="1" vertex="1">
-                    <mxGeometry x="2252.25" y="2161" width="120" height="40" as="geometry"/>
+                    <mxGeometry x="2459" y="2186" width="120" height="40" as="geometry"/>
                 </mxCell>
                 <mxCell id="1484" value="" style="edgeStyle=none;endArrow=none;strokeWidth=3;strokeColor=#F5AF58;html=1;fontColor=#000000;fontStyle=1;fontSize=12;" parent="1" source="1355" target="1472" edge="1">
                     <mxGeometry x="243.5" y="39" width="100" height="100" as="geometry">
@@ -537,6 +537,33 @@
                         <mxPoint x="2686.000115370178" y="1993.5001153701776" as="sourcePoint"/>
                         <mxPoint x="2852.51" y="2128.76" as="targetPoint"/>
                     </mxGeometry>
+                </mxCell>
+                <mxCell id="1549" value="" style="edgeStyle=none;endArrow=none;strokeWidth=3;strokeColor=#A29DC5;html=1;fontColor=#000000;fontStyle=1;fontSize=12;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="1516" target="1550">
+                    <mxGeometry x="-1478" y="-283.5" width="100" height="100" as="geometry">
+                        <mxPoint x="1748.960058056065" y="1562.6130336869683" as="sourcePoint"/>
+                        <mxPoint x="1756" y="1649" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="1550" value="Kupowanie budynków na kopalnie" style="rounded=1;fillColor=#a29dc5;strokeColor=none;strokeWidth=3;shadow=0;html=1;fontColor=#000000;whiteSpace=wrap;fontStyle=1;fontSize=12;" vertex="1" parent="1">
+                    <mxGeometry x="1636" y="1650" width="220" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="1551" value="" style="edgeStyle=none;endArrow=none;strokeWidth=6;strokeColor=#F08705;html=1;fontColor=#000000;fontStyle=1;fontSize=12;entryX=0.715;entryY=0.046;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="1515" target="1552">
+                    <mxGeometry x="201" y="246.5" width="100" height="100" as="geometry">
+                        <mxPoint x="2328.522244987839" y="1678.9848529382189" as="sourcePoint"/>
+                        <mxPoint x="2114" y="1926" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="1552" value="Upgrades" style="ellipse;whiteSpace=wrap;html=1;shadow=0;fontFamily=Helvetica;fontSize=12;fontColor=#000000;align=center;strokeWidth=3;fillColor=#F08705;strokeColor=none;fontStyle=1" vertex="1" parent="1">
+                    <mxGeometry x="2061" y="1914.25" width="152" height="152" as="geometry"/>
+                </mxCell>
+                <mxCell id="1553" value="" style="edgeStyle=none;endArrow=none;strokeWidth=3;strokeColor=#F5AF58;html=1;fontColor=#000000;fontStyle=1;fontSize=12;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="1552" target="1554">
+                    <mxGeometry x="263.5" y="59" width="100" height="100" as="geometry">
+                        <mxPoint x="2390.9924567116873" y="2114.440468029907" as="sourcePoint"/>
+                        <mxPoint x="2137" y="2130" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="1554" value="Odblokowywanie upgrade'ów i fabuły przez osiągnięcia" style="rounded=1;fillColor=#f5af58;strokeColor=none;strokeWidth=3;shadow=0;html=1;fontColor=#000000;fontStyle=1;whiteSpace=wrap;fontSize=12;" vertex="1" parent="1">
+                    <mxGeometry x="2012" y="2134" width="167" height="64" as="geometry"/>
                 </mxCell>
             </root>
         </mxGraphModel>
