@@ -1,8 +1,10 @@
 html {
   font-family: sans-serif;
-  background-color: #878683;
-  background-image: url('../img/Bitcoin_wide.jpg');
-  background-size: cover;
+  color: antiquewhite;
+  background: rgb(15,64,111);
+  background: linear-gradient(210deg, rgba(15,64,111,1) 0%, rgba(16,27,89,0.9) 53%, rgba(69,38,108,1) 100%);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 }
 
 button {
@@ -10,6 +12,30 @@ button {
   padding: 10px 20px;
   margin: 10px;
   opacity: 100%;
+}
+
+#clickToEarn{
+  background-color: #000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#workToEarn{
+  background-color:#b8fd33;
+  justify-content: center;
+  align-items: center;
+}
+
+#workButtonsDiv{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.workButtons{
+  font-size: 12px;
+  width: 30%;
 }
 
 #image {
@@ -47,20 +73,19 @@ button {
 }
 
 #leftPane {
-  
-  background-color:sandybrown;
+  border: 5px dotted #ff6550;
   margin: 10px;
   width: 30%;
 }
 
 #midPane {
-  background-color: #ff4754;
+  border: 5px dotted #ff6550;
   margin: 10px;
   width: 45%;
 }
 
 #rightPane {
-  background-color:burlywood;
+  border: 5px dotted #ff6550;
   margin: 10px;
   width: 20%;
 }
@@ -167,16 +192,24 @@ caption {
 /* Table section */
 
 /* progress bar*/
+#workTime{
+  color: #000;
+}
 
-.progress-container {
+#workProgressDiv{
+  display: flex;
+  justify-content: center;
+}
+
+#progress-container {
   height: 0.8rem;
-  width: 32rem;
+  width: 70%;
   border-radius: 0.4rem;
 
   background: #000;
 }
 
-.progress-container .progress {
+#progress-container #workProgressBar {
   height: 100%;
   width: 0;
   border-radius: 0.4rem;

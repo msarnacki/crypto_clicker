@@ -210,31 +210,54 @@ function convertToBTC(toConvert) {
 }
 
 //pregressbar
-const progressbar = document.querySelector(".progress");
+const progressbar = document.getElementById("workProgressBar");
 
 const changeProgress = (progress) => {
     progressbar.style.width = `${progress}%`;
-    if(progress >= 100){
+    if(progress > 100){
         progressbar.style.width = 0
     }
 };
+function startProgressBar(time) {
+    changeProgress(100/time);
+    $("#workTime").html(`1/${time}`);
+}
 
-function updateProgress(t) {
-    setTimeout(() => changeProgress(t*10), t*1000);
-    setTimeout(function() {$("#work1Time").html(t);}, t*1000);    
+function resetProgressBar() {
+    $("#workTime").html(0);
+    progressbar.style.width = 0;
+}
+
+function updateProgress(t, time) {
+    setTimeout(() => changeProgress((t+1)*100/time), t*1000);
+    setTimeout(function() {$("#workTime").html(`${t+1}/${time}`);}, t*1000);    
 }
 
 function work(time, earnings) {
-    document.getElementById("work1Button").disabled = true;
-    
+    document.getElementById("clickButton").disabled = true;
+    document.querySelectorAll('button.workButtons').forEach(workButton => {
+        workButton.disabled = true;
+    });
+
+    startProgressBar(time);
+
     for (var t = 1; t <= time; t++) {
-        updateProgress(t);
+        updateProgress(t, time);
     }
     
-    setTimeout(function(){document.getElementById("work1Button").disabled = false;}, time*1000);
+    setTimeout(function(){
+        document.querySelectorAll('button.workButtons').forEach(workButton => {
+            workButton.disabled = false;
+        });
+        document.getElementById("clickButton").disabled = false;
+    }, time*1000);
+
     setTimeout(function(){
         Person.money = Person.money + earnings;
-        updateMoney();},time*1000)
+        updateMoney();
+        resetProgressBar();
+    },time*1000)
+        
 
 }
 //pregressbar

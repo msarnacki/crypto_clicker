@@ -12,12 +12,27 @@
   <body>
     <div id="wholePage"> <!-- whole page start -->
       <div id="leftPane"> <!-- left pane start -->
-        <button id="clickButton">Find 1$ bill</button>
-        <button id="work1Button" onclick="work(10,50)">Work for 10 sec = Earn 50$</button>
-        <label id="work1Time">0</label>
-        <div class="progress-container">
-          <div class="progress"></div>
+        <div id="earnMoney">
+          <div id="clickToEarn">
+            <button id="clickButton">Find 1$ bill</button>
+          </div>
+          <div id="workToEarn">
+            <div id="workButtonsDiv">
+              <button class="workButtons" id="work1Button" onclick="work(10,50)">10 sec = Earn 50$</button>
+              <button class="workButtons" id="work2Button" onclick="work(20,120)">20 sec = Earn 120$</button>
+              <button class="workButtons" id="work3Button" onclick="work(30,200)">30 sec = Earn 200$</button>  
+            </div>
+            <div id="workProgressDiv">
+              <label id="workTime"></label>
+              <div id="progress-container">
+                
+                <div id="workProgressBar"></div> 
+                
+              </div>
+            </div>
+          </div>
         </div>
+      
         <br>
         <button id="switchViewButton" onclick="switchViewButton()">Switch number view</button>
         <label id="numView"></label>
