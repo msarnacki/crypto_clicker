@@ -224,7 +224,7 @@ function startProgressBar(time) {
 }
 
 function resetProgressBar() {
-    $("#workTime").html(0);
+    $("#workTime").html("");
     progressbar.style.width = 0;
 }
 

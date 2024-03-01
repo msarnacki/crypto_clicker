@@ -32,55 +32,44 @@
             </div>
           </div>
         </div>
-      
-        <br>
-        <button id="switchViewButton" onclick="switchViewButton()">Switch number view</button>
-        <label id="numView"></label>
 
-        <h3>Main panel</h3>
-        <table>
-          <tr>
-            <td>Money: <label id="lMoney">0</label> $</td>
-          </tr>
-          <tr>
-            <td>Income/sec: <label id="lIncomeMoney">0</label> $</td>
-          </tr>
-        </table>
-
-        <br>
-
-        <table>
-          <tr>
-            <th></th>
-            <th>BTC</th>
-            <th>ETH</th>
-          </tr>
-          <tr>
-            <td>Amount:</td>
-            <td><label id="lCrypto0">0</label></td>
-            <td><label id="lCrypto1">0</label></td>
-          </tr>
-          <tr>
-            <td>Income/tick:</td>
-            <td><label id="lCryptoIncome0">0</label></td>
-            <td><label id="lCryptoIncome1">0</label></td>
-          </tr>
-          <tr>
-            <td>USD Rate:</td>
-            <td><label id="lCryptoRate0">0</label><br><div style="font-size: 9px;">Last updated: <label id="lastUpdatedBTC"></label></div></td>
-            <td><label id="lCryptoRate1">0</label></td>
-          </tr>
-          <tr>
-            <td>USD Value:</td>
-            <td><label id="lCryptoValue0">0</label></td>
-            <td><label id="lCryptoValue1">0</label></td>
-          </tr>
-        </table>
+        <br><br><br>
+        <div id="mainInfoTable">
+          <table>
+            <tr>
+              <th></th>
+              <th>$</th>
+              <th><i class="fa fa-btc"></i></th>
+              <th>Power</th>
+            </tr>
+            <tr>
+              <td>Amount:</td>
+              <td><label id="lMoney">0</label> $</td>
+              <td><label id="lCrypto0">0</label></td>
+              <td><label id="lCrypto1">0</label></td>
+            </tr>
+            <tr>
+              <td>Income/tick:</td>
+              <td><label id="lIncomeMoney">0</label> $</td>
+              <td><label id="lCryptoIncome0">0</label></td>
+              <td><label id="lCryptoIncome1">0</label></td>
+            </tr>
+            <tr>
+              <td>USD Price:</td>
+              <td></td>
+              <td><label id="lCryptoRate0">0</label><br><div style="font-size: 9px;">Last updated: <label id="lastUpdatedBTC"></label></div></td>
+              <td><label id="lCryptoRate1">0</label></td>
+            </tr>
+            <tr>
+              <td>USD Value:</td>
+              <td></td>
+              <td><label id="lCryptoValue0">0</label></td>
+              <td><label id="lCryptoValue1">0</label></td>
+            </tr>
+          </table>  
+        </div>
         
         <br><br>
-        
-        
-        
         <h3>Crypto exchenge</h3>
 
         <div id="buySellButtons">
@@ -193,6 +182,9 @@
         <button onclick="openFullscreen()">Fullscreen on</button>
         <button onclick="closeFullscreen()">Fullscreen off</button>
       
+        <br><br><br>
+        <button id="switchViewButton" onclick="switchViewButton()">Switch number view</button>
+        <label id="numView"></label>
       </div> <!-- right pane end -->
       
     </div> <!-- whole page end -->
