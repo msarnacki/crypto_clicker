@@ -137,8 +137,9 @@ function switchToBuy() {
     if(!bBuyBTC){
         bBuyBTC = true;
         document.getElementById("bConvert").innerHTML = "Buy";
-        document.getElementById("bBuy").style.background = "linear-gradient(90deg, rgba(20,167,62,1) 50%, rgba(102,247,113,1) 100%)";
-        document.getElementById("bSell").style.background = "";
+        document.getElementById("bConvert").style.background = "#0ECB81";
+        document.getElementById("bBuy").style.background = "#0ECB81";
+        document.getElementById("bSell").style.background = "#878683";
         document.getElementById("icoBtcDollar").setAttribute("class", "");
         document.getElementById("icoBtcDollar").innerHTML = "$";
         document.getElementById("youWillGetCurrency").innerHTML = "";
@@ -153,8 +154,9 @@ function switchToSell() {
     if(bBuyBTC){
         bBuyBTC = false;
         document.getElementById("bConvert").innerHTML = "Sell";
+        document.getElementById("bConvert").style.background = "#F6465D";
         document.getElementById("bBuy").style.background = "#878683";
-        document.getElementById("bSell").style.background = "linear-gradient(270deg, rgb(224, 0, 0) 50%, rgb(241, 116, 0) 100%)";
+        document.getElementById("bSell").style.background = "#F6465D";
         document.getElementById("icoBtcDollar").setAttribute("class", "fa fa-btc");
         document.getElementById("icoBtcDollar").innerHTML = "";
         document.getElementById("youWillGetCurrency").innerHTML = "$";
@@ -199,7 +201,8 @@ function convertToUSD(toConvert) {
 
 function convertToBTC(toConvert) {
     usdToConvert = document.getElementById("inputConvertCurrencies").value; //BTC 
-
+    console.log("USD to convert: " + usdToConvert);
+    console.log("Money: " + Person.money);
     if(usdToConvert <= Person.money){
         Person.ownedCrypto[0] += Number((usdToConvert/lCryptoCurrs[0].usdRate*10**lCryptoCurrs[0].denominationUnit).toFixed(0));
         Person.money -= usdToConvert;
@@ -234,9 +237,11 @@ function updateProgress(t, time) {
 }
 
 function work(time, earnings) {
-    document.getElementById("clickButton").disabled = true;
-    document.querySelectorAll('button.workButtons').forEach(workButton => {
+    //document.getElementById("clickButton").disabled = true;
+    document.querySelectorAll('button.glow-on-hover').forEach(workButton => {
         workButton.disabled = true;
+        //workButton.style.background = "linear-gradient(45deg, #ffffff)";
+        // TODO: show that this button is disabled
     });
 
     startProgressBar(time);
@@ -246,10 +251,11 @@ function work(time, earnings) {
     }
     
     setTimeout(function(){
-        document.querySelectorAll('button.workButtons').forEach(workButton => {
+        document.querySelectorAll('button.glow-on-hover').forEach(workButton => {
             workButton.disabled = false;
+            //workButton.style.background = "linear-gradient(45deg, #ffffff)";
         });
-        document.getElementById("clickButton").disabled = false;
+        //document.getElementById("clickButton").disabled = false;
     }, time*1000);
 
     setTimeout(function(){

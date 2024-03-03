@@ -8,19 +8,20 @@
     <link rel="shortcut icon" href="#"> <!--for some favicon.ico error-->
     <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="css/styles.css" />
+    <link rel="stylesheet" type="text/css" href="css/styles_buttons.css" />
   </head>
   <body>
     <div id="wholePage"> <!-- whole page start -->
       <div id="leftPane"> <!-- left pane start -->
         <div id="earnMoney">
           <div id="clickToEarn">
-            <button id="clickButton">Find 1$ bill</button>
+            <button id="clickButton" class="glow-on-hover" >Find 1$ bill</button>
           </div>
           <div id="workToEarn">
             <div id="workButtonsDiv">
-              <button class="workButtons" id="work1Button" onclick="work(10,50)">10 sec = Earn 50$</button>
-              <button class="workButtons" id="work2Button" onclick="work(20,120)">20 sec = Earn 120$</button>
-              <button class="workButtons" id="work3Button" onclick="work(30,200)">30 sec = Earn 200$</button>  
+              <button class="workButtons glow-on-hover" id="work1Button" onclick="work(10,50)">10 sec = Earn 50$</button>
+              <button class="workButtons glow-on-hover" id="work2Button" onclick="work(20,120)">20 sec = Earn 120$</button>
+              <button class="workButtons glow-on-hover" id="work3Button" onclick="work(30,200)">30 sec = Earn 200$</button>  
             </div>
             <div id="workProgressDiv">
               <label id="workTime"></label>
@@ -81,13 +82,17 @@
           <input type="number" min="0" placeholder="0.00" class="iConvert" id="inputConvertCurrencies"/>
           <i id="icoBtcDollar" aria-hidden="true">$</i> <!--class="fa fa-btc"-->
           
-          You will get: <label id="youWillGet">0.00000000</label><label id="youWillGetCurrency" class="fa fa-btc"></label>
+          <label>You will get: </label><label id="youWillGet">0.00000000</label><label id="youWillGetCurrency" class="fa fa-btc"></label>
         </div>
-        <button class="bConvert" id="bConvert" onclick="convertCurrencies(document.getElementById('inputConvertCurrencies').value)">Buy</button>
         
-        <div>
-          <input oninput="getConvertValueFromSlider()" type="range" id="Slider" min="0" max="100" value="0" step="1" />
-          <label id="lSlider">0</label>%
+        <div id="divSliderPlusButton">
+          <div id="divSlider">
+            <input oninput="getConvertValueFromSlider()" type="range" id="Slider" min="0" max="100" value="0" step="1" />
+            <div>
+              <label id="lSlider">0</label>%
+            </div>
+          </div>
+          <button class="bConvert" id="bConvert" onclick="convertCurrencies(document.getElementById('inputConvertCurrencies').value)">Buy</button>
         </div>
         <br><br><br>
       </div> <!-- left pane end -->
