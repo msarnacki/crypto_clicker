@@ -7,7 +7,8 @@ class Player{
                 mainMultiplier = 1, 
                 ownedAchievements = [], 
                 visibleUpgrades = [], 
-                ownedUpgrades = []){
+                ownedUpgrades = [],
+                ownedEnergy = 0){
         this.money = money;
         this.ownedMiners = ownedMiners;
         this.ownedCrypto = ownedCrypto;
@@ -17,6 +18,7 @@ class Player{
         this.ownedAchievements = ownedAchievements;
         this.visibleUpgrades = visibleUpgrades;
         this.ownedUpgrades = ownedUpgrades;
+        this.ownedEnergy = ownedEnergy;
     }
 }
 

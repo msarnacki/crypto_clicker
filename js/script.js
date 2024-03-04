@@ -49,12 +49,26 @@ function updateCrypto() {
     $("#lCryptoValue0").html((Person.ownedCrypto[0]*lCryptoCurrs[0].usdRate/10**lCryptoCurrs[0].denominationUnit).toFixed(2));
 }
 
+function calcIntervalEnergyUsage(aOwnedMiners) {
+    var usage = 0;
+    for (let index = 0; index < aOwnedMiners.length; index++) {
+        usage = usage + aOwnedMiners[index] * lMiners[index].energy_consumption; //Math.round(aOwnedMiners[index]) * lCryptoCurrs[0].denominationUnit// * lCryptoCurrs[0].denominationUnit;
+    }
+    return usage;
+}
+
+function updateEnergy() {
+    Person.ownedEnergy = Number((Person.ownedEnergy - calcIntervalEnergyUsage(Person.ownedMiners)).toFixed(2));
+    $("#lEnergy").html(Person.ownedEnergy);
+}
+
 function updateAll() {
     priceRandomWalk();
     checkAchievements();
     checkUpgrades();
     updateMoney();
     updateCrypto();
+    updateEnergy();
 }
 
 function buyMiner(miner_level, num) {
@@ -76,13 +90,12 @@ function buyMiner(miner_level, num) {
         $("#lMoney").html(Person.money.toFixed(2));
         //$("#lIncomeMoney").html(calcIntervalIncreaseCrypto(Person.ownedMiners));
         $("#lCryptoIncome0").html(showNumber(calcIntervalIncreaseCrypto(Person.ownedMiners),Person.numView));
-        
+        $("#lEnergyIncome").html(-calcIntervalEnergyUsage(Person.ownedMiners));
     }
 }
 
 $("#clickButton").click(function () {
     Person.money = Number((Person.money + 1).toFixed(2));
-    console.log(Person.money);
     bClick();
 });
 
@@ -126,6 +139,10 @@ function updateAllLabels() {
     $("#lMainMultiplier").html(Person.mainMultiplier);
     
     $("#lOwnedAchievements").html(Person.ownedAchievements.toString());
+
+    $("#lEnergy").html(Person.ownedEnergy.toString());
+    $("#lEnergyIncome").html(-calcIntervalEnergyUsage(Person.ownedMiners));
+    
 
     //achievementsTableUpdate();
     achievementsImagesUpdate();
