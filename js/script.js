@@ -39,7 +39,7 @@ function calcCost(aOwnedMiners, miner_level, num) {
 }
 
 function updateMoney() {
-    Person.money = Person.money; // + calcIntervalIncreaseMoney(Person.ownedMiners)
+    //Person.money = Person.money; // + calcIntervalIncreaseMoney(Person.ownedMiners)
     $("#lMoney").html(Person.money.toFixed(2));
 }
 
@@ -60,7 +60,7 @@ function updateAll() {
 function buyMiner(miner_level, num) {
     if(Person.money >= calcCost(Person.ownedMiners, miner_level, num))
     {
-        Person.money -= calcCost(Person.ownedMiners, miner_level, num);
+        Person.money = Number((Person.money - calcCost(Person.ownedMiners, miner_level, num)).toFixed(2));
         Person.ownedMiners[miner_level]+=num;
         var id_owned = "#lMiner".concat('', miner_level.toString())
         var id_income = "#lMinerIncome".concat('', miner_level.toString())
@@ -81,7 +81,8 @@ function buyMiner(miner_level, num) {
 }
 
 $("#clickButton").click(function () {
-    Person.money+=1;
+    Person.money = Number((Person.money + 1).toFixed(2));
+    console.log(Person.money);
     bClick();
 });
 
@@ -191,7 +192,7 @@ function convertToUSD(toConvert) {
     }
     if(cryptoToConvert <= Person.ownedCrypto[0]){
         Person.ownedCrypto[0] -= Number(cryptoToConvert.toFixed(0));
-        Person.money += Number((cryptoToConvert*lCryptoCurrs[0].usdRate/10**lCryptoCurrs[0].denominationUnit).toFixed(2));
+        Person.money = Number((Person.money + cryptoToConvert*lCryptoCurrs[0].usdRate/10**lCryptoCurrs[0].denominationUnit).toFixed(2));
         
         //after bought update value in input box
         getConvertValueFromSlider();
@@ -201,11 +202,9 @@ function convertToUSD(toConvert) {
 
 function convertToBTC(toConvert) {
     usdToConvert = document.getElementById("inputConvertCurrencies").value; //BTC 
-    console.log("USD to convert: " + usdToConvert);
-    console.log("Money: " + Person.money);
     if(usdToConvert <= Person.money){
         Person.ownedCrypto[0] += Number((usdToConvert/lCryptoCurrs[0].usdRate*10**lCryptoCurrs[0].denominationUnit).toFixed(0));
-        Person.money -= usdToConvert;
+        Person.money = Number((Person.money - usdToConvert).toFixed(2));
         //after bought update value in input box
         getConvertValueFromSlider();
     }
@@ -259,7 +258,7 @@ function work(time, earnings) {
     }, time*1000);
 
     setTimeout(function(){
-        Person.money = Person.money + earnings;
+        Person.money = Number((Person.money + earnings).toFixed(2));
         updateMoney();
         resetProgressBar();
     },time*1000)
