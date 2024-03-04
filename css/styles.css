@@ -165,14 +165,15 @@ input[type=number] {
 table {
   border-collapse: collapse;
   background: rgba(255,255,255,0.15);
-  border: 2px solid rgba(200, 200, 200, 0.329);
+  border: 2px solid rgba(246,70,93,0.75); /*rgba(200, 200, 200, 0.329)*/
   letter-spacing: 1px;
   font-size: 0.8rem;
 }
 
 td, th {
-  border: 1px solid rgba(200, 200, 200, 0.329);
-  padding: 10px 20px;
+  border: 1px solid rgba(246,70,93,0.5);/*rgba(200, 200, 200, 0.329)*/
+  padding: 10px 10px;
+  width: 100px;
 }
 
 /*th {
@@ -202,13 +203,14 @@ caption {
 #workProgressDiv{
   display: flex;
   justify-content: center;
+  padding-top: 10px;
 }
 
 #progress-container {
   height: 0.8rem;
   width: 70%;
-  border: 1px solid #ff4754;
-  background-color: #000;
+  border: 1px solid #F6465D;
+  background-color: rgba(255,255,255,0.25);;
   border-radius: 0.4rem;
 }
 

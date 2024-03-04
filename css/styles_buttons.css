@@ -3,12 +3,13 @@
     height: 50px;
     border: none;
     outline: none;
-    color: #ffffff;
-    background: #111;
+    color: #000000;
+    background: #555555;
     cursor: pointer;
     position: relative;
     z-index: 0;
     border-radius: 10px;
+    border: 1px solid rgba(246,70,93);
 }
 
 .glow-on-hover:disabled {
@@ -16,8 +17,8 @@
   height: 50px;
   border: none;
   outline: none;
-  color: #808080;
-  background: #111;
+  color: #5858585e;
+  background: #555555;
   cursor: pointer;
   position: relative;
   z-index: 0;
@@ -55,7 +56,7 @@
     position: absolute;
     width: 100%;
     height: 100%;
-    background: #000000;
+    background: rgba(255,255,255,0.75);
     left: 0;
     top: 0;
     border-radius: 10px;
@@ -100,7 +101,7 @@
   font-weight:bold;
   color: white;
   /*background: linear-gradient(270deg, rgb(224, 0, 0) 50%, rgb(241, 116, 0) 100%);*/
-  background-color: #878683;
+  background-color: #878683; /*F6465D*/
   border: none;
   border-radius:0px 5px 5px 0px;
   letter-spacing: 0.05em;
