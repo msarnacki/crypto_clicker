@@ -92,7 +92,7 @@ function buyMiner(miner_level, num) {
         $("#lMoney").html(Person.money.toFixed(2));
         //$("#lIncomeMoney").html(calcIntervalIncreaseCrypto(Person.ownedMiners));
         $("#lCryptoIncome0").html(showNumber(calcIntervalIncreaseCrypto(Person.ownedMiners),Person.numView));
-        $("#lEnergyIncome").html(-calcIntervalEnergyUsage(Person.ownedMiners));
+        $("#lEnergyIncome").html(Number((-calcIntervalEnergyUsage(Person.ownedMiners)).toFixed(2)));
     }
 }
 
@@ -143,7 +143,7 @@ function updateAllLabels() {
     $("#lOwnedAchievements").html(Person.ownedAchievements.toString());
 
     $("#lEnergy").html(Person.ownedEnergy.toString());
-    $("#lEnergyIncome").html(-calcIntervalEnergyUsage(Person.ownedMiners));
+    $("#lEnergyIncome").html(Number((-calcIntervalEnergyUsage(Person.ownedMiners)).toFixed(2)));
     
     $("#lEnergyPrice").html(EnergyPrice);
     $("#lEnergyValue").html(Number((EnergyPrice*Person.ownedEnergy).toFixed(2)));

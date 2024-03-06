@@ -16,6 +16,16 @@ button {
 
 #divCryptoExchenge{
   width: 60%;
+  background-color: #ff4c4c96;
+}
+
+#divCryptoAndEnergy{
+  display: flex;
+}
+
+#divEnergyExchenge{
+  width: 40%;
+  background-color: #4cff6a96;
 }
 
 #clickToEarn{
@@ -180,9 +190,9 @@ td, th {
   width: 100px;
 }
 
-/*th {
-  background-color: rgb(235,235,235);
-}*/
+th {
+  background: rgba(255,255,255,0.05);
+}
 
 td {
   text-align: center;
