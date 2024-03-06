@@ -9,6 +9,7 @@
     <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="css/styles.css" />
     <link rel="stylesheet" type="text/css" href="css/styles_buttons.css" />
+    <link rel="stylesheet" type="text/css" href="css/styles_slider.css" />
   </head>
   <body>
     <div id="wholePage"> <!-- whole page start -->
@@ -65,7 +66,7 @@
               <td>USD Value:</td>
               <td></td>
               <td><label id="lCryptoValue0">0</label></td>
-              <td><label id="lEnergyValue">0</label></td>
+              <td><label id="lEnergyValue">0</label>$</td>
             </tr>
           </table>  
         </div>
@@ -73,26 +74,30 @@
         <br><br>
         <h3>Crypto exchenge</h3>
 
-        <div id="buySellButtons">
-          <button id="bBuy" onclick="switchToBuy()">Buy BTC</button>
-          <button id="bSell" onclick="switchToSell()">Sell BTC</button>
-        </div>
-        
-        <div class="input-icon">
-          <input type="number" min="0" placeholder="0.00" class="iConvert" id="inputConvertCurrencies"/>
-          <i id="icoBtcDollar" aria-hidden="true">$</i> <!--class="fa fa-btc"-->
-          
-          <label>You will get: </label><label id="youWillGet">0.00000000</label><label id="youWillGetCurrency" class="fa fa-btc"></label>
-        </div>
-        
-        <div id="divSliderPlusButton">
-          <div id="divSlider">
-            <input oninput="getConvertValueFromSlider()" type="range" id="Slider" min="0" max="100" value="0" step="1" />
-            <div>
-              <label id="lSlider">0</label>%
-            </div>
+        <div id="divCryptoExchenge">
+          <div id="buySellButtons">
+            <button id="bBuy" onclick="switchToBuy()">Buy BTC</button>
+            <button id="bSell" onclick="switchToSell()">Sell BTC</button>
           </div>
-          <button class="bConvert" id="bConvert" onclick="convertCurrencies(document.getElementById('inputConvertCurrencies').value)">Buy</button>
+          
+          <div class="input-icon">
+            <input type="number" min="0" placeholder="0.00" class="iConvert" id="inputConvertCurrencies"/>
+            <i id="icoBtcDollar" aria-hidden="true">$</i> <!--class="fa fa-btc"-->
+          </div>  
+          
+          <div id="divYouWillGet">
+            <label>You will get: </label><label id="youWillGet">0.00000000</label><label id="youWillGetCurrency" class="fa fa-btc"></label>
+          </div>
+          
+          <div id="divSliderPlusButton">
+            <div id="divSlider">
+              <input oninput="getConvertValueFromSlider()" type="range" id="Slider" min="0" max="100" value="0" step="1" />
+              <div>
+                <label id="lSlider">0</label>%
+              </div>
+            </div>
+            <button class="bConvert" id="bConvert" onclick="convertCurrencies(document.getElementById('inputConvertCurrencies').value)">Buy</button>
+          </div>
         </div>
         <br><br><br>
       </div> <!-- left pane end -->

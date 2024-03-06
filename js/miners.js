@@ -16,4 +16,4 @@ var lMiners = [
     new Miner(level = 3, name="Cheap mining rig", cost = 100000, factor = 1.08, base_income = 1000, energy_consumption = 0.3)
 ];
 
-
+var EnergyPrice = 0.16

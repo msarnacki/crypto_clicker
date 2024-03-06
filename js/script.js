@@ -60,6 +60,8 @@ function calcIntervalEnergyUsage(aOwnedMiners) {
 function updateEnergy() {
     Person.ownedEnergy = Number((Person.ownedEnergy - calcIntervalEnergyUsage(Person.ownedMiners)).toFixed(2));
     $("#lEnergy").html(Person.ownedEnergy);
+    $("#lEnergyPrice").html(EnergyPrice);
+    $("#lEnergyValue").html(Number((EnergyPrice*Person.ownedEnergy).toFixed(2)));
 }
 
 function updateAll() {
@@ -142,6 +144,9 @@ function updateAllLabels() {
 
     $("#lEnergy").html(Person.ownedEnergy.toString());
     $("#lEnergyIncome").html(-calcIntervalEnergyUsage(Person.ownedMiners));
+    
+    $("#lEnergyPrice").html(EnergyPrice);
+    $("#lEnergyValue").html(Number((EnergyPrice*Person.ownedEnergy).toFixed(2)));
     
 
     //achievementsTableUpdate();
