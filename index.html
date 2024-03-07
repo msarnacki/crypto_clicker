@@ -99,10 +99,35 @@
               </div>
               <button class="bConvert" id="bConvert" onclick="convertCurrencies(document.getElementById('inputConvertCurrencies').value)">Buy</button>
             </div>
+            Auto recalculate %
+            <label class="switch">
+              <input type="checkbox" id="checkBoxLockCrypto">
+              <span class="slider round"></span>
+            </label>
           </div>
           <div id="divEnergyExchenge">
             <h3>Energy exchenge</h3>
 
+            <div class="input-icon">
+              <input type="number" min="0" placeholder="0.00" class="iConvert" id="inputPayBills"/>
+              <i id="icoBtcDollar" aria-hidden="true">$</i> <!--class="fa fa-btc"-->
+            </div>  
+
+            
+            <div id="divSliderPlusButton">
+              <div id="divSlider">
+                <input oninput="getPayAmountFromSlider()" type="range" id="SliderEnergy" min="0" max="100" value="0" step="1" />
+                <div>
+                  <label id="lSliderEnergy">0</label>%
+                </div>
+              </div>
+              <button class="bPayBills" id="bPayBills" onclick="payBills(document.getElementById('inputPayBills').value)">Pay bills</button>
+            </div>
+            Auto recalculate %
+            <label class="switch">
+              <input type="checkbox" id="checkBoxLockEnergy">
+              <span class="slider round"></span>
+            </label>
           </div>
         </div>
         <br><br><br>

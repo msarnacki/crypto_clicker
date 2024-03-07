@@ -1,5 +1,6 @@
 function bClick() {
     $("#lMoney").html(Person.money.toFixed(2));
+    updateConvertAmount();
 }
 
 function showNumber(num, style = "BTC") {
@@ -61,7 +62,7 @@ function updateEnergy() {
     Person.ownedEnergy = Number((Person.ownedEnergy - calcIntervalEnergyUsage(Person.ownedMiners)).toFixed(2));
     $("#lEnergy").html(Person.ownedEnergy);
     $("#lEnergyPrice").html(EnergyPrice);
-    $("#lEnergyValue").html(Number((EnergyPrice*Person.ownedEnergy).toFixed(2)));
+    $("#lEnergyValue").html((EnergyPrice*Person.ownedEnergy).toFixed(2));
 }
 
 function updateAll() {
@@ -71,6 +72,8 @@ function updateAll() {
     updateMoney();
     updateCrypto();
     updateEnergy();
+    updateConvertAmount();
+    updatePayBillsAmount();
 }
 
 function buyMiner(miner_level, num) {
@@ -146,7 +149,7 @@ function updateAllLabels() {
     $("#lEnergyIncome").html(Number((-calcIntervalEnergyUsage(Person.ownedMiners)).toFixed(2)));
     
     $("#lEnergyPrice").html(EnergyPrice);
-    $("#lEnergyValue").html(Number((EnergyPrice*Person.ownedEnergy).toFixed(2)));
+    $("#lEnergyValue").html((EnergyPrice*Person.ownedEnergy).toFixed(2));
     
 
     //achievementsTableUpdate();

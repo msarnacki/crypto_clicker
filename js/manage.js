@@ -53,6 +53,7 @@ function wipe() {
     updateAll();
     updateAllLabels();
 	resetCryptoExchengeState();
+	resetEnergyExchengeState();
 }
 
 //TODO in future 

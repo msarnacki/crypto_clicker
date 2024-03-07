@@ -54,6 +54,42 @@ function resetCryptoExchengeState() {
 	switchToBuy();
 }
 
+function getPayAmountFromSlider() {
+    document.getElementById("lSliderEnergy").innerHTML = document.getElementById("SliderEnergy").value;
+    document.getElementById("inputPayBills").value = (Number(document.getElementById("lEnergyValue").innerHTML) * document.getElementById("SliderEnergy").value/100).toFixed(2);
+}
+
+function resetEnergyExchengeState() {
+    document.getElementById("inputPayBills").value = 0;
+	document.getElementById("SliderEnergy").value = 0;
+	document.getElementById("lSliderEnergy").innerHTML = 0;
+}
+
+function updateConvertAmount() {
+    document.getElementById("lSlider").innerHTML = document.getElementById("Slider").value;
+    var checked = document.getElementById("checkBoxLockCrypto").checked;
+    if(checked){
+        if (bBuyBTC) {
+            document.getElementById("inputConvertCurrencies").value = (Person.money * document.getElementById("Slider").value/100).toFixed(2);
+            var usdToConvert = document.getElementById("inputConvertCurrencies").value;
+            document.getElementById("youWillGet").innerHTML =  (usdToConvert/lCryptoCurrs[0].usdRate).toFixed(lCryptoCurrs[0].denominationUnit);
+        }
+        else{
+            document.getElementById("inputConvertCurrencies").value = (document.getElementById("Slider").value/100 * Person.ownedCrypto[0]/ 10**lCryptoCurrs[0].denominationUnit).toFixed(lCryptoCurrs[0].denominationUnit);
+            var cryptoToConvert = document.getElementById("inputConvertCurrencies").value;
+        document.getElementById("youWillGet").innerHTML =  (cryptoToConvert*lCryptoCurrs[0].usdRate).toFixed(2);
+        }    
+    }
+}
+
+function updatePayBillsAmount() {
+    document.getElementById("lSliderEnergy").innerHTML = document.getElementById("SliderEnergy").value;
+    var checked = document.getElementById("checkBoxLockEnergy").checked;
+    if(checked){
+        document.getElementById("inputPayBills").value = (Number(document.getElementById("lEnergyValue").innerHTML) * document.getElementById("SliderEnergy").value/100).toFixed(2);
+    }
+}
+
 function random(min, max) {
     return Math.random() * (max - min) + min;
 }
