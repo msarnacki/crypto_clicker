@@ -54,9 +54,21 @@ function resetCryptoExchengeState() {
 	switchToBuy();
 }
 
+function checkMaxMoney(valueToPay) {
+    //value to Pay is negative number
+    if(-valueToPay>Person.money){
+        document.getElementById("maxMoneyLabels").style.opacity = 1;
+        document.getElementById("maxMoneyToPayBill").innerHTML = Person.money.toFixed(2);
+    }
+    else{
+        document.getElementById("maxMoneyLabels").style.opacity = 0;
+    }
+}
+
 function getPayAmountFromSlider() {
     document.getElementById("lSliderEnergy").innerHTML = document.getElementById("SliderEnergy").value;
     document.getElementById("inputPayBills").value = (Number(document.getElementById("lEnergyValue").innerHTML) * document.getElementById("SliderEnergy").value/100).toFixed(2);
+    checkMaxMoney(document.getElementById("lEnergyValue").innerHTML * document.getElementById("SliderEnergy").value/100);
 }
 
 function resetEnergyExchengeState() {

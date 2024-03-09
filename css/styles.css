@@ -220,8 +220,25 @@ caption {
   transition: width 0.4s ease;
 }
 /* progress bar*/
-#Arrow{
+#Arrow {
   padding-top: 3px;
+}
+
+.lOverMaxMoney {
+  padding-top: 4px;
+  padding-left: 10%;
+  color: #F6465D;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+#maxMoneyLabels {
+  padding-top: 10px;
+  opacity: 0;
+}
+
+.iPayBills {
+  width: auto;
 }
 
 #divYouWillGet{
@@ -239,7 +256,7 @@ caption {
 .input-icon {
   position: relative;
   display: flex;
-  width: 100%;
+  width: auto;
   margin-left: 10%;
 }
 

@@ -1,7 +1,9 @@
 #Slider{
   width: 100%;
 }
-
+#SliderEnergy{
+  width: 100%;
+}
 input[type=range] {
   margin: 10px 0;
   background-color: transparent;

@@ -1,6 +1,7 @@
 function bClick() {
     $("#lMoney").html(Person.money.toFixed(2));
     updateConvertAmount();
+    checkMaxMoney(document.getElementById("lEnergyValue").innerHTML * document.getElementById("SliderEnergy").value/100);
 }
 
 function showNumber(num, style = "BTC") {
@@ -74,6 +75,7 @@ function updateAll() {
     updateEnergy();
     updateConvertAmount();
     updatePayBillsAmount();
+    checkMaxMoney(document.getElementById("lEnergyValue").innerHTML * document.getElementById("SliderEnergy").value/100);
 }
 
 function buyMiner(miner_level, num) {
@@ -233,6 +235,22 @@ function convertToBTC(toConvert) {
         //after bought update value in input box
         getConvertValueFromSlider();
     }
+    updateAllLabels();
+}
+
+function payBills() {
+    var valueToPay = document.getElementById("inputPayBills").value;
+    //value to pay is negative value
+    if (-valueToPay>Person.money) {
+        Person.ownedEnergy = Number((Person.ownedEnergy - Person.money/EnergyPrice).toFixed(2));
+        Person.money = 0;
+    }
+    else{
+        Person.ownedEnergy = Number((Person.ownedEnergy - valueToPay/EnergyPrice).toFixed(2));
+        Person.money = Number((Person.money + valueToPay/EnergyPric).toFixed(2));
+    }
+    document.getElementById("inputPayBills").value = (Number(document.getElementById("lEnergyValue").innerHTML) * document.getElementById("SliderEnergy").value/100).toFixed(2);
+    getPayAmountFromSlider();
     updateAllLabels();
 }
 
