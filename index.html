@@ -75,7 +75,7 @@
         
         <div id="divCryptoAndEnergy">
           <div id="divCryptoExchenge">
-            <h3>Crypto exchenge</h3>
+            <h3 class="hExchengeAndEnergy">Crypto exchenge</h3>
             <div id="buySellButtons">
               <button id="bBuy" onclick="switchToBuy()">Buy BTC</button>
               <button id="bSell" onclick="switchToSell()">Sell BTC</button>
@@ -84,29 +84,36 @@
             <div class="input-icon">
               <input type="number" min="0" placeholder="0.00" class="iConvert" id="inputConvertCurrencies"/>
               <i id="icoBtcDollar" aria-hidden="true">$</i> <!--class="fa fa-btc"-->
-            </div>  
-            
-            <div id="divYouWillGet">
-              <label>You will get: </label><label id="youWillGet">0.00000000</label><label id="youWillGetCurrency" class="fa fa-btc"></label>
+              
+              <div id="Arrow">&nbsp;&#187;&nbsp;</div> 
+              <div id="divYouWillGet" >
+                <label id="youWillGet">0.00000000</label><label id="youWillGetCurrency" class="fa fa-btc"></label>
+              </div>
             </div>
             
             <div id="divSliderPlusButton">
-              <div id="divSlider">
-                <input oninput="getConvertValueFromSlider()" type="range" id="Slider" min="0" max="100" value="0" step="1" />
-                <div>
-                  <label id="lSlider">0</label>%
+              <div id="divSliderPlusRecalc">
+                <div id="divSlider">
+                  <input oninput="getConvertValueFromSlider()" type="range" id="Slider" min="0" max="100" value="0" step="1" />
+                  <div id="lSliderPercent"><label id="lSlider">0</label>%</div>
+                  
+                </div>
+                <div id="CryptoRecalcPercent">
+                  <label id="lAutoRecalc">Auto recalculate</label> 
+                  <label class="switch">
+                    
+                    <input type="checkbox" id="checkBoxLockCrypto">
+                    <span class="slider round"></span>
+                  </label>
+                  
                 </div>
               </div>
+              
               <button class="bConvert" id="bConvert" onclick="convertCurrencies(document.getElementById('inputConvertCurrencies').value)">Buy</button>
             </div>
-            Auto recalculate %
-            <label class="switch">
-              <input type="checkbox" id="checkBoxLockCrypto">
-              <span class="slider round"></span>
-            </label>
           </div>
           <div id="divEnergyExchenge">
-            <h3>Energy exchenge</h3>
+            <h3 class="hExchengeAndEnergy">Energy exchenge</h3>
 
             <div class="input-icon">
               <input type="number" min="0" placeholder="0.00" class="iConvert" id="inputPayBills"/>

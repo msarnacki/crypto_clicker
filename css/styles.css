@@ -14,19 +14,6 @@ button {
   opacity: 100%;
 }
 
-#divCryptoExchenge{
-  width: 60%;
-  background-color: #ff4c4c96;
-}
-
-#divCryptoAndEnergy{
-  display: flex;
-}
-
-#divEnergyExchenge{
-  width: 40%;
-  background-color: #4cff6a96;
-}
 
 #clickToEarn{
   display: flex;
@@ -168,12 +155,7 @@ input[type=number] {
   -moz-appearance:textfield; /* Firefox */
 }
 
-.bConvert {
-  width: 20%;
-  height: 30px;
-  font-size: 10px;
-  padding: 0px;
-}
+
 
 /* Table section */
 table {
@@ -238,23 +220,36 @@ caption {
   transition: width 0.4s ease;
 }
 /* progress bar*/
+#Arrow{
+  padding-top: 3px;
+}
 
 #divYouWillGet{
-  padding-top: 10px;
+  padding-top: 4px;
 }
 
 #divYouWillGet > *{
-  font-size: 12px;
+  font-size: 16px;
 }
 
 .input-icon > * {
   font-size: 16px;
 }
+
 .input-icon {
   position: relative;
+  display: flex;
+  width: 100%;
+  margin-left: 10%;
 }
 
-.input-icon > i {
+.input-icon > input {
+  padding-left: 25px;
+	padding-right: 0;
+}
+
+#icoBtcDollar{
+  color: #000;
   position: absolute;
   display: block;
   transform: translate(0, -50%);
@@ -265,25 +260,43 @@ caption {
 	font-style: normal;
 }
 
-.input-icon > input {
-  padding-left: 25px;
-	padding-right: 0;
-}
-
-#icoBtcDollar{
-  color: #000;
-}
-
 #divSlider{
   display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  padding-top: 10px;
+  flex-direction: row;
+  align-items: flex-start;
+  padding-top: 5px;
 }
 
 #divSliderPlusButton{
   display: flex;
-  padding-top: 10px;
+  align-items: center;
+  justify-content: space-between;
+  padding-right: 10%;
+}
+
+#divSliderPlusRecalc{
+  display: flex;
+  flex-direction: column;
+  padding: 5px 0 0 10%;
+  width: 50%;
+}
+
+#lSliderPercent{ 
+  padding-left: 10px;
+  padding-top: 9px;
+}
+
+#lAutoRecalc{
+  padding-top: 5px;
+  padding-right: 5px;
+  font-size: 12px;
+}
+
+#CryptoRecalcPercent{
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content:flex-start;
 }
 
 .switch {

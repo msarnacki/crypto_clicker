@@ -190,7 +190,7 @@ function switchToSell() {
     }
     getConvertValueFromSlider();
     var cryptoToConvert = document.getElementById("inputConvertCurrencies").value;
-    document.getElementById("youWillGet").innerHTML =  Number((cryptoToConvert*lCryptoCurrs[0].usdRate).toFixed(2));
+    document.getElementById("youWillGet").innerHTML =  (cryptoToConvert*lCryptoCurrs[0].usdRate).toFixed(2);
 }
 
 //Exchenge

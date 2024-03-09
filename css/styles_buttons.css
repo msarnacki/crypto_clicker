@@ -69,16 +69,44 @@
 }
 
 
+#divCryptoAndEnergy{
+  display: flex;
+
+}
+
+#divCryptoExchenge{
+  width: 60%;
+  background: rgba(255,255,255,0.15);
+  border: 2px solid rgba(246,70,93,0.75);
+  
+}
+
+#divEnergyExchenge{
+  width: 40%;
+  background-color: #4cff6a96;
+  background: rgba(255,255,255,0.15);
+  border: 2px solid rgba(246,70,93,0.75);
+}
+
+.hExchengeAndEnergy{
+  width: 100%;
+  text-align: center;
+  margin: 0px;
+  margin-top: 5px;
+}
+
 #buySellButtons{
   display: flex;
-  width: 70%;
+  width: 100%;
+  margin-top: 10px;
   margin-bottom: 20px;
+  justify-content: center;
 }
 
 #bBuy {
   font-family: inherit;
   font-size: 16px;
-  width: 300px;
+  width: 40%;
   text-align: left;
   padding: 0.7em 1.4em 0.7em 1.1em;
   font-weight:bold;
@@ -95,7 +123,7 @@
 #bSell {
   font-family: inherit;
   font-size: 16px;
-  width: 300px;
+  width: 40%;
   text-align: right;
   padding: 0.7em 1.4em 0.7em 1.1em;
   font-weight:bold;
@@ -112,7 +140,7 @@
 #bConvert{
   font-family: inherit;
   font-size: 16px;
-  width: 120px;
+  width: 30%;
   height: 40px;
   text-align: center;
   padding: 0.7em 1.4em 0.7em 1.1em;
