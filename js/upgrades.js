@@ -9,8 +9,12 @@ class Upgrade{
 
 var lUpgrades = [
     new Upgrade(number = 1, name = "First multiplier", description = "Earn 2x", cost = 2),
-    new Upgrade(number = 2, name = "Second multiplier", description = "Earn 3x", cost = 51),
-    new Upgrade(number = 3, name = "Third multiplier", description = "Earn 4x", cost = 61)
+    new Upgrade(number = 2, name = "Second multiplier", description = "Earn 3x", cost = 5),
+    new Upgrade(number = 3, name = "Third multiplier", description = "Earn 4x", cost = 10),
+    new Upgrade(number = 4, name = "4 test", description = "Earn 4x", cost = 20),
+    new Upgrade(number = 5, name = "5 test", description = "Earn 4x", cost = 30),
+    new Upgrade(number = 6, name = "6 test", description = "Earn 4x", cost = 40),
+    new Upgrade(number = 7, name = "7 test", description = "Earn 4x", cost = 50)
 ];
 
 //runs every tick
@@ -69,6 +73,18 @@ function UpgradeAction(upgradeNumber) {
         case 3:        
             Person.mainMultiplier = Person.mainMultiplier * 2;
             break;
+        case 4:
+            Person.mainMultiplier = Person.mainMultiplier * 2;
+            break;
+        case 5:
+            Person.mainMultiplier = Person.mainMultiplier * 2;
+            break;
+        case 6:        
+            Person.mainMultiplier = Person.mainMultiplier * 2;
+            break;
+        case 7:        
+            Person.mainMultiplier = Person.mainMultiplier * 2;
+            break;
         default:
             break;
     }
@@ -82,6 +98,14 @@ function IsVisible(upgradeNumber) {
             return  Person.money >= 10 ? true : false
         case 3:
             return  Person.money >= 15 ? true : false
+        case 4:
+            return  Person.money >= 25 ? true : false
+        case 5:
+            return  Person.money >= 35 ? true : false
+        case 6:
+            return  Person.money >= 45 ? true : false
+        case 7:
+            return  Person.money >= 55 ? true : false   
         default:
             return false;
     }

@@ -8,8 +8,6 @@
     <link rel="shortcut icon" href="#"> <!--for some favicon.ico error-->
     <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="css/styles.css" />
-    <link rel="stylesheet" type="text/css" href="css/styles_buttons.css" />
-    <link rel="stylesheet" type="text/css" href="css/styles_slider.css" />
   </head>
   <body>
     <div id="wholePage"> <!-- whole page start -->
@@ -151,7 +149,22 @@
       </div> <!-- left pane end -->
       
       <div id="midPane"> <!-- mid pane start -->
-        <a href="/charts.html">See Charts</a>
+        <div id="dMinersAndUpgradesBox">
+          <div id="dMiners">
+
+          </div>
+          <div id="dUpgradesAndMinerStats">
+            <div id="dUpgrades">
+              <div id="dUpgradesText">Upgrade your gear</div>
+              <div id="divUpgradesBoxTable">
+              </div>
+              <div id="UpgradeBox" style="background-color:wheat;height:100px;width:200px;text-align:center;"></div>
+            </div>
+            
+          </div>
+
+
+        </div>
         
         <br><br>
 
@@ -194,12 +207,9 @@
       </div> <!-- mid pane end -->
 
       <div id="rightPane"> <!-- right pane start -->
-
+        <a href="/charts.html">See Charts</a>
         <div>Upgrades visible: <label id="lVisibleUpgrades"></label></div>
         <div>Upgrades owned: <label id="lOwnedUpgrades"></label></div>
-      
-        <div id="divUpgradesBoxTable"></div>
-        <div id="UpgradeBox" style="background-color:wheat;height:100px;width:200px;text-align:center;"></div>
 
         <br>
 
