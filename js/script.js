@@ -46,9 +46,17 @@ function updateMoney() {
 }
 
 function updateCrypto() {
-    Person.ownedCrypto[0] = Person.ownedCrypto[0] + calcIntervalIncreaseCrypto(Person.ownedMiners);
-    $("#lCrypto0").html(showNumber(Person.ownedCrypto[0],Person.numView));
-    $("#lCryptoValue0").html((Person.ownedCrypto[0]*lCryptoCurrs[0].usdRate/10**lCryptoCurrs[0].denominationUnit).toFixed(2));
+    if(!(-Person.ownedEnergy > Person.maxUnpaidEnergy)){
+        Person.ownedCrypto[0] = Person.ownedCrypto[0] + calcIntervalIncreaseCrypto(Person.ownedMiners);
+        document.getElementById("lCrypto0").style.color = "#ffffff";
+        document.getElementById("lCryptoIncome0").style.color = "#ffffff";
+        $("#lCrypto0").html(showNumber(Person.ownedCrypto[0],Person.numView));
+        $("#lCryptoValue0").html((Person.ownedCrypto[0]*lCryptoCurrs[0].usdRate/10**lCryptoCurrs[0].denominationUnit).toFixed(2));
+    }
+    else{
+        document.getElementById("lCrypto0").style.color = "#F6465D";
+        document.getElementById("lCryptoIncome0").style.color = "#F6465D";
+    }
 }
 
 function calcIntervalEnergyUsage(aOwnedMiners) {
@@ -60,10 +68,28 @@ function calcIntervalEnergyUsage(aOwnedMiners) {
 }
 
 function updateEnergy() {
-    Person.ownedEnergy = Number((Person.ownedEnergy - calcIntervalEnergyUsage(Person.ownedMiners)).toFixed(2));
-    $("#lEnergy").html(Person.ownedEnergy);
-    $("#lEnergyPrice").html(EnergyPrice);
-    $("#lEnergyValue").html((EnergyPrice*Person.ownedEnergy).toFixed(2));
+    if(!(-Person.ownedEnergy > Person.maxUnpaidEnergy)){
+        Person.ownedEnergy = Number((Person.ownedEnergy - calcIntervalEnergyUsage(Person.ownedMiners)).toFixed(2));
+        document.getElementById("lEnergy").style.color = "#ffffff";
+        document.getElementById("lEnergyIncome").style.color = "#ffffff";
+        var Watts = document.getElementsByClassName("WattsInTable");
+        for (var i = 0; i < Watts.length; ++i) {
+            var item = Watts[i];  
+            item.style.color = "#ffffff";
+        }
+        $("#lEnergy").html(Person.ownedEnergy);
+        $("#lEnergyPrice").html(EnergyPrice);
+        $("#lEnergyValue").html((EnergyPrice*Person.ownedEnergy).toFixed(2));
+    }
+    else{
+        document.getElementById("lEnergy").style.color = "#F6465D";
+        document.getElementById("lEnergyIncome").style.color = "#F6465D";
+        var Watts = document.getElementsByClassName("WattsInTable");
+        for (var i = 0; i < Watts.length; ++i) {
+            var item = Watts[i];  
+            item.style.color = "#F6465D";
+        }
+    }
 }
 
 function updateAll() {
@@ -242,12 +268,12 @@ function payBills() {
     var valueToPay = document.getElementById("inputPayBills").value;
     //value to pay is negative value
     if (-valueToPay>Person.money) {
-        Person.ownedEnergy = Number((Person.ownedEnergy - Person.money/EnergyPrice).toFixed(2));
+        Person.ownedEnergy = Number((Person.ownedEnergy + Person.money/EnergyPrice).toFixed(2));
         Person.money = 0;
     }
     else{
         Person.ownedEnergy = Number((Person.ownedEnergy - valueToPay/EnergyPrice).toFixed(2));
-        Person.money = Number((Person.money + valueToPay/EnergyPric).toFixed(2));
+        Person.money = Number((Person.money + Number(valueToPay)).toFixed(2));
     }
     document.getElementById("inputPayBills").value = (Number(document.getElementById("lEnergyValue").innerHTML) * document.getElementById("SliderEnergy").value/100).toFixed(2);
     getPayAmountFromSlider();

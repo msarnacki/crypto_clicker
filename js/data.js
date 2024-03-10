@@ -8,7 +8,8 @@ class Player{
                 ownedAchievements = [], 
                 visibleUpgrades = [], 
                 ownedUpgrades = [],
-                ownedEnergy = 0){
+                ownedEnergy = 0,
+                maxUnpaidEnergy = 1){
         this.money = money;
         this.ownedMiners = ownedMiners;
         this.ownedCrypto = ownedCrypto;
@@ -19,6 +20,7 @@ class Player{
         this.visibleUpgrades = visibleUpgrades;
         this.ownedUpgrades = ownedUpgrades;
         this.ownedEnergy = ownedEnergy;
+        this.maxUnpaidEnergy = maxUnpaidEnergy;
     }
 }
 
