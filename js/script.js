@@ -90,6 +90,8 @@ function updateEnergy() {
             item.style.color = "#F6465D";
         }
     }
+
+    document.getElementById("maxUnpaidBills").innerHTML = Person.maxUnpaidEnergy;
 }
 
 function updateAll() {
@@ -102,6 +104,7 @@ function updateAll() {
     updateConvertAmount();
     updatePayBillsAmount();
     checkMaxMoney(document.getElementById("lEnergyValue").innerHTML * document.getElementById("SliderEnergy").value/100);
+
 }
 
 function buyMiner(miner_level, num) {

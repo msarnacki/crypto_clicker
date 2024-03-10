@@ -315,6 +315,11 @@ caption {
   justify-content:flex-start;
 }
 
+#dMaxUnpaidBills{
+  padding-left: 10%;
+  padding-top: 10px;
+}
+
 .switch {
   position: relative;
   display: inline-block;
