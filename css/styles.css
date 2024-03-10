@@ -91,6 +91,7 @@ button {
   border: 5px dotted #ff6550;
   margin: 10px;
   width: 45%;
+  overflow-y: scroll;
 }
 
 #rightPane {
@@ -643,9 +644,11 @@ input[type=range]::-ms-thumb {
 }
 
 #dMiners{
-  width: 40%;
+  width: 43%;
   height: 100%;
   background-color: rgba(72, 255, 0, 0.5);
+  margin-top: 2%;
+  margin-left: 2%;
 }
 
 .bBuyUpgrade{
@@ -653,7 +656,7 @@ input[type=range]::-ms-thumb {
 }
 
 #dUpgradesAndMinerStats{
-  width: 60%;
+  width: 55%;
   height: 100%;
 }
 
