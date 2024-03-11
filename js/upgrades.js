@@ -24,9 +24,11 @@ function checkUpgrades() {
     lUpgrades.forEach(Upgrade => {
         var updateUpgradeBox = "bUpgradesBox".concat('', Upgrade.number.toString());
         var updateUpgradeBoxBackground = "bUpgradesBoxBackground".concat('', Upgrade.number.toString());
+        var updateGridButtons = "dGridButtons".concat('', Upgrade.number.toString());
         document.getElementById(updateUpgradeBox).disabled = true;
         document.getElementById(updateUpgradeBox).style.display = "none";
         document.getElementById(updateUpgradeBoxBackground).style.display = "none";
+        document.getElementById(updateGridButtons).style.display = "none";
 
         //if not owned
         if (!(Person.ownedUpgrades.includes(Upgrade.number))){
@@ -45,6 +47,7 @@ function checkUpgrades() {
                 //display
                 document.getElementById(updateUpgradeBox).style.display = "block";
                 document.getElementById(updateUpgradeBoxBackground).style.display = "block";
+                document.getElementById(updateGridButtons).style.display = "grid";
 
                 // if buyable
                 if (Person.money >= lUpgrades[Upgrade.number-1].cost){
