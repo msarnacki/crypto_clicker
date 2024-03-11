@@ -10,11 +10,11 @@ class Upgrade{
 var lUpgrades = [
     new Upgrade(number = 1, name = "First multiplier", description = "Earn 2x", cost = 2),
     new Upgrade(number = 2, name = "Second multiplier", description = "Earn 3x", cost = 5),
-    new Upgrade(number = 3, name = "Third multiplier", description = "Earn 4x", cost = 10),
-    new Upgrade(number = 4, name = "4 test", description = "Earn 4x", cost = 20),
-    new Upgrade(number = 5, name = "5 test", description = "Earn 4x", cost = 30),
-    new Upgrade(number = 6, name = "6 test", description = "Earn 4x", cost = 40),
-    new Upgrade(number = 7, name = "7 test", description = "Earn 4x", cost = 50)
+    new Upgrade(number = 3, name = "Third multiplier", description = "Earn 4x", cost = 16),
+    new Upgrade(number = 4, name = "4 test", description = "Earn 4x", cost = 26),
+    new Upgrade(number = 5, name = "5 test", description = "Earn 4x", cost = 36),
+    new Upgrade(number = 6, name = "6 test", description = "Earn 4x", cost = 46),
+    new Upgrade(number = 7, name = "7 test", description = "Earn 4x", cost = 56)
 ];
 
 //runs every tick
@@ -23,8 +23,10 @@ function checkUpgrades() {
     //UpgradesNumbers = Array.from({length: lUpgrades.length}, (_, i) => i + 1)
     lUpgrades.forEach(Upgrade => {
         var updateUpgradeBox = "bUpgradesBox".concat('', Upgrade.number.toString());
+        var updateUpgradeBoxBackground = "bUpgradesBoxBackground".concat('', Upgrade.number.toString());
         document.getElementById(updateUpgradeBox).disabled = true;
         document.getElementById(updateUpgradeBox).style.display = "none";
+        document.getElementById(updateUpgradeBoxBackground).style.display = "none";
 
         //if not owned
         if (!(Person.ownedUpgrades.includes(Upgrade.number))){
@@ -42,15 +44,18 @@ function checkUpgrades() {
             if (Person.visibleUpgrades.includes(Upgrade.number) && !(Person.ownedUpgrades.includes(Upgrade.number))){
                 //display
                 document.getElementById(updateUpgradeBox).style.display = "block";
+                document.getElementById(updateUpgradeBoxBackground).style.display = "block";
 
                 // if buyable
                 if (Person.money >= lUpgrades[Upgrade.number-1].cost){
                     document.getElementById(updateUpgradeBox).disabled = false;
-                    document.getElementById(updateUpgradeBox).style.filter = "grayscale(0)"; 
+                    document.getElementById(updateUpgradeBox).style.filter = "grayscale(0)";
+                    document.getElementById(updateUpgradeBoxBackground).style.filter = "grayscale(0)"; 
                 }
                 else{
                     document.getElementById(updateUpgradeBox).disabled = true;
                     document.getElementById(updateUpgradeBox).style.filter = "grayscale(100)";
+                    document.getElementById(updateUpgradeBoxBackground).style.filter = "grayscale(100)";
                 }
             } 
         }
@@ -151,17 +156,33 @@ function generateUpgradesBoxTable() {
     const container = document.getElementById("divUpgradesBoxTable");
 
     lUpgrades.forEach(Upgrade => {
-        const div = document.createElement('button');
-        div.setAttribute("class", "bUpgradesBox");
-        div.setAttribute("id", "bUpgradesBox".concat(Upgrade.number));
-        div.setAttribute("onpointerenter", `showUpgradesBox(${Upgrade.number})`);
-        div.setAttribute("onpointerleave", `hideUpgradesBox()`);
-        div.setAttribute("onClick", `buyUpgrade(${Upgrade.number})`);
-        //div.innerHTML = `${Upgrade.number}`;
-        div.style.backgroundImage = `url('../img/Upgrade${Upgrade.number}.jpg')`;
-        div.style.backgroundSize = "contain";
-        div.disabled = true;
-        container.appendChild(div);
+        //1. create div_grid
+        //2. create background button
+        //3. create main button
+
+        //1.
+        const buttons_grid = document.createElement("div");
+        buttons_grid.setAttribute("class", "dGridButtons");
+        buttons_grid.setAttribute("id", "dGridButtons".concat(Upgrade.number));
+        container.appendChild(buttons_grid);
+        //2.
+        const button_background = document.createElement('button');
+        button_background.setAttribute("class", "bUpgradesBoxBackground");
+        button_background.setAttribute("id", "bUpgradesBoxBackground".concat(Upgrade.number));
+        buttons_grid.appendChild(button_background);
+
+        //3.
+        const button_main = document.createElement('button');
+        button_main.setAttribute("class", "bUpgradesBox");
+        button_main.setAttribute("id", "bUpgradesBox".concat(Upgrade.number));
+        button_main.setAttribute("onpointerenter", `showUpgradesBox(${Upgrade.number})`);
+        button_main.setAttribute("onpointerleave", `hideUpgradesBox()`);
+        button_main.setAttribute("onClick", `buyUpgrade(${Upgrade.number})`);
+        //button_main.innerHTML = `${Upgrade.number}`;
+        button_main.style.backgroundImage = `url('../img/Upgrade${Upgrade.number}.jpg')`;
+        button_main.style.backgroundSize = "contain";
+        button_main.disabled = true;
+        buttons_grid.appendChild(button_main);
     });
 }
 
