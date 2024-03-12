@@ -73,7 +73,7 @@
         
         <div id="divCryptoAndEnergy">
           <div id="divCryptoExchenge">
-            <h3 class="hExchengeAndEnergy">Crypto exchenge</h3>
+            <h3 class="hPanelTitle">Crypto exchenge</h3>
             <div id="buySellButtons">
               <button id="bBuy" onclick="switchToBuy()">Buy BTC</button>
               <button id="bSell" onclick="switchToSell()">Sell BTC</button>
@@ -111,7 +111,7 @@
             </div>
           </div>
           <div id="divEnergyExchenge">
-            <h3 class="hExchengeAndEnergy">Energy exchenge</h3>
+            <h3 class="hPanelTitle">Energy exchenge</h3>
 
             <div id="maxMoneyLabels">
               <label class="lOverMaxMoney">Amount is larger than money you have</label>
@@ -151,7 +151,9 @@
       <div id="midPane"> <!-- mid pane start -->
         <div id="dMinersAndUpgradesBox">
           <div id="dMiners">
-
+            <h3 class="hPanelTitle">Crypto exchenge</h3>
+            <div id="dBuyMinersBox">
+            </div>
           </div>
           <div id="dUpgradesAndMinerStats">
             <div id="dUpgrades">
@@ -160,21 +162,16 @@
               </div>
               <div id="UpgradeBox" style="background-color:wheat;height:100px;width:200px;text-align:center;"></div>
             </div>
-            
           </div>
-
-
         </div>
         
-        <br><br>
-
         <h3>Level 0 </h3>
         <div>Miner level 0 owned: <label id="lMiner0">0</label></div>
         <div>Miner level 0 income: <label id="lMinerIncome0">0</label></div>    
         
         <table>
           <tr>
-            <td><button id="buyMiner" onclick="buyMiner(0,1)">Buy 1</button></td>
+            <td><button id="buyMiner" onclick="buyMiner(4,1)">Buy 1</button></td>
             <td><button id="buyMiner" onclick="buyMiner(0,10)">Buy 10</button></td>
             <td><button id="buyMiner" onclick="buyMiner(0,100)">Buy 100</button></td>
           </tr>

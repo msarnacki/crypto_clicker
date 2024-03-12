@@ -1,6 +1,6 @@
 class Player{
     constructor(money = 0, 
-                ownedMiners = [0,0,0,0], 
+                ownedMiners = [0,0,0,0,0,0,0], 
                 ownedCrypto = [0,0], 
                 numView="BTC", 
                 lastSaveBeforeOff = Date(), 

@@ -10,10 +10,141 @@ class Miner{
 }
 
 var lMiners = [
-    new Miner(level = 0, name="Graphics card from scrapyard", cost = 10, factor = 1.3, base_income = 1, energy_consumption = 0.06),
-    new Miner(level = 1, name="Used graphics card", cost = 150, factor = 1.2, base_income = 7, energy_consumption = 0.12),
-    new Miner(level = 2, name="New graphics card", cost = 5000, factor = 1.1, base_income = 120, energy_consumption = 0.18),
-    new Miner(level = 3, name="Cheap mining rig", cost = 100000, factor = 1.08, base_income = 1000, energy_consumption = 0.3)
+    new Miner(level = 0, name="Miner0", cost = 10, factor = 1.3, base_income = 1, energy_consumption = 0.06),
+    new Miner(level = 1, name="Miner1", cost = 20, factor = 1.2, base_income = 7, energy_consumption = 0.12),
+    new Miner(level = 2, name="Miner2", cost = 30, factor = 1.1, base_income = 50, energy_consumption = 0.18),
+    new Miner(level = 3, name="Miner3", cost = 40, factor = 1.08, base_income = 100, energy_consumption = 0.3),
+    new Miner(level = 4, name="Miner4", cost = 51, factor = 1.06, base_income = 200, energy_consumption = 0.5),
+    new Miner(level = 5, name="Miner5", cost = 60, factor = 1.05, base_income = 300, energy_consumption = 0.65),
+    new Miner(level = 6, name="Miner6", cost = 70, factor = 1.045, base_income = 400, energy_consumption = 0.82),
+    new Miner(level = 7, name="Miner7", cost = 80, factor = 1.04, base_income = 10000, energy_consumption = 0.97)
 ];
 
 var EnergyPrice = 0.16
+
+function calcCost(aOwnedMiners, miner_level, num) {
+    var cost = 0;
+    var q = lMiners[miner_level].factor;
+    var a1 = lMiners[miner_level].cost;
+
+    if(num == 1) 
+    {
+        // cost =  S1
+        cost = a1*(q**aOwnedMiners[miner_level]);
+    }
+    else 
+    {
+        // cost = S owned+num - S owned
+        cost = a1 * (1 - (q**(aOwnedMiners[miner_level]+num))/(1 - q)) - a1 * (1 - (q**(aOwnedMiners[miner_level]))/(1-q))
+    }
+    
+    return Math.ceil(cost);
+}
+
+
+function buyMiner(miner_level, num) {
+    if(Person.money >= calcCost(Person.ownedMiners, miner_level, num))
+    {
+        Person.money = Number((Person.money - calcCost(Person.ownedMiners, miner_level, num)).toFixed(2));
+        Person.ownedMiners[miner_level]+=num;
+        var id_owned = "#lMiner".concat('', miner_level.toString())
+        var id_income = "#lMinerIncome".concat('', miner_level.toString())
+        var id_cost1 = "#1MinerCost".concat('', miner_level.toString())
+        var id_cost10 = "#10MinerCost".concat('', miner_level.toString())
+        var id_cost100 = "#100MinerCost".concat('', miner_level.toString())
+        $(id_owned).html(Person.ownedMiners[miner_level]);
+        $(id_income).html(Person.ownedMiners[miner_level] * lMiners[miner_level].base_income *Person.mainMultiplier);
+        $(id_cost1).html(calcCost(Person.ownedMiners,miner_level, 1));
+        $(id_cost10).html(calcCost(Person.ownedMiners,miner_level, 10));
+        $(id_cost100).html(calcCost(Person.ownedMiners,miner_level, 100));
+    
+        $("#lMoney").html(Person.money.toFixed(2));
+        //$("#lIncomeMoney").html(calcIntervalIncreaseCrypto(Person.ownedMiners));
+        $("#lCryptoIncome0").html(showNumber(calcIntervalIncreaseCrypto(Person.ownedMiners),Person.numView));
+        $("#lEnergyIncome").html(Number((-calcIntervalEnergyUsage(Person.ownedMiners)).toFixed(2)));
+    }
+}
+
+function generateMinersBoxTable() {
+    const container = document.getElementById("dBuyMinersBox");
+
+    lMiners.forEach(Miner => {
+        const divMinerBox = document.createElement('div');
+        divMinerBox.setAttribute("class", "dMinersBox");
+        divMinerBox.setAttribute("id", "dMinersBox".concat(Miner.level));
+        //divMinerBox.setAttribute("onpointerenter", `showMinersBox(${Miner.level})`);
+        //divMinerBox.setAttribute("onpointerleave", `hideMinersBox()`);
+        //divMinerBox.setAttribute("onClick", `buyMiner(${Miner.level})`);
+        //divMinerBox.innerHTML = `${Miner.level}`;
+        //divMinerBox.style.backgroundImage = `url('../img/Miner${Miner.level}.jpg')`;
+        //divMinerBox.style.backgroundSize = "contain";
+        //divMinerBox.disabled = true;
+        container.appendChild(divMinerBox);
+
+        const imgMiner = document.createElement("img");
+        imgMiner.className = "imgMiner";
+        imgMiner.id = `imgMiner${Miner.level}`
+        imgMiner.src = `../img/Miners/Miner${Miner.level}.jpg`;
+        divMinerBox.appendChild(imgMiner);
+
+        const dMinerContent = document.createElement("div");
+        dMinerContent.className = "dMinerContent";
+        divMinerBox.appendChild(dMinerContent);
+
+        const dMinerInfoLine1 = document.createElement("div");
+        dMinerInfoLine1.className = "dMinerInfoLine";
+        dMinerContent.appendChild(dMinerInfoLine1);
+
+        const dMinerLeftInfo1 = document.createElement("div");
+        dMinerLeftInfo1.className = "dMinerLeftInfo";
+        dMinerLeftInfo1.id = "dMinerName".concat(Miner.level);
+        dMinerLeftInfo1.innerHTML = `${Miner.name}`;
+        dMinerInfoLine1.appendChild(dMinerLeftInfo1);
+
+        const dMinerRightInfo1 = document.createElement("div");
+        dMinerRightInfo1.className = "dMinerRightInfo";
+        dMinerRightInfo1.id = "dMinerCost".concat(Miner.level);
+        dMinerRightInfo1.innerHTML = `Cost: ${Miner.cost}`;
+        dMinerInfoLine1.appendChild(dMinerRightInfo1);
+
+        const dMinerInfoLine2 = document.createElement("div");
+        dMinerInfoLine2.className = "dMinerInfoLine";
+        dMinerContent.appendChild(dMinerInfoLine2);
+
+        const dMinerLeftInfo2 = document.createElement("div");
+        dMinerLeftInfo2.className = "dMinerLeftInfo";
+        dMinerLeftInfo2.id = "dMinerIncome".concat(Miner.level);
+        dMinerLeftInfo2.innerHTML = `Income: ${Miner.base_income} Satoshi / sec`;
+        dMinerInfoLine2.appendChild(dMinerLeftInfo2);
+
+        const dMinerRightInfo2 = document.createElement("div");
+        dMinerRightInfo2.className = "dMinerRightInfo";
+        dMinerRightInfo2.id = "dMinerEnergy".concat(Miner.level);
+        dMinerRightInfo2.innerHTML = `Energy/sec: ${Miner.energy_consumption}`;
+        dMinerInfoLine2.appendChild(dMinerRightInfo2);
+
+        const dBuyMiners = document.createElement("div");
+        dBuyMiners.className = "dBuyMiners";
+        dMinerContent.appendChild(dBuyMiners);
+
+        const aBuyMiner1 = document.createElement("a");
+        aBuyMiner1.className = "aBuyMiner";
+        aBuyMiner1.innerHTML = `Buy 1`;
+        aBuyMiner1.setAttribute("onClick", `buyMiner(${Miner.level},1)`);
+        dBuyMiners.appendChild(aBuyMiner1);
+
+        const aBuyMiner10 = document.createElement("a");
+        aBuyMiner10.className = "aBuyMiner";
+        aBuyMiner10.innerHTML = `Buy 10`;
+        aBuyMiner10.setAttribute("onClick", `buyMiner(${Miner.level},10)`);
+        dBuyMiners.appendChild(aBuyMiner10);
+
+        const aBuyMinerMax = document.createElement("a");
+        aBuyMinerMax.className = "aBuyMiner";
+        aBuyMinerMax.innerHTML = `Buy Max`;
+        aBuyMinerMax.setAttribute("onClick", `buyMiner(${Miner.level},-1)`);
+        dBuyMiners.appendChild(aBuyMinerMax);
+    });
+}
+
+generateMinersBoxTable();
