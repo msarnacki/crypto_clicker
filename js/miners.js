@@ -47,16 +47,12 @@ function buyMiner(miner_level, num) {
     {
         Person.money = Number((Person.money - calcCost(Person.ownedMiners, miner_level, num)).toFixed(2));
         Person.ownedMiners[miner_level]+=num;
-        var id_owned = "#lMiner".concat('', miner_level.toString())
-        var id_income = "#lMinerIncome".concat('', miner_level.toString())
-        var id_cost1 = "#1MinerCost".concat('', miner_level.toString())
-        var id_cost10 = "#10MinerCost".concat('', miner_level.toString())
-        var id_cost100 = "#100MinerCost".concat('', miner_level.toString())
-        $(id_owned).html(Person.ownedMiners[miner_level]);
-        $(id_income).html(Person.ownedMiners[miner_level] * lMiners[miner_level].base_income *Person.mainMultiplier);
-        $(id_cost1).html(calcCost(Person.ownedMiners,miner_level, 1));
-        $(id_cost10).html(calcCost(Person.ownedMiners,miner_level, 10));
-        $(id_cost100).html(calcCost(Person.ownedMiners,miner_level, 100));
+        //var id_owned = "#lMiner".concat('', miner_level.toString())
+        //var id_income = "#lMinerIncome".concat('', miner_level.toString())
+        var MinerCost = "#dMinerCost".concat('', miner_level.toString())
+        //$(id_owned).html(Person.ownedMiners[miner_level]);
+        //$(id_income).html(Person.ownedMiners[miner_level] * lMiners[miner_level].base_income *Person.mainMultiplier);
+        $(MinerCost).html(`Cost: ${calcCost(Person.ownedMiners,miner_level, 1)} <i class="fa fa-usd"></i>`);
     
         $("#lMoney").html(Person.money.toFixed(2));
         //$("#lIncomeMoney").html(calcIntervalIncreaseCrypto(Person.ownedMiners));
@@ -72,13 +68,6 @@ function generateMinersBoxTable() {
         const divMinerBox = document.createElement('div');
         divMinerBox.setAttribute("class", "dMinersBox");
         divMinerBox.setAttribute("id", "dMinersBox".concat(Miner.level));
-        //divMinerBox.setAttribute("onpointerenter", `showMinersBox(${Miner.level})`);
-        //divMinerBox.setAttribute("onpointerleave", `hideMinersBox()`);
-        //divMinerBox.setAttribute("onClick", `buyMiner(${Miner.level})`);
-        //divMinerBox.innerHTML = `${Miner.level}`;
-        //divMinerBox.style.backgroundImage = `url('../img/Miner${Miner.level}.jpg')`;
-        //divMinerBox.style.backgroundSize = "contain";
-        //divMinerBox.disabled = true;
         container.appendChild(divMinerBox);
 
         const imgMiner = document.createElement("img");
@@ -104,7 +93,7 @@ function generateMinersBoxTable() {
         const dMinerRightInfo1 = document.createElement("div");
         dMinerRightInfo1.className = "dMinerRightInfo";
         dMinerRightInfo1.id = "dMinerCost".concat(Miner.level);
-        dMinerRightInfo1.innerHTML = `Cost: ${Miner.cost}`;
+        dMinerRightInfo1.innerHTML = `Cost: ${Miner.cost} <i class="fa fa-usd"></i>`;
         dMinerInfoLine1.appendChild(dMinerRightInfo1);
 
         const dMinerInfoLine2 = document.createElement("div");
@@ -114,13 +103,14 @@ function generateMinersBoxTable() {
         const dMinerLeftInfo2 = document.createElement("div");
         dMinerLeftInfo2.className = "dMinerLeftInfo";
         dMinerLeftInfo2.id = "dMinerIncome".concat(Miner.level);
-        dMinerLeftInfo2.innerHTML = `Income: ${Miner.base_income} Satoshi / sec`;
+        var IncomeDenominated = Miner.base_income/10**lCryptoCurrs[0].denominationUnit;
+        dMinerLeftInfo2.innerHTML = `<i class="fa fa-line-chart"></i> ${IncomeDenominated.toFixed(lCryptoCurrs[0].denominationUnit)} <i class="fa fa-btc"></i>/s`;
         dMinerInfoLine2.appendChild(dMinerLeftInfo2);
 
         const dMinerRightInfo2 = document.createElement("div");
         dMinerRightInfo2.className = "dMinerRightInfo";
         dMinerRightInfo2.id = "dMinerEnergy".concat(Miner.level);
-        dMinerRightInfo2.innerHTML = `Energy/sec: ${Miner.energy_consumption}`;
+        dMinerRightInfo2.innerHTML = `<i class="fa fa-bolt"></i> ${Miner.energy_consumption} W/s`;
         dMinerInfoLine2.appendChild(dMinerRightInfo2);
 
         const dBuyMiners = document.createElement("div");

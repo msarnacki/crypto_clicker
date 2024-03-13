@@ -6,15 +6,16 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <title>Clicker Game</title>
     <link rel="shortcut icon" href="#"> <!--for some favicon.ico error-->
-    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="css/styles.css" />
   </head>
   <body>
+    <!-- https://fontawesome.com/v4/icons/ -->
     <div id="wholePage"> <!-- whole page start -->
       <div id="leftPane"> <!-- left pane start -->
         <div id="earnMoney">
           <div id="clickToEarn">
-            <button id="clickButton" class="glow-on-hover" >Find 1$ bill</button>
+            <button id="clickButton" class="glow-on-hover" >Find 1$ bill </button></i>
           </div>
           <div id="workToEarn">
             <div id="workButtonsDiv">
@@ -38,19 +39,19 @@
           <table>
             <tr>
               <th></th>
-              <th>$</th>
+              <th><i class="fa fa-usd"></i></th>
               <th><i class="fa fa-btc"></i></th>
-              <th>Energy</th>
+              <th><i class="fa fa-bolt"></i></th>
             </tr>
             <tr>
               <td>Amount:</td>
-              <td><label id="lMoney">0</label> $</td>
+              <td><label id="lMoney">0</label> <i class="fa fa-usd"></i></td>
               <td><label id="lCrypto0">0</label></td>
               <td><label id="lEnergy">0</label><label class="WattsInTable">W</label></td>
             </tr>
             <tr>
               <td>Income/tick:</td>
-              <td><label id="lIncomeMoney">0</label> $</td>
+              <td><label id="lIncomeMoney">0</label> <i class="fa fa-usd"></i></td>
               <td><label id="lCryptoIncome0">0</label></i></td>
               <td><label id="lEnergyIncome">0</label><label class="WattsInTable">W</label></td>
             </tr>
@@ -64,7 +65,7 @@
               <td>USD Value:</td>
               <td></td>
               <td><label id="lCryptoValue0">0</label></td>
-              <td><label id="lEnergyValue">0</label>$</td>
+              <td><label id="lEnergyValue">0</label><i class="fa fa-usd"></i></td>
             </tr>
           </table>  
         </div>
@@ -81,7 +82,7 @@
             
             <div class="input-icon">
               <input type="number" min="0" placeholder="0.00" class="iConvert" id="inputConvertCurrencies"/>
-              <i id="icoBtcDollar" aria-hidden="true">$</i> <!--class="fa fa-btc"-->
+              <i id="icoBtcDollar"><i class="fa fa-usd"></i></i> <!--class="fa fa-btc"-->
               
               <div id="Arrow">&nbsp;&#187;&nbsp;</div> 
               <div id="divYouWillGet" >
@@ -119,7 +120,7 @@
             </div>
             <div class="input-icon" id="dInputEnergyExchenge">
               <input type="number" min="0" placeholder="0.00" class="iPayBills" id="inputPayBills"/>
-              <i id="icoBtcDollar" aria-hidden="true">$</i> <!--class="fa fa-btc"-->
+              <i id="icoBtcDollar"><i class="fa fa-usd"></i></i> <!--class="fa fa-btc"-->
             </div>  
             
             <div id="divSliderPlusButton">
@@ -151,7 +152,7 @@
       <div id="midPane"> <!-- mid pane start -->
         <div id="dMinersAndUpgradesBox">
           <div id="dMiners">
-            <h3 class="hPanelTitle">Crypto exchenge</h3>
+            <h3 class="hPanelTitle">Buy mining gear</h3>
             <div id="dBuyMinersBox">
             </div>
           </div>
@@ -164,43 +165,6 @@
             </div>
           </div>
         </div>
-        
-        <h3>Level 0 </h3>
-        <div>Miner level 0 owned: <label id="lMiner0">0</label></div>
-        <div>Miner level 0 income: <label id="lMinerIncome0">0</label></div>    
-        
-        <table>
-          <tr>
-            <td><button id="buyMiner" onclick="buyMiner(4,1)">Buy 1</button></td>
-            <td><button id="buyMiner" onclick="buyMiner(0,10)">Buy 10</button></td>
-            <td><button id="buyMiner" onclick="buyMiner(0,100)">Buy 100</button></td>
-          </tr>
-          <tr>
-            <td>cost of 1: <label id="1MinerCost0">10</label></td>
-            <td>cost of 10: <label id="10MinerCost0"></label></td>
-            <td>cost of 100: <label id="100MinerCost0"></label></td>
-          </tr>
-        </table>
-
-        <br><br>
-
-        <h3>Level 1 </h3>
-        <div>Miner level 1 owned: <label id="lMiner1">0</label></div>
-        <div>Miner level 1 income: <label id="lMinerIncome1">0</label></div>   
-
-        <table>
-          <tr>
-            <td><button id="buyMiner" onclick="buyMiner(1,1)">Buy 1</button></td>
-            <td><button id="buyMiner" onclick="buyMiner(1,10)">Buy 10</button></td>
-            <td><button id="buyMiner" onclick="buyMiner(1,100)">Buy 100</button></td>
-          </tr>
-          <tr>
-            <td>cost of 1: <label id="1MinerCost1">150</label></td>
-            <td>cost of 10: <label id="10MinerCost1"></label></td>
-            <td>cost of 100: <label id="100MinerCost1"></label></td>
-          </tr>
-        </table>
-
       </div> <!-- mid pane end -->
 
       <div id="rightPane"> <!-- right pane start -->
@@ -258,8 +222,8 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
   <script src="js/data.js"></script>
   <script src="js/script.js"></script>
-  <script src="js/miners.js"></script>
   <script src="js/currencies.js"></script>
+  <script src="js/miners.js"></script>
   <script src="js/manage.js"></script>
   <script src="js/achievements.js"></script>
   <script src="js/upgrades.js"></script>

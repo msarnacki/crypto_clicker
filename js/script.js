@@ -156,8 +156,8 @@ function switchToBuy() {
         document.getElementById("bConvert").style.background = "#0ECB81";
         document.getElementById("bBuy").style.background = "#0ECB81";
         document.getElementById("bSell").style.background = "#878683";
-        document.getElementById("icoBtcDollar").setAttribute("class", "");
-        document.getElementById("icoBtcDollar").innerHTML = "$";
+        document.getElementById("icoBtcDollar").setAttribute("class", "fa fa-usd");
+        //document.getElementById("icoBtcDollar").innerHTML = "$";
         document.getElementById("youWillGetCurrency").innerHTML = "";
         document.getElementById("youWillGetCurrency").setAttribute("class", "fa fa-btc");
     }
@@ -175,8 +175,8 @@ function switchToSell() {
         document.getElementById("bSell").style.background = "#F6465D";
         document.getElementById("icoBtcDollar").setAttribute("class", "fa fa-btc");
         document.getElementById("icoBtcDollar").innerHTML = "";
-        document.getElementById("youWillGetCurrency").innerHTML = "$";
-        document.getElementById("youWillGetCurrency").setAttribute("class", "");
+        //document.getElementById("youWillGetCurrency").innerHTML = "$";
+        document.getElementById("youWillGetCurrency").setAttribute("class", "fa fa-usd");
     }
     getConvertValueFromSlider();
     var cryptoToConvert = document.getElementById("inputConvertCurrencies").value;
