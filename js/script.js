@@ -86,7 +86,7 @@ function updateAll() {
     updateConvertAmount();
     updatePayBillsAmount();
     checkMaxMoney(document.getElementById("lEnergyValue").innerHTML * document.getElementById("SliderEnergy").value/100);
-
+    updateMinersStatsTable();
 }
 
 $("#clickButton").click(function () {

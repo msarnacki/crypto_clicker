@@ -138,3 +138,72 @@ function generateMinersBoxTable() {
 }
 
 generateMinersBoxTable();
+
+
+
+function generateMinersStatsTable() {
+    const container = document.getElementById("tableMinerStats");
+    const denomUnit = lCryptoCurrs[0].denominationUnit;
+    
+    lMiners.forEach(Miner => {
+        const owned = Person.ownedMiners[Miner.level];
+        const income = Miner.base_income/10**denomUnit;
+        const energy = Miner.energy_consumption;
+
+        const tr = document.createElement('tr');
+        container.appendChild(tr);
+
+        const td1 = document.createElement('td');
+        td1.innerHTML= Miner.name;
+        tr.appendChild(td1);
+
+        const td2 = document.createElement('td');
+        td2.id = "tdOwnedMiners".concat(Miner.level);
+        td2.innerHTML = owned;
+        tr.appendChild(td2);
+
+        const td3 = document.createElement('td');
+        td3.id = "tdSingleIncome".concat(Miner.level);
+        td3.innerHTML = (income).toFixed(denomUnit);
+        tr.appendChild(td3);
+
+        const td4 = document.createElement('td');
+        td4.id = "tdAllIncome".concat(Miner.level);
+        td4.innerHTML = (income*owned).toFixed(denomUnit);
+        tr.appendChild(td4);
+
+        const td5 = document.createElement('td');
+        td5.id = "tdAllTimeEarned".concat(Miner.level);
+        td5.innerHTML = "tbd";
+        td5.style.color = "yellow"
+        tr.appendChild(td5);
+
+        const td6 = document.createElement('td');
+        td6.id = "tdSingleEnergy".concat(Miner.level);
+        td6.innerHTML = energy;
+        tr.appendChild(td6);
+
+        const td7 = document.createElement('td');
+        td7.id = "tdAllEnergy".concat(Miner.level);
+        td7.innerHTML = energy*owned;
+        tr.appendChild(td7);
+    });
+}
+
+generateMinersStatsTable();
+
+function updateMinersStatsTable() {
+    const denomUnit = lCryptoCurrs[0].denominationUnit;
+
+    lMiners.forEach(Miner => {
+        const owned = Person.ownedMiners[Miner.level];
+        const income = Miner.base_income/10**denomUnit;
+        const energy = Miner.energy_consumption;
+        $("#tdOwnedMiners".concat(Miner.level)).html(owned);
+        $("#tdSingleIncome".concat(Miner.level)).html((income).toFixed(denomUnit));
+        $("#tdAllIncome".concat(Miner.level)).html((income*owned).toFixed(denomUnit));
+        $("#tdAllTimeEarned".concat(Miner.level)).html("tbd");
+        $("#tdSingleEnergy".concat(Miner.level)).html(energy);
+        $("#tdAllEnergy".concat(Miner.level)).html(energy*owned);
+    });
+}

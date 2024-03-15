@@ -84,13 +84,13 @@ button {
 
 #leftPane {
   margin: 10px;
-  width: 30%;
+  width: 25%;
 }
 
 #midPane {
   border: 5px dotted #ff6550;
   margin: 10px;
-  min-width: 45%;
+  width: 50%;
   overflow-y: scroll;
 }
 
@@ -147,10 +147,11 @@ table {
   font-size: 0.8rem;
 }
 
-td, th {
+#tMainInfo td, #tMainInfo th {
   border: 1px solid rgba(246,70,93,0.5);/*rgba(200, 200, 200, 0.329)*/
-  padding: 10px 10px;
+  padding: 5px 5px;
   width: 100px;
+  height: 30px;
 }
 
 th {
@@ -535,21 +536,27 @@ input[type=range]::-ms-thumb {
 
 #divCryptoAndEnergy{
   display: flex;
+  flex-direction: column;
 
 }
 
 #divCryptoExchenge{
-  width: 50%;
+  width: auto;
   background: var(--light-background);
-  border: 2px solid rgba(246,70,93,0.75);
-  
+  border-top: 2px solid rgba(246,70,93,0.75);
+  border-left: 2px solid rgba(246,70,93,0.75);
+  border-right: 2px solid rgba(246,70,93,0.75);
+  padding: 10px;
+  margin-inline: 20px;
 }
 
 #divEnergyExchenge{
-  width: 50%;
+  width: auto;
   background-color: #4cff6a96;
   background: var(--light-background);
   border: 2px solid rgba(246,70,93,0.75);
+  padding: 10px;
+  margin-inline: 20px;
 }
 
 .hPanelTitle{
@@ -648,7 +655,7 @@ input[type=range]::-ms-thumb {
 }
 
 #dUpgradesAndMinerStats{
-  width: 55%;
+  width: 62%;
   height: 100%;
 }
 
@@ -716,8 +723,8 @@ input[type=range]::-ms-thumb {
 }
 
 #dMiners{
-  width: 43%;
-  height: auto;
+  width: 38%;
+  height: 85%;
   margin-top: 2%;
   margin-left: 2%;
 }
@@ -726,7 +733,7 @@ input[type=range]::-ms-thumb {
   background: var(--light-background);
   border: 2px solid rgba(246,70,93,0.75);
   width: 98%;
-  height: 90%;
+  height: 100%;
   overflow-y: scroll;
   margin-top: 10px;
 }
@@ -796,4 +803,37 @@ input[type=range]::-ms-thumb {
   padding-right: 10px;
   font-size: 11px;
   cursor: pointer;
+}
+
+#dMinerStats{
+  width: 96%;
+  height: 65%;
+  margin-top: 50px;
+  margin-inline: auto;
+  overflow-x: scroll;
+  border-collapse: collapse;
+}
+
+#tableMinerStats{
+  margin: auto;
+  width: 100%;
+  border-collapse: collapse;
+  border: 1px solid #000;
+  background: var(--light-background);
+  table-layout: fixed;
+}
+
+#tableMinerStats > *{
+  font-size: 11px;
+
+}
+
+#tableMinerStats th{
+  border: 1px solid rgba(246,70,93,0.75);
+  background: rgba(255,255,255,0.05);
+}
+
+#tableMinerStats td{
+  border: 1px solid rgba(246,70,93,0.75);
+  height: 30px;
 }
