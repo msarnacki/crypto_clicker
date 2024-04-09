@@ -11,7 +11,15 @@ class Player{
                 ownedEnergy = 0,
                 maxUnpaidEnergy = 50,
                 allTimeStats = {
-                    "allTimeMined_All": 0
+                    "allTimeMined_All": 0,
+                    "allTimeMined_Miner0": 0,
+                    "allTimeMined_Miner1": 0,
+                    "allTimeMined_Miner2": 0,
+                    "allTimeMined_Miner3": 0,
+                    "allTimeMined_Miner4": 0,
+                    "allTimeMined_Miner5": 0,
+                    "allTimeMined_Miner6": 0,
+                    "allTimeMined_Miner7": 0
                 }){
         this.money = money;
         this.ownedMiners = ownedMiners;
@@ -27,10 +35,9 @@ class Player{
         this.allTimeStats = allTimeStats;
         
 
-        for (let MinerIndex = 0; MinerIndex < this.ownedMiners.lenght; MinerIndex++) {
-            this.allTimeStats["allTimeMined_Miner" + String(MinerIndex)] = 0;
-            
-        }
+        /*for (let MinerIndex = 0; MinerIndex < this.ownedMiners.lenght; MinerIndex++) {
+            this.allTimeStats["allTimeMined_Miner" + String(MinerIndex)] = 0.0;  
+        }*/
     }
 }
 
