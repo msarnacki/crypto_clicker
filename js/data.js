@@ -9,7 +9,10 @@ class Player{
                 visibleUpgrades = [], 
                 ownedUpgrades = [],
                 ownedEnergy = 0,
-                maxUnpaidEnergy = 50){
+                maxUnpaidEnergy = 50,
+                allTimeStats = {
+                    "allTimeMined_All": 0
+                }){
         this.money = money;
         this.ownedMiners = ownedMiners;
         this.ownedCrypto = ownedCrypto;
@@ -21,6 +24,13 @@ class Player{
         this.ownedUpgrades = ownedUpgrades;
         this.ownedEnergy = ownedEnergy;
         this.maxUnpaidEnergy = maxUnpaidEnergy;
+        this.allTimeStats = allTimeStats;
+        
+
+        for (let MinerIndex = 0; MinerIndex < this.ownedMiners.lenght; MinerIndex++) {
+            this.allTimeStats["allTimeMined_Miner" + String(MinerIndex)] = 0;
+            
+        }
     }
 }
 
