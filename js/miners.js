@@ -197,6 +197,8 @@ function updateMinersStatsTable() {
         const income = Miner.base_income/10**denomUnit;
         const energy = Miner.energy_consumption;
         const allTimeMined = Person.allTimeStats["allTimeMined_Miner" + String(Miner.level)] /10**denomUnit;
+        
+        console.log(Person.allTimeStats)
         $("#tdOwnedMiners".concat(Miner.level)).html(owned);
         //$("#tdSingleIncome".concat(Miner.level)).html((income).toFixed(denomUnit));
         $("#tdAllIncome".concat(Miner.level)).html((income*owned).toFixed(denomUnit));
