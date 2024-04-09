@@ -14,10 +14,13 @@ function showNumber(num, style = "BTC") {
     return `${numberFormatted} ${style}`
 }
 
-function calcIntervalIncreaseCrypto(aOwnedMiners) {
+function calcIntervalIncreaseCrypto(aOwnedMiners, updateStats = false) {
     var increase = 0;
     for (let index = 0; index < aOwnedMiners.length; index++) {
         increase = increase + aOwnedMiners[index] * lMiners[index].base_income; //Math.round(aOwnedMiners[index]) * lCryptoCurrs[0].denominationUnit// * lCryptoCurrs[0].denominationUnit;
+        if(updateStats == true){
+            Person.allTimeStats["allTimeMined_Miner" + String(index)] += aOwnedMiners[index] * lMiners[index].base_income * Person.mainMultiplier;
+        }
     }
     return increase*Person.mainMultiplier;
 }
@@ -29,7 +32,7 @@ function updateMoney() {
 
 function updateCrypto() {
     if(!(-Person.ownedEnergy > Person.maxUnpaidEnergy)){
-        Person.ownedCrypto[0] = Person.ownedCrypto[0] + calcIntervalIncreaseCrypto(Person.ownedMiners);
+        Person.ownedCrypto[0] = Person.ownedCrypto[0] + calcIntervalIncreaseCrypto(Person.ownedMiners, updateStats = true);
         document.getElementById("lCrypto0").style.color = "#ffffff";
         document.getElementById("lCryptoIncome0").style.color = "#ffffff";
         $("#lCrypto0").html(showNumber(Person.ownedCrypto[0],Person.numView));
@@ -118,18 +121,6 @@ function updateAllLabels() {
     $("#lCryptoIncome0").html(showNumber(calcIntervalIncreaseCrypto(Person.ownedMiners),Person.numView));
     $("#lCryptoRate0").html(lCryptoCurrs[0].usdRate.toFixed(2));
     $("#lCryptoValue0").html((Person.ownedCrypto[0]*lCryptoCurrs[0].usdRate/10**lCryptoCurrs[0].denominationUnit).toFixed(2));
-    
-    $("#lMiner0").html(Person.ownedMiners[0]);
-    $("#lMinerIncome0").html(Person.ownedMiners[0] * lMiners[0].base_income *Person.mainMultiplier);
-    $("#1MinerCost0").html(calcCost(Person.ownedMiners,0, 1));
-    $("#10MinerCost0").html(calcCost(Person.ownedMiners,0, 10));
-    $("#100MinerCost0").html(calcCost(Person.ownedMiners,0, 100));
-
-    $("#lMiner1").html(Person.ownedMiners[1]);
-    $("#lMinerIncome1").html(Person.ownedMiners[1] * lMiners[1].base_income *Person.mainMultiplier);
-    $("#1MinerCost1").html(calcCost(Person.ownedMiners,1, 1));
-    $("#10MinerCost1").html(calcCost(Person.ownedMiners,1, 10));
-    $("#100MinerCost1").html(calcCost(Person.ownedMiners,1, 100));
 
     $("#lMainMultiplier").html(Person.mainMultiplier);
     

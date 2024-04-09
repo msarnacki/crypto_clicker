@@ -15,6 +15,11 @@ $(document).ready(function () {
     $("#EarnedWhenOff").html("Earned when off: ".concat(String(earnedWhenOff)));
     Person.ownedCrypto[0] += earnedWhenOff;
 
+	//calculate Miner cost after reload
+	lMiners.forEach(Miner => {
+        document.getElementById("dMinerCost".concat(Miner.level)).innerHTML = `Cost: ${calcCost(Person.ownedMiners,Miner.level, 1)} <i class="fa fa-usd"></i>`;
+    })
+
     updateAllLabels();
     save();
 });
