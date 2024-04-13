@@ -181,52 +181,50 @@
       </div> <!-- mid pane end -->
 
       <div id="rightPane"> <!-- right pane start -->
-        <a href="/charts.html">See Charts</a>
-        <div>Upgrades visible: <label id="lVisibleUpgrades"></label></div>
-        <div>Upgrades owned: <label id="lOwnedUpgrades"></label></div>
 
-        <br>
+        <div class="tabs">
+          <div class="tab-header">
+            <div class="active"><i class="fa fa-table"></i> Statistics</div>
+            <div><i class="fa fa-rocket"></i>Upgrades</div>
+            <div><i class="fa fa-trophy"></i>Achievements</div>
+            <div><i class="fa fa-cogs"></i> Settings</div>
+          </div>
 
-        Main multiplier: <label id="lMainMultiplier">1</label>
-
-        <br><br>
-
-        <div>Achievements owned: <label id="lOwnedAchievements"></label></div>
-        <!--<div>Achievements table: 
-          <div id="divAchievementsTable">
-            <table id="achievementsTable"> <!-hidden->
-              <tr>
-                <td>#</td>
-                <td>Name</td>
-                <td>Description</td>
-              </tr>
-            </table>
+          <div class="tab-content">
+            <div class="tab active">
+              Main multiplier: <label id="lMainMultiplier">1</label>
+            </div>
+            <div class="tab">
+              <div>Upgrades visible: <label id="lVisibleUpgrades"></label></div>
+              <div>Upgrades owned: <label id="lOwnedUpgrades"></label></div>
+            </div>
+            <div class="tab">
+              Achievements owned: <label id="lOwnedAchievements"></label>
+              <div id="divAchievementsBoxTable"></div>
+              <div id="AchievementBox" style="background-color:wheat;height:100px;width:200px;text-align:center;">
+              </div>
+            </div>
+            <div class="tab">
+              <button id="wipe" onclick="wipe()" title="Reset all progress">RESET</button><br>
+              <div><label id="lastSave"></label></div>
+              <div><label id="lastSaveBeforeOff"></label></div>
+              <div><label id="LoadTime"></label></div>
+              <div><label id="Diff_LoadTime-lastSaveBeforeOff"></label></div>
+              <div><label id="EarnedWhenOff"></label></div>
+            
+              <br><br><br>
+              <button onclick="openFullscreen()">Fullscreen on</button>
+              <button onclick="closeFullscreen()">Fullscreen off</button>
+            
+              <br><br><br>
+              <button id="switchViewButton" onclick="switchViewButton()">Switch number view</button>
+              <label id="numView"></label>
+            </div>
           </div>
         </div>
-        -->
-        
-        <div id="divAchievementsBoxTable">
-        
-        </div>
-        <div id="AchievementBox" style="background-color:wheat;height:100px;width:200px;text-align:center;">
-        </div>
 
-        <br><br><br>
+        <a href="/charts.html">See Charts</a>
 
-        <button id="wipe" onclick="wipe()" title="Reset all progress">RESET</button><br>
-        <div><label id="lastSave"></label></div>
-        <div><label id="lastSaveBeforeOff"></label></div>
-        <div><label id="LoadTime"></label></div>
-        <div><label id="Diff_LoadTime-lastSaveBeforeOff"></label></div>
-        <div><label id="EarnedWhenOff"></label></div>
-      
-        <br><br><br>
-        <button onclick="openFullscreen()">Fullscreen on</button>
-        <button onclick="closeFullscreen()">Fullscreen off</button>
-      
-        <br><br><br>
-        <button id="switchViewButton" onclick="switchViewButton()">Switch number view</button>
-        <label id="numView"></label>
       </div> <!-- right pane end -->
       
     </div> <!-- whole page end -->
