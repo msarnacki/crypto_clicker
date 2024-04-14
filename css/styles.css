@@ -88,21 +88,20 @@ button {
 }
 
 #midPane {
-  border: 5px dotted #ff6550;
+  /* border: 5px dotted #ff6550; */
   margin: 10px;
   width: 50%;
   overflow-y: scroll;
 }
 
 #rightPane {
-  border: 5px dotted #ff6550;
+  /* border: 5px dotted #ff6550; */
   margin: 10px;
   width: 20%;
 }
 
 #divAchievementsBoxTable {
   display: flex;
-  justify-content: center;
   flex-wrap: wrap;
 }
 
@@ -907,4 +906,12 @@ input[type=range]::-ms-thumb {
 .tab-content > div.active {
   display: block;
   position: relative;
+}
+
+#AchievementBox{
+  background-color:wheat;
+  height:100px;
+  width:200px;
+  text-align:center;
+  overflow: visible;
 }
