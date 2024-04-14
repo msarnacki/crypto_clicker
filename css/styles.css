@@ -206,7 +206,7 @@ caption {
   padding-top: 3px;
 }
 
-.lOverMaxMoney {
+.lOverMaxMoney, #lPaymentError {
   padding-top: 4px;
   padding-left: 10%;
   color: #F6465D;
@@ -215,7 +215,12 @@ caption {
 }
 
 #maxMoneyLabels {
-  padding-top: 10px;
+  padding-top: 5px;
+  opacity: 0;
+}
+
+#paymentError{
+  padding-bottom: 5px;
   opacity: 0;
 }
 

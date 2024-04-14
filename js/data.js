@@ -9,7 +9,7 @@ class Player{
                 visibleUpgrades = [], 
                 ownedUpgrades = [],
                 ownedEnergy = 0,
-                maxUnpaidEnergy = 50,
+                maxUnpaidEnergy = 10,
                 allTimeStats = {
                     "allTimeMined_All": 0,
                     "allTimeMined_Miner0": 0,

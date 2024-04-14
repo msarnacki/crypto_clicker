@@ -118,6 +118,9 @@
               <label class="lOverMaxMoney">Amount is larger than money you have</label>
               <label class="lOverMaxMoney"><label id="maxMoneyToPayBill"></label>$ will be paid</label> 
             </div>
+            <div id="paymentError">
+              <label id="lPaymentError">Payment error message</label>
+            </div>
             <div class="input-icon" id="dInputEnergyExchenge">
               <input type="number" min="0" placeholder="0.00" class="iPayBills" id="inputPayBills"/>
               <i id="icoBtcDollar"><i class="fa fa-usd"></i></i> <!--class="fa fa-btc"-->
@@ -143,7 +146,7 @@
               </div>
               <button class="bPayBills" id="bPayBills" onclick="payBills()">Pay bills</button>
             </div> 
-            <div id="dMaxUnpaidBills">Max unpaid bills: <label id="maxUnpaidBills"></label>W</div>
+            <div id="dMaxUnpaidBills">Max unpaid bills: <label id="maxUnpaidBillsWatts"></label>W = <label id="maxUnpaidBillsDollars"></label>$</div>
           </div>
         </div>
         <br><br><br>
