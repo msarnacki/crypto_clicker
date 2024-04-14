@@ -31,7 +31,7 @@ function updateMoney() {
 }
 
 function updateCrypto() {
-    if(!(-Person.ownedEnergy > Person.maxUnpaidEnergy)){
+    if(!(-Person.ownedEnergy >= Person.maxUnpaidEnergy)){
         Person.ownedCrypto[0] = Person.ownedCrypto[0] + calcIntervalIncreaseCrypto(Person.ownedMiners, updateStats = true);
         document.getElementById("lCrypto0").style.color = "#ffffff";
         document.getElementById("lCryptoIncome0").style.color = "#ffffff";
@@ -53,8 +53,13 @@ function calcIntervalEnergyUsage(aOwnedMiners) {
 }
 
 function updateEnergy() {
-    if(!(-Person.ownedEnergy > Person.maxUnpaidEnergy)){
-        Person.ownedEnergy = Number((Person.ownedEnergy - calcIntervalEnergyUsage(Person.ownedMiners)).toFixed(2));
+    if((-Person.ownedEnergy < Person.maxUnpaidEnergy)){
+        var possibleNewOwnedEnergy = (Person.ownedEnergy - calcIntervalEnergyUsage(Person.ownedMiners));
+        if(possibleNewOwnedEnergy < -Person.maxUnpaidEnergy){
+            possibleNewOwnedEnergy = -Person.maxUnpaidEnergy;
+        }
+        
+        Person.ownedEnergy = Number(possibleNewOwnedEnergy.toFixed(2));
         document.getElementById("lEnergy").style.color = "#ffffff";
         document.getElementById("lEnergyIncome").style.color = "#ffffff";
         var Watts = document.getElementsByClassName("WattsInTable");
@@ -76,7 +81,8 @@ function updateEnergy() {
         }
     }
 
-    document.getElementById("maxUnpaidBills").innerHTML = Person.maxUnpaidEnergy;
+    document.getElementById("maxUnpaidBillsWatts").innerHTML = Person.maxUnpaidEnergy;
+    document.getElementById("maxUnpaidBillsDollars").innerHTML = (Person.maxUnpaidEnergy*EnergyPrice).toFixed(2);
 }
 
 function updateAll() {
@@ -220,17 +226,39 @@ function convertToBTC(toConvert) {
 function payBills() {
     var valueToPay = document.getElementById("inputPayBills").value;
     //value to pay is negative value
-    if (-valueToPay>Person.money) {
-        Person.ownedEnergy = Number((Person.ownedEnergy + Person.money/EnergyPrice).toFixed(2));
-        Person.money = 0;
+    var maxUnpaidBillsWatts = Person.maxUnpaidEnergy * EnergyPrice;
+
+    // if trying to make excess payment (overpay)
+    if (-valueToPay > maxUnpaidBillsWatts){
+        document.getElementById("lPaymentError").innerHTML = "You cannot make excess payment";
+        document.getElementById("paymentError").style.opacity = 1;
+        setTimeout(function(){
+            document.getElementById("paymentError").style.opacity = 0;
+            document.getElementById("lPaymentError").innerHTML = "";
+            },3000);
+    }
+    else if (valueToPay > 0){
+        document.getElementById("lPaymentError").innerHTML = "Amount must be negative";
+        document.getElementById("paymentError").style.opacity = 1;
+        setTimeout(function(){
+            document.getElementById("paymentError").style.opacity = 0;
+            document.getElementById("lPaymentError").innerHTML = "";
+            },3000);
     }
     else{
-        Person.ownedEnergy = Number((Person.ownedEnergy - valueToPay/EnergyPrice).toFixed(2));
-        Person.money = Number((Person.money + Number(valueToPay)).toFixed(2));
+        //if bill is higher than owned money
+        if (-valueToPay>Person.money) {
+            Person.ownedEnergy = Number((Person.ownedEnergy + Person.money/EnergyPrice).toFixed(2));
+            Person.money = 0;
+        }
+        else{
+            Person.ownedEnergy = Number((Person.ownedEnergy - valueToPay/EnergyPrice).toFixed(2));
+            Person.money = Number((Person.money + Number(valueToPay)).toFixed(2));
+        }
+        document.getElementById("inputPayBills").value = (Number(document.getElementById("lEnergyValue").innerHTML) * document.getElementById("SliderEnergy").value/100).toFixed(2);
+        getPayAmountFromSlider();
+        updateAllLabels();
     }
-    document.getElementById("inputPayBills").value = (Number(document.getElementById("lEnergyValue").innerHTML) * document.getElementById("SliderEnergy").value/100).toFixed(2);
-    getPayAmountFromSlider();
-    updateAllLabels();
 }
 
 //pregressbar
