@@ -11,6 +11,9 @@ var lAchievments = [
     new Achievement(number = 1, name = "Journey start", description = "Found your 1st dollar bill", condition = "AchievementCondition1()"),
     new Achievement(number = 2, name = "First miner", description = "Started your mining career", condition = "AchievementCondition2()"),
     new Achievement(number = 3, name = "TEST3", description = "TEST_DECRIPTION3", condition = "AchievementCondition3()"),
+    new Achievement(number = 4, name = "TEST4", description = "TEST_DECRIPTION4", condition = "AchievementCondition4()"),
+    new Achievement(number = 5, name = "TEST5", description = "TEST_DECRIPTION5", condition = "AchievementCondition5()"),
+    new Achievement(number = 6, name = "TEST6", description = "TEST_DECRIPTION6", condition = "AchievementCondition6()"),
 ];
 
 //runs every tick
@@ -56,6 +59,30 @@ function AchievementCondition3() {
     return  sumOwned > 3 ? true : false
 }
 
+function AchievementCondition4() {
+    var sumOwned = 0;
+    Person.ownedMiners.forEach(numMiner => {
+        sumOwned += numMiner;
+    });
+    return  sumOwned > 3 ? true : false
+}
+
+function AchievementCondition5() {
+    var sumOwned = 0;
+    Person.ownedMiners.forEach(numMiner => {
+        sumOwned += numMiner;
+    });
+    return  sumOwned > 3 ? true : false
+}
+
+function AchievementCondition6() {
+    var sumOwned = 0;
+    Person.ownedMiners.forEach(numMiner => {
+        sumOwned += numMiner;
+    });
+    return  sumOwned > 3 ? true : false
+}
+
 
 function createAchievementBox(AchievementNumber) {
     //const div = document.getElementById("divAchievementsBox".concat(AchievementNumber));
@@ -70,12 +97,13 @@ function createAchievementBox(AchievementNumber) {
 }
 
 let attachedAchievementBox = false;
-let AchievementBoxContainer = document.querySelector("#AchievementBox");
+let AchievementBoxContainer = document.getElementById("AchievementBox");
 
 const followMouseAchievement = (event) => {
-    AchievementBoxContainer.style.left = event.x + "px";
+    var rect = document.getElementById("tab-content").getBoundingClientRect();
+    AchievementBoxContainer.style.left = event.x - rect.left + "px";
     var y = event.y + Math.ceil(window.scrollY);
-    AchievementBoxContainer.style.top =  y + "px";
+    AchievementBoxContainer.style.top =  event.y - rect.top + "px";
 }
 
 function showAchievementsBox(AchievementNumber) {
@@ -89,7 +117,7 @@ function showAchievementsBox(AchievementNumber) {
 
 function hideAchievementsBox() {
     attachedAchievementBox = false;
-    AchievementBoxContainer.style.display = "";
+    AchievementBoxContainer.style.display = "none";
     document.removeEventListener("pointermove", followMouseAchievement);
 }
 
