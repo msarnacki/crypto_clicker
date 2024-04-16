@@ -254,7 +254,7 @@ function generateOwnedUpgradesBoxTable() {
         div.setAttribute("onpointerenter", `showOwnedUpgradesBox(${OwnedUpgrade.number})`);
         div.setAttribute("onpointerleave", `hideOwnedUpgradesBox()`);
         //div.innerHTML = `${OwnedUpgrade.number}`;
-        div.style.backgroundImage = `url('../img/Achievement0.jpg')`;
+        div.style.backgroundImage = `url('../img/Unknown.jpg')`;
         //div.style.backgroundImage = `url('../img/${OwnedUpgrade.number}OwnedUpgrade.jpg')`;
         div.style.backgroundSize = "contain";
         container.appendChild(div);
@@ -267,9 +267,10 @@ function upgradesImagesUpdate() {
         const div = document.getElementById("divOwnedUpgradesBox".concat(Upgrade.number));
         if(Person.ownedUpgrades.includes(Upgrade.number)){
             div.style.backgroundImage = `url('../img/Upgrade${Upgrade.number}.jpg')`;
+            div.classList.add("ownedUpgrade");
         }
         else{
-            div.style.backgroundImage = `url('../img/Achievement0.jpg')`;
+            div.style.backgroundImage = `url('../img/Unknown.jpg')`;
         }
     });
 }
