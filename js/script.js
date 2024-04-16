@@ -142,6 +142,7 @@ function updateAllLabels() {
     //achievementsTableUpdate();
     achievementsImagesUpdate();
     checkUpgrades();
+    upgradesImagesUpdate();
 }
 
 var bBuyBTC = true;
