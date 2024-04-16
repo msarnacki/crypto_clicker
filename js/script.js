@@ -227,9 +227,9 @@ function payBills() {
     var valueToPay = document.getElementById("inputPayBills").value;
     //value to pay is negative value
     var maxUnpaidBillsWatts = Person.maxUnpaidEnergy * EnergyPrice;
-
+    var unpaidBill = Person.ownedEnergy * EnergyPrice;
     // if trying to make excess payment (overpay)
-    if (-valueToPay > maxUnpaidBillsWatts){
+    if (valueToPay < unpaidBill){
         document.getElementById("lPaymentError").innerHTML = "You cannot make excess payment";
         document.getElementById("paymentError").style.opacity = 1;
         setTimeout(function(){

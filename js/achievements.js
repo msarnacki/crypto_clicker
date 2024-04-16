@@ -7,7 +7,7 @@ class Achievement{
     }
 }
 
-var lAchievments = [
+var lAchievements = [
     new Achievement(number = 1, name = "Journey start", description = "Found your 1st dollar bill", condition = "AchievementCondition1()"),
     new Achievement(number = 2, name = "First miner", description = "Started your mining career", condition = "AchievementCondition2()"),
     new Achievement(number = 3, name = "TEST3", description = "TEST_DECRIPTION3", condition = "AchievementCondition3()"),
@@ -19,8 +19,8 @@ var lAchievments = [
 //runs every tick
 function checkAchievements() {
     // array 1, ... , numOfAchievments 
-    //AchievementsNumbers = Array.from({length: lAchievments.length}, (_, i) => i + 1)
-    lAchievments.forEach(Achievement => {
+    //AchievementsNumbers = Array.from({length: lAchievements.length}, (_, i) => i + 1)
+    lAchievements.forEach(Achievement => {
         //if Achievement.number is not in Person.ownedAchievements
         if (!(Person.ownedAchievements.includes(Achievement.number))) {
             //if Achievement condition met
@@ -88,7 +88,7 @@ function createAchievementBox(AchievementNumber) {
     //const div = document.getElementById("divAchievementsBox".concat(AchievementNumber));
     //div.style.backgroundImage = `url('../img/${Achievement.number}Achievement.jpg')`;
     if (Person.ownedAchievements.includes(AchievementNumber)){
-        var insideText = `${AchievementNumber}: ${lAchievments[AchievementNumber-1].name} - ${lAchievments[AchievementNumber-1].description}`;
+        var insideText = `${AchievementNumber}: ${lAchievements[AchievementNumber-1].name} - ${lAchievements[AchievementNumber-1].description}`;
     }
     else{
         var insideText = `${AchievementNumber}: ??? - ?????`;
@@ -124,7 +124,7 @@ function hideAchievementsBox() {
 function generateAchievementsBoxTable() {
     const container = document.getElementById("divAchievementsBoxTable");
 
-    lAchievments.forEach(Achievement => {
+    lAchievements.forEach(Achievement => {
         const div = document.createElement('div');
         div.setAttribute("class", "divAchievementsBox");
         div.setAttribute("id", "divAchievementsBox".concat(Achievement.number));
@@ -144,7 +144,7 @@ generateAchievementsBoxTable();
 function achievementsImagesUpdate() {
     var ownedNum = Person.ownedAchievements.length;
     if (ownedNum==0){
-        lAchievments.forEach(Achievement => {
+        lAchievements.forEach(Achievement => {
             const div = document.getElementById("divAchievementsBox".concat(Achievement.number));
             div.style.backgroundImage = `url('../img/Achievement0.jpg')`;
         });
@@ -171,7 +171,7 @@ function achievementsImagesUpdate() {
     if (ownedNum > rowNum-1){
         achievementsTableClear();
         for (let i = 0; i<ownedNum; i++){
-            var colInfo = [lAchievments[Person.ownedAchievements[i]-1].number, lAchievments[Person.ownedAchievements[i]-1].name, lAchievments[Person.ownedAchievements[i]-1].description];
+            var colInfo = [lAchievements[Person.ownedAchievements[i]-1].number, lAchievements[Person.ownedAchievements[i]-1].name, lAchievements[Person.ownedAchievements[i]-1].description];
             var tr = table.insertRow();
             for (let j = 0; j < colNum; j++) {
                 var td = tr.insertCell();
