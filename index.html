@@ -187,25 +187,26 @@
 
         <div class="tabs">
           <div class="tab-header">
-            <div class="active"><i class="fa fa-table"></i> Statistics</div>
-            <div><i class="fa fa-rocket"></i>Upgrades</div>
+            <div><i class="fa fa-table"></i> Statistics</div>
+            <div class="active"><i class="fa fa-rocket"></i>Upgrades</div>
             <div><i class="fa fa-trophy"></i>Achievements</div>
             <div><i class="fa fa-cogs"></i> Settings</div>
           </div>
 
           <div class="tab-content" id="tab-content">
-            <div class="tab active">
+            <div class="tab">
               Main multiplier: <label id="lMainMultiplier">1</label>
             </div>
-            <div class="tab">
-              <div>Upgrades visible: <label id="lVisibleUpgrades"></label></div>
-              <div>Upgrades owned: <label id="lOwnedUpgrades"></label></div>
+            <div class="tab active">
+              <!--<div>Upgrades visible: <label id="lVisibleUpgrades"></label></div>-->
+              <div>Owned: <label id="lOwnedUpgrades"></label></div>
+              <div id="divOwnedUpgradesBoxTable"></div>
+              <div id="OwnedUpgradeBox"></div>
             </div>
             <div class="tab">
               Achievements owned: <label id="lOwnedAchievements"></label>
               <div id="divAchievementsBoxTable"></div>
-              <div id="AchievementBox">
-              </div>
+              <div id="AchievementBox"></div>
             </div>
             <div class="tab">
               <button id="wipe" onclick="wipe()" title="Reset all progress">RESET</button><br>

@@ -64,9 +64,9 @@ function checkUpgrades() {
         }
     });
     
-    $("#lVisibleUpgrades").html(Person.visibleUpgrades.toString());
+    //$("#lVisibleUpgrades").html(Person.visibleUpgrades.toString());
     //$("#lBuyableUpgrades").html(lBuyableUpgrades.toString());
-    $("#lOwnedUpgrades").html(Person.ownedUpgrades.toString());
+    $("#lOwnedUpgrades").html(Person.ownedUpgrades.length.toString() + "/" + lUpgrades.length.toString());
     //ugradesTableUpdate();
 }
 
@@ -191,7 +191,6 @@ function generateUpgradesBoxTable() {
 
 generateUpgradesBoxTable();
 
-
 //TODO add cost
 function buyUpgrade(upgradeNumber) {
     var updateUpgradeButton = "bUpgradesBox".concat('', upgradeNumber.toString());
@@ -205,3 +204,72 @@ function buyUpgrade(upgradeNumber) {
         updateAllLabels();
     }
 } 
+
+
+//Owned Upgrades section
+function createOwnedUpgradeBox(OwnedUpgradeNumber) {
+    //const div = document.getElementById("divOwnedUpgradesBox".concat(OwnedUpgradeNumber));
+    //div.style.backgroundImage = `url('../img/${OwnedUpgrade.number}OwnedUpgrade.jpg')`;
+    if (Person.ownedUpgrades.includes(OwnedUpgradeNumber)){
+        var insideText = `${OwnedUpgradeNumber}: ${lUpgrades[OwnedUpgradeNumber-1].name} - ${lUpgrades[OwnedUpgradeNumber-1].description}`;
+    }
+    else{
+        var insideText = `${OwnedUpgradeNumber}: ??? - ?????`;
+    }
+    document.getElementById("OwnedUpgradeBox").innerHTML = insideText;
+}
+
+let attachedOwnedUpgradeBox = false;
+let OwnedUpgradeBoxContainer = document.getElementById("OwnedUpgradeBox");
+
+const followMouseOwnedUpgrade = (event) => {
+    var rect = document.getElementById("tab-content").getBoundingClientRect();
+    OwnedUpgradeBoxContainer.style.left = event.x - rect.left + "px";
+    var y = event.y + Math.ceil(window.scrollY);
+    OwnedUpgradeBoxContainer.style.top =  event.y - rect.top + "px";
+}
+
+function showOwnedUpgradesBox(OwnedUpgradeNumber) {
+    createOwnedUpgradeBox(OwnedUpgradeNumber);
+    if (!attachedOwnedUpgradeBox) {
+        attachedOwnedUpgradeBox = true;
+        OwnedUpgradeBoxContainer.style.display = "block";
+        document.addEventListener("pointermove", followMouseOwnedUpgrade);
+    }
+}
+
+function hideOwnedUpgradesBox() {
+    attachedOwnedUpgradeBox = false;
+    OwnedUpgradeBoxContainer.style.display = "none";
+    document.removeEventListener("pointermove", followMouseOwnedUpgrade);
+}
+
+function generateOwnedUpgradesBoxTable() {
+    const container = document.getElementById("divOwnedUpgradesBoxTable");
+
+    lUpgrades.forEach(OwnedUpgrade => {
+        const div = document.createElement('div');
+        div.setAttribute("class", "divOwnedUpgradesBox");
+        div.setAttribute("id", "divOwnedUpgradesBox".concat(OwnedUpgrade.number));
+        div.setAttribute("onpointerenter", `showOwnedUpgradesBox(${OwnedUpgrade.number})`);
+        div.setAttribute("onpointerleave", `hideOwnedUpgradesBox()`);
+        //div.innerHTML = `${OwnedUpgrade.number}`;
+        div.style.backgroundImage = `url('../img/Achievement0.jpg')`;
+        //div.style.backgroundImage = `url('../img/${OwnedUpgrade.number}OwnedUpgrade.jpg')`;
+        div.style.backgroundSize = "contain";
+        container.appendChild(div);
+    });
+}
+generateOwnedUpgradesBoxTable();
+
+function upgradesImagesUpdate() {
+    lUpgrades.forEach(Upgrade => {
+        const div = document.getElementById("divOwnedUpgradesBox".concat(Upgrade.number));
+        if(Person.ownedUpgrades.includes(Upgrade.number)){
+            div.style.backgroundImage = `url('../img/Upgrade${Upgrade.number}.jpg')`;
+        }
+        else{
+            div.style.backgroundImage = `url('../img/Achievement0.jpg')`;
+        }
+    });
+}

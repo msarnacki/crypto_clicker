@@ -100,12 +100,12 @@ button {
   width: 20%;
 }
 
-#divAchievementsBoxTable {
+#divAchievementsBoxTable, #divOwnedUpgradesBoxTable {
   display: flex;
   flex-wrap: wrap;
 }
 
-.divAchievementsBox{
+.divAchievementsBox, .divOwnedUpgradesBox {
   background-color: black;
   border-style: solid;
   border-width: 2px;
