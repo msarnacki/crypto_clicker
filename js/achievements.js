@@ -32,7 +32,7 @@ function checkAchievements() {
         }
     });
     
-    $("#lOwnedAchievements").html(Person.ownedAchievements.toString());
+    $("#lOwnedAchievements").html(Person.ownedAchievements.length.toString() + `/${lAchievements.length}`);
     achievementsImagesUpdate();
     //achievementsTableUpdate();
 }
@@ -157,50 +157,3 @@ function achievementsImagesUpdate() {
         }
     }
 }
-
-/* function achievementsTableUpdate() {
-    var table = document.getElementById("achievementsTable");
-    table.style.width = '100px';
-    table.style.border = '1px solid black';
-    
-    var rowNum = table.rows.length;
-    var colNum = table.rows[0].cells.length;
-
-    var ownedNum = Person.ownedAchievements.length;
-    
-    // if owned not showed in table
-    if (ownedNum > rowNum-1){
-        achievementsTableClear();
-        for (let i = 0; i<ownedNum; i++){
-            var colInfo = [lAchievements[Person.ownedAchievements[i]-1].number, lAchievements[Person.ownedAchievements[i]-1].name, lAchievements[Person.ownedAchievements[i]-1].description];
-            var tr = table.insertRow();
-            for (let j = 0; j < colNum; j++) {
-                var td = tr.insertCell();
-                td.appendChild(document.createTextNode(colInfo[j]));
-                td.style.border = '1px solid black';
-            }
-        }
-    } 
-    // if showed too many (when wipeing)
-    if(ownedNum < rowNum-1){
-        achievementsTableClear();
-        achievementsTableUpdate();
-    }
-    rowNum = table.rows.length;
-
-    //show if rowNum > 1
-    if(rowNum > 1){
-        table.style.display = "block";
-    }else{
-        table.style.display = "none";
-    }
-}
-
-function achievementsTableClear() {
-    var table = document.getElementById("achievementsTable");
-    if(table.rows.length > 1){
-        for(let i = 0; i<table.rows.length; i++){
-            table.deleteRow(1);
-        }
-    }
-} */
