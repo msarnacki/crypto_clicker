@@ -67,7 +67,7 @@ function checkMaxMoney(valueToPay) {
 
 function getPayAmountFromSlider() {
     document.getElementById("lSliderEnergy").innerHTML = document.getElementById("SliderEnergy").value;
-    document.getElementById("inputPayBills").value = (Number(document.getElementById("lEnergyValue").innerHTML) * document.getElementById("SliderEnergy").value/100).toFixed(2);
+    document.getElementById("inputPayBills").value = (-Number(document.getElementById("lEnergyValue").innerHTML) * document.getElementById("SliderEnergy").value/100).toFixed(2);
     checkMaxMoney(document.getElementById("lEnergyValue").innerHTML * document.getElementById("SliderEnergy").value/100);
 }
 

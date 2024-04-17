@@ -230,7 +230,7 @@ function payBills() {
     var maxUnpaidBillsWatts = Person.maxUnpaidEnergy * EnergyPrice;
     var unpaidBill = Person.ownedEnergy * EnergyPrice;
     // if trying to make excess payment (overpay)
-    if (valueToPay < unpaidBill){
+    if (!((valueToPay >= unpaidBill) && (valueToPay <= -unpaidBill))){
         document.getElementById("lPaymentError").innerHTML = "You cannot make excess payment";
         document.getElementById("paymentError").style.opacity = 1;
         setTimeout(function(){
@@ -238,15 +238,10 @@ function payBills() {
             document.getElementById("lPaymentError").innerHTML = "";
             },3000);
     }
-    else if (valueToPay > 0){
-        document.getElementById("lPaymentError").innerHTML = "Amount must be negative";
-        document.getElementById("paymentError").style.opacity = 1;
-        setTimeout(function(){
-            document.getElementById("paymentError").style.opacity = 0;
-            document.getElementById("lPaymentError").innerHTML = "";
-            },3000);
-    }
     else{
+        if (valueToPay > 0){
+            valueToPay = -valueToPay;
+        }
         //if bill is higher than owned money
         if (-valueToPay>Person.money) {
             Person.ownedEnergy = Number((Person.ownedEnergy + Person.money/EnergyPrice).toFixed(2));
