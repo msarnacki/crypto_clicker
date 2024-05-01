@@ -12,8 +12,9 @@ $(document).ready(function () {
     var timeOff = Number(((dLoad - lastSaveBeforeOff)/1000).toFixed(0));
     var earnedWhenOff = Number((timeOff*calcIntervalIncreaseCrypto(Person.ownedMiners)).toFixed(0));
     $("#Diff_LoadTime-lastSaveBeforeOff").html("Diff: ".concat(timeOff).concat("s"));
-    $("#EarnedWhenOff").html("Earned when off: ".concat(String(earnedWhenOff)));
-    Person.ownedCrypto[0] += earnedWhenOff;
+    var earnedWhenOffMultiplied = earnedWhenOff * Person.incomeWhenOff;
+	$("#EarnedWhenOff").html("Earned when off: ".concat(String(earnedWhenOff) + " * " + String(Person.incomeWhenOff.toFixed(2)) + " = " + String(earnedWhenOffMultiplied.toFixed(2))));
+    Person.ownedCrypto[0] += earnedWhenOffMultiplied;
 
 	calcMinerCosts();
 
@@ -25,6 +26,7 @@ $(document).ready(function () {
 function calcMinerCosts() {
 	//calculate Miner cost after reload
 	lMiners.forEach(Miner => {
+		console.log("asd")
         document.getElementById("dMinerCost".concat(Miner.level)).innerHTML = `Cost: ${calcCost(Person.ownedMiners,Miner.level, 1)} <i class="fa fa-usd"></i>`;
     })	
 }

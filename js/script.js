@@ -129,6 +129,9 @@ function updateAllLabels() {
     $("#lCryptoValue0").html((Person.ownedCrypto[0]*lCryptoCurrs[0].usdRate/10**lCryptoCurrs[0].denominationUnit).toFixed(2));
 
     $("#lMainMultiplier").html(Person.mainMultiplier);
+    $("#maxUnpaidBillsWatts2").html(Person.maxUnpaidEnergy);
+    $("#maxUnpaidBillsDollars2").html((Person.maxUnpaidEnergy*EnergyPrice).toFixed(2));
+    $("#incomeWhenOff").html(Person.incomeWhenOff.toFixed(2));
     
     $("#lOwnedAchievements").html(Person.ownedAchievements.toString());
 
