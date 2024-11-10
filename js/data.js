@@ -1,11 +1,13 @@
 class Player{
     constructor(money = 0, 
-                ownedMiners = [0,0,0,0,0,0,0,0], 
+                ownedMiners = [0,0,0,0,0,0,0,0],
+                ownedPowerProds = [0,0,0,0,0], 
                 ownedCrypto = [0,0], 
                 incomeWhenOff = 0,
                 numView="BTC", 
                 lastSaveBeforeOff = Date(), 
-                mainMultiplier = 1, 
+                mainMultiplier = 1,
+                mainPowerProdMultiplier = 1,
                 ownedAchievements = [], 
                 visibleUpgrades = [], 
                 ownedUpgrades = [],
@@ -24,11 +26,13 @@ class Player{
                 }){
         this.money = money;
         this.ownedMiners = ownedMiners;
+        this.ownedPowerProds = ownedPowerProds;
         this.ownedCrypto = ownedCrypto;
         this.incomeWhenOff = incomeWhenOff;
         this.numView = numView;
         this.lastSaveBeforeOff = lastSaveBeforeOff;
         this.mainMultiplier = mainMultiplier;
+        this.mainPowerProdMultiplier = mainPowerProdMultiplier;
         this.ownedAchievements = ownedAchievements;
         this.visibleUpgrades = visibleUpgrades;
         this.ownedUpgrades = ownedUpgrades;
