@@ -1,3 +1,18 @@
+document.addEventListener('DOMContentLoaded', () => {
+    const repoOwner = 'msarnacki'; // Wstaw nazwę użytkownika lub organizacji
+    const repoName = 'crypto_clicker'; // Wstaw nazwę repozytorium
+
+    fetch(`https://api.github.com/repos/${repoOwner}/${repoName}/commits`)
+        .then(response => response.json())
+        .then(data => {
+        if (data && data.length > 0) {
+            const lastCommitDate = data[0].commit.committer.date;
+            document.getElementById('last-commit-date').innerText = `Version date: ${new Date(lastCommitDate).toLocaleString()}`;
+        }
+    })
+    .catch(error => console.error('Error getting version date.'));
+});
+
 function bClick() {
     $("#lMoney").html(Person.money.toFixed(2));
     updateConvertAmount();

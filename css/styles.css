@@ -18,6 +18,10 @@ button {
   opacity: 100%;
 }
 
+#versionInfo{
+  font-size: 10px;
+  font-weight: bold;
+}
 
 #clickToEarn{
   display: flex;
