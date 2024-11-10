@@ -200,11 +200,11 @@ function convertToUSD(toConvert) {
     if (toConvert == -1){
         cryptoToConvert = Person.ownedCrypto[0];
     }else{
-        if (Person.numView == "Satoshi") {
-            cryptoToConvert = Number(document.getElementById("inputConvertCurrencies").value);
-        }else{
+        //if (Person.numView == "Satoshi") {
+        //    cryptoToConvert = Number(document.getElementById("inputConvertCurrencies").value);
+        //}else{
             cryptoToConvert = Number(document.getElementById("inputConvertCurrencies").value)*10**lCryptoCurrs[0].denominationUnit;
-        }
+        //}
     }
     if(cryptoToConvert <= Person.ownedCrypto[0]){
         Person.ownedCrypto[0] -= Number(cryptoToConvert.toFixed(0));
