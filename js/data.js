@@ -22,7 +22,14 @@ class Player{
                     "allTimeMined_Miner4": 0,
                     "allTimeMined_Miner5": 0,
                     "allTimeMined_Miner6": 0,
-                    "allTimeMined_Miner7": 0
+                    "allTimeMined_Miner7": 0,
+                    "allTimeProducedPower_All": 0,
+                    "allTimeProducedPower_PowerProd0": 0,
+                    "allTimeProducedPower_PowerProd": 0,
+                    "allTimeProducedPower_PowerProd": 0,
+                    "allTimeProducedPower_PowerProd": 0,
+                    "allTimeProducedPower_PowerProd": 0,
+                    
                 }){
         this.money = money;
         this.ownedMiners = ownedMiners;

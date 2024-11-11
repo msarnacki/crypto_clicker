@@ -678,7 +678,7 @@ input[type=range]::-ms-thumb {
   display: none;
 }
 
-#dUpgradesAndMinerStats{
+#dUpgradesAndMinerStats, #dUpgradesAndPowerProdsStats{
   width: 62%;
   height: 100%;
 }
@@ -831,7 +831,7 @@ input[type=range]::-ms-thumb {
   cursor: pointer;
 }
 
-#dMinerStats{
+#dMinerStats, #dPowerProdStats{
   width: 96%;
   height: 65%;
   margin-top: 50px;
@@ -840,7 +840,7 @@ input[type=range]::-ms-thumb {
   border-collapse: collapse;
 }
 
-#tableMinerStats{
+#tableMinerStats, #tablePowerProdStats{
   margin: auto;
   width: 100%;
   border-collapse: collapse;
@@ -849,17 +849,17 @@ input[type=range]::-ms-thumb {
   table-layout: fixed;
 }
 
-#tableMinerStats > *{
+#tableMinerStats > *, #tablePowerProdStats > *{
   font-size: 11px;
 
 }
 
-#tableMinerStats th{
+#tableMinerStats th, #tablePowerProdStats th{
   border: 1px solid rgba(246,70,93,0.75);
   background: rgba(255,255,255,0.05);
 }
 
-#tableMinerStats td{
+#tableMinerStats td, #tablePowerProdStats td{
   border: 1px solid rgba(246,70,93,0.75);
   height: 30px;
 }

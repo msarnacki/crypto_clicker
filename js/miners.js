@@ -110,7 +110,7 @@ function generateMinersBoxTable() {
         const dMinerRightInfo2 = document.createElement("div");
         dMinerRightInfo2.className = "dMinerRightInfo";
         dMinerRightInfo2.id = "dMinerEnergy".concat(Miner.level);
-        dMinerRightInfo2.innerHTML = `<i class="fa fa-bolt"></i> ${Miner.energy_consumption} W/s`;
+        dMinerRightInfo2.innerHTML = `<i class="fa fa-bolt"></i> -${Miner.energy_consumption} W/s`;
         dMinerInfoLine2.appendChild(dMinerRightInfo2);
 
         const dBuyMiners = document.createElement("div");
