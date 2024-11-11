@@ -25,10 +25,10 @@ class Player{
                     "allTimeMined_Miner7": 0,
                     "allTimeProducedPower_All": 0,
                     "allTimeProducedPower_PowerProd0": 0,
-                    "allTimeProducedPower_PowerProd": 0,
-                    "allTimeProducedPower_PowerProd": 0,
-                    "allTimeProducedPower_PowerProd": 0,
-                    "allTimeProducedPower_PowerProd": 0,
+                    "allTimeProducedPower_PowerProd1": 0,
+                    "allTimeProducedPower_PowerProd2": 0,
+                    "allTimeProducedPower_PowerProd3": 0,
+                    "allTimeProducedPower_PowerProd4": 0,
                     
                 }){
         this.money = money;

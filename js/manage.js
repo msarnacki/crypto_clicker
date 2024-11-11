@@ -17,6 +17,7 @@ $(document).ready(function () {
     Person.ownedCrypto[0] += earnedWhenOffMultiplied;
 
 	calcMinerCosts();
+	calcPowerProdCosts();
 
     updateAllLabels();
     save();
@@ -26,8 +27,16 @@ $(document).ready(function () {
 function calcMinerCosts() {
 	//calculate Miner cost after reload
 	lMiners.forEach(Miner => {
-		console.log("asd")
+		//console.log("asd")
         document.getElementById("dMinerCost".concat(Miner.level)).innerHTML = `Cost: ${calcCost(Person.ownedMiners,Miner.level, 1)} <i class="fa fa-usd"></i>`;
+    })	
+}
+
+function calcPowerProdCosts() {
+	//calculate PowerProd cost after reload
+	lPowerProds.forEach(PowerProd => {
+		//console.log("asd")
+        document.getElementById("dPowerProdCost".concat(PowerProd.level)).innerHTML = `Cost: ${calcCostPowerProd(Person.ownedPowerProds,PowerProd.level, 1)} <i class="fa fa-usd"></i>`;
     })	
 }
 
@@ -67,6 +76,7 @@ function wipe() {
 	resetCryptoExchengeState();
 	resetEnergyExchengeState();
 	calcMinerCosts();
+	calcPowerProdCosts();
 }
 
 //TODO in future 

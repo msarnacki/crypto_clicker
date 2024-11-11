@@ -67,9 +67,18 @@ function calcIntervalEnergyUsage(aOwnedMiners) {
     return usage;
 }
 
+function calcIntervalEnergyProduction(aOwnedPowerProds) {
+    var production = 0;
+    for (let index = 0; index < aOwnedPowerProds.length; index++) {
+        production = production + aOwnedPowerProds[index] * lPowerProds[index].base_prod;
+        Person.allTimeStats["allTimeProducedPower_PowerProd" + String(index)] += aOwnedPowerProds[index] * lPowerProds[index].base_prod * Person.mainPowerProdMultiplier;
+    }
+    return production;
+}
+
 function updateEnergy() {
     if((-Person.ownedEnergy < Person.maxUnpaidEnergy)){
-        var possibleNewOwnedEnergy = (Person.ownedEnergy - calcIntervalEnergyUsage(Person.ownedMiners));
+        var possibleNewOwnedEnergy = (Person.ownedEnergy - calcIntervalEnergyUsage(Person.ownedMiners) + calcIntervalEnergyProduction(Person.ownedPowerProds));
         if(possibleNewOwnedEnergy < -Person.maxUnpaidEnergy){
             possibleNewOwnedEnergy = -Person.maxUnpaidEnergy;
         }
@@ -111,6 +120,7 @@ function updateAll() {
     updatePayBillsAmount();
     checkMaxMoney(document.getElementById("lEnergyValue").innerHTML * document.getElementById("SliderEnergy").value/100);
     updateMinersStatsTable();
+    updatePowerProdsStatsTable();
 }
 
 $("#clickButton").click(function () {

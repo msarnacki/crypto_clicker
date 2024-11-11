@@ -104,7 +104,7 @@ function generateMinersBoxTable() {
         dMinerLeftInfo2.className = "dMinerLeftInfo";
         dMinerLeftInfo2.id = "dMinerIncome".concat(Miner.level);
         var IncomeDenominated = Miner.base_income/10**lCryptoCurrs[0].denominationUnit;
-        dMinerLeftInfo2.innerHTML = `<i class="fa fa-line-chart"></i> ${IncomeDenominated.toFixed(lCryptoCurrs[0].denominationUnit)} <i class="fa fa-btc"></i>/s`;
+        dMinerLeftInfo2.innerHTML = `<i class="fa fa-line-chart"></i> +${IncomeDenominated.toFixed(lCryptoCurrs[0].denominationUnit)} <i class="fa fa-btc"></i>/s`;
         dMinerInfoLine2.appendChild(dMinerLeftInfo2);
 
         const dMinerRightInfo2 = document.createElement("div");

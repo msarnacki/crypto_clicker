@@ -19,7 +19,7 @@ var lPowerProds = [
 
 //var EnergyPrice = 0.16
 
-function calcCost(aOwnedPowerProds, powerProd_level, num) {
+function calcCostPowerProd(aOwnedPowerProds, powerProd_level, num) {
     var cost = 0;
     var q = lPowerProds[powerProd_level].factor;
     var a1 = lPowerProds[powerProd_level].cost;
@@ -40,9 +40,9 @@ function calcCost(aOwnedPowerProds, powerProd_level, num) {
 
 
 function buyPowerProd(powerProd_level, num) {
-    if(Person.money >= calcCost(Person.ownedPowerProds, powerProd_level, num))
+    if(Person.money >= calcCostPowerProd(Person.ownedPowerProds, powerProd_level, num))
     {
-        Person.money = Number((Person.money - calcCost(Person.ownedPowerProds, powerProd_level, num)).toFixed(2));
+        Person.money = Number((Person.money - calcCostPowerProd(Person.ownedPowerProds, powerProd_level, num)).toFixed(2));
         Person.ownedPowerProds[powerProd_level]+=num;
         var id_owned = "#lPowerProd".concat('', powerProd_level.toString())
         var id_production = "#lPowerProdProduction".concat('', powerProd_level.toString())
@@ -52,7 +52,7 @@ function buyPowerProd(powerProd_level, num) {
         //$(id_owned).html(Person.ownedPowerProds[powerProd_level]);
         //$(id_production).html(Person.ownedPowerProds[powerProd_level] * lPowerProds[powerProd_level].base_income *Person.mainPowerProdMultiplier);
         
-        $(PowerProdCost).html(`Cost: ${calcCost(Person.ownedPowerProds,powerProd_level, 1)} <i class="fa fa-usd"></i>`);
+        $(PowerProdCost).html(`Cost: ${calcCostPowerProd(Person.ownedPowerProds,powerProd_level, 1)} <i class="fa fa-usd"></i>`);
     
         $("#lMoney").html(Person.money.toFixed(2));
         //$("#lIncomeMoney").html(calcIntervalIncreaseCrypto(Person.ownedPowerProds));
@@ -105,7 +105,7 @@ function generatePowerProdsBoxTable() {
         const dPowerProdLeftInfo2 = document.createElement("div");
         dPowerProdLeftInfo2.className = "dPowerProdLeftInfo";
         dPowerProdLeftInfo2.id = "dPowerProdIncome".concat(PowerProd.level);
-        dPowerProdLeftInfo2.innerHTML = `<i class="fa fa-industry"></i> cost: ${PowerProd.base_prod_cost} <i class="fa fa-usd"></i>/s`;
+        dPowerProdLeftInfo2.innerHTML = `<i class="fa fa-industry"></i> cost: -${PowerProd.base_prod_cost} <i class="fa fa-usd"></i>/s`;
         dPowerProdInfoLine2.appendChild(dPowerProdLeftInfo2);
         
         const dPowerProdRightInfo2 = document.createElement("div");
@@ -163,7 +163,7 @@ function generatePowerProdsStatsTable() {
 
         const td4 = document.createElement('td');
         td4.id = "tdAllProduction".concat(PowerProd.level);
-        td4.innerHTML = (production*owned);
+        td4.innerHTML = (production*owned).toFixed(2);
         tr.appendChild(td4);
 
         const td5 = document.createElement('td');
@@ -186,11 +186,11 @@ function updatePowerProdsStatsTable() {
         const owned = Person.ownedPowerProds[PowerProd.level];
         const production = PowerProd.base_prod;
         const prod_cost = PowerProd.base_prod_cost;
-        const allTimeProduced = Person.allTimeStats["allTimeProduced_PowerProd" + String(PowerProd.level)];
+        const allTimeProduced = Person.allTimeStats["allTimeProducedPower_PowerProd" + String(PowerProd.level)];
         
         $("#tdOwnedPowerProds".concat(PowerProd.level)).html(owned);
-        $("#tdAllProduction".concat(PowerProd.level)).html((production*owned));
-        $("#tdAllTimeEarned".concat(PowerProd.level)).html((allTimeProduced).toFixed(2));
-        $("#tdAllProdCost".concat(PowerProd.level)).html((prod_cost*owned).toFixed(2));
+        $("#tdAllProduction".concat(PowerProd.level)).html((production*owned).toFixed(2));
+        $("#tdAllTimeProduced".concat(PowerProd.level)).html((allTimeProduced).toFixed(2));
+        $("#tdAllProdCost".concat(PowerProd.level)).html((-prod_cost*owned).toFixed(2));
     });
 }
