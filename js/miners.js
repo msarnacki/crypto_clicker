@@ -57,7 +57,7 @@ function buyMiner(miner_level, num) {
         $("#lMoney").html(Person.money.toFixed(2));
         //$("#lIncomeMoney").html(calcIntervalIncreaseCrypto(Person.ownedMiners));
         $("#lCryptoIncome0").html(showNumber(calcIntervalIncreaseCrypto(Person.ownedMiners),Person.numView));
-        $("#lEnergyIncome").html(Number((-calcIntervalEnergyUsage(Person.ownedMiners)).toFixed(2)));
+        $("#lEnergyIncome").html(Number((- calcIntervalEnergyUsage(Person.ownedMiners) + calcIntervalEnergyProduction(Person.ownedPowerProds)).toFixed(2)));
     }
 }
 

@@ -57,7 +57,7 @@ function buyPowerProd(powerProd_level, num) {
         $("#lMoney").html(Person.money.toFixed(2));
         //$("#lIncomeMoney").html(calcIntervalIncreaseCrypto(Person.ownedPowerProds));
         $("#lCryptoIncome0").html(showNumber(calcIntervalIncreaseCrypto(Person.ownedPowerProds),Person.numView));
-        $("#lEnergyIncome").html(Number((-calcIntervalEnergyUsage(Person.ownedPowerProds)).toFixed(2)));
+        $("#lEnergyIncome").html(Number((- calcIntervalEnergyUsage(Person.ownedMiners) + calcIntervalEnergyProduction(Person.ownedPowerProds)).toFixed(2)));
     }
 }
 

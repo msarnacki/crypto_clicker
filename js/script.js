@@ -161,7 +161,7 @@ function updateAllLabels() {
     $("#lOwnedAchievements").html(Person.ownedAchievements.toString());
 
     $("#lEnergy").html(Person.ownedEnergy.toString());
-    $("#lEnergyIncome").html(Number((-calcIntervalEnergyUsage(Person.ownedMiners)).toFixed(2)));
+    $("#lEnergyIncome").html(Number((- calcIntervalEnergyUsage(Person.ownedMiners) + calcIntervalEnergyProduction(Person.ownedPowerProds)).toFixed(2)));
     
     $("#lEnergyPrice").html(EnergyPrice);
     $("#lEnergyValue").html((EnergyPrice*Person.ownedEnergy).toFixed(2));
