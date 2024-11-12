@@ -580,6 +580,7 @@ input[type=range]::-ms-thumb {
 }
 
 #divEnergyExchenge{
+  position: relative;
   width: auto;
   background-color: #4cff6a96;
   background: var(--light-background);
@@ -681,11 +682,22 @@ input[type=range]::-ms-thumb {
   background-color: #002bff;
 }
 #dPowerProdsAndUpgradesBox{
+  position: relative;
   width: 100%;
   height: calc(50% - 10px);
   display: flex;
   /*testing*/
   background-color:#F6465D;
+}
+
+.overlay-block {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* półprzeźroczyste tło */
+  pointer-events: all; /* blokuje kliknięcia */
 }
 
 .bBuyUpgrade{
@@ -945,3 +957,4 @@ input[type=range]::-ms-thumb {
   display: block;
   position: relative;
 }
+
